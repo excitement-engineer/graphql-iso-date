@@ -56,7 +56,7 @@ function parseLiteral(ast):Date {
  * @param {Date} value the date to be serialized
  * @returns {string} the ISO formatted date string
  */
-function serialize(value: ?Date): String {
+function serialize(value: ?Date): ?String {
 
     if (value === null) return null;
 
