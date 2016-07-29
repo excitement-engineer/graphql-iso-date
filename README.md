@@ -1,5 +1,7 @@
 # GraphQL ISO Date
 
+[![Build Status](https://travis-ci.org/excitement-engineer/graphql-iso-date.svg?branch=master)](https://travis-ci.org/excitement-engineer/graphql-iso-date)
+
 GraphQL ISO Date is an implementation of a [GraphQL](https://facebook.github.io/graphql/) date scalar type to be used with [graphql.js](https://github.com/graphql/graphql-js). 
 
 This GraphQL scalar type represents a date in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format `YYYY-MM-DD`.
