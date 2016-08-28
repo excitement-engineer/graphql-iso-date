@@ -8,26 +8,26 @@
  *
  */
 
-import {GraphQLScalarType} from 'graphql';
-import { GraphQLError } from 'graphql/error';
-import { Kind } from 'graphql/language';
-import moment from "moment";
+import {GraphQLScalarType} from 'graphql'
+import { GraphQLError } from 'graphql/error'
+import { Kind } from 'graphql/language'
+import moment from 'moment'
 
-//The format of an ISO 8601 date
-const format = "YYYY-MM-DD";
+// The format of an ISO 8601 date
+const format = 'YYYY-MM-DD'
 
 /**
  * The GraphQLDate scalar type that is exported
  */
 const graphQLDate = new GraphQLScalarType({
-    name: `Date`,
-    description: `Represents a date in the format ${format} (ISO 8601). For example, the 1st Feb 2016 is represented as 2016-02-01.`,
-    serialize: serialize,
-    parseValue: parseValue,
-    parseLiteral: parseLiteral
-});
+  name: `Date`,
+  description: `Represents a date in the format ${format} (ISO 8601). For example, the 1st Feb 2016 is represented as 2016-02-01.`,
+  serialize: serialize,
+  parseValue: parseValue,
+  parseLiteral: parseLiteral
+})
 
-export default graphQLDate;
+export default graphQLDate
 
 /**
  * Parses an ast to a Date object. This is called when an ISO date is inputted
@@ -35,19 +35,18 @@ export default graphQLDate;
  * @param ast the ast to be converted to a Date object
  * @returns {Date} the parsed Date object
  */
-function parseLiteral(ast):Date {
+function parseLiteral (ast):Date {
+  if (ast.kind !== Kind.STRING) {
+    throw new GraphQLError(`Can only parse strings to a Date but got kind ${ast.kind}`)
+  }
 
-    if (ast.kind !== Kind.STRING) {
-        throw new GraphQLError(`Can only parse strings to a Date but got kind ${ast.kind}`)
-    }
+  let momentDate = moment(ast.value, format, true)
 
-    let momentDate = moment(ast.value, format, true);
+  if (momentDate.isValid() === false) {
+    throw new GraphQLError(`Invalid date ${ast.value}, only accepts dates in format '${format}'`)
+  }
 
-    if (momentDate.isValid() === false) {
-        throw new GraphQLError(`Invalid date ${ast.value}, only accepts dates in format '${format}'`)
-    }
-
-    return momentDate.toDate();
+  return momentDate.toDate()
 }
 
 /**
@@ -56,16 +55,15 @@ function parseLiteral(ast):Date {
  * @param {Date} value the date to be serialized
  * @returns {string} the ISO formatted date string
  */
-function serialize(value: ?Date): ?String {
+function serialize (value: ?Date): ?String {
+  if (value === null) return null
 
-    if (value === null) return null;
-
-    if (!(value instanceof Date)){
-        throw new TypeError(`Date must be serialized from a `+
-            `javascript Date instance but got object with type '${typeof value}' and value ${value}`);
-    }
-    else
-        return moment(value).format(format);
+  if (!(value instanceof Date)) {
+    throw new TypeError(`Date must be serialized from a ` +
+            `javascript Date instance but got object with type '${typeof value}' and value ${value}`)
+  } else {
+    return moment(value).format(format)
+  }
 }
 
 /**
@@ -74,19 +72,16 @@ function serialize(value: ?Date): ?String {
  * @param {string} value the ISO formatted date string
  * @returns {Date} the parsed Date object
  */
-function parseValue(value: ?String): ?Date {
+function parseValue (value: ?String): ?Date {
+  if (value === null) return null
 
-    if (value === null) return null;
-
-    if (!(typeof value === "string" || value instanceof String)) {
-        throw new TypeError(`Value must be parsed from a String but got object with type '${typeof value}' and value ${value}`);
+  if (!(typeof value === 'string' || value instanceof String)) {
+    throw new TypeError(`Value must be parsed from a String but got object with type '${typeof value}' and value ${value}`)
+  } else {
+    let dateMoment = moment(value, format, true)
+    if (dateMoment.isValid() === false) {
+      throw new Error(`Value ${value} is not a valid date in the format ${format}`)
     }
-    else {
-
-        let dateMoment = moment(value,format, true);
-        if (dateMoment.isValid() === false) {
-            throw new Error(`Value ${value} is not a valid date in the format ${format}`);
-        }
-        return dateMoment.toDate();
-    }
+    return dateMoment.toDate()
+  }
 }

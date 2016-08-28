@@ -19,41 +19,41 @@
 import {
     graphql,
     GraphQLObjectType,
-    GraphQLSchema,
-} from 'graphql';
+    GraphQLSchema
+} from 'graphql'
 
-import GraphQLDate from "../dist"
+import GraphQLDate from '../dist'
 
 let schema = new GraphQLSchema({
-    query: new GraphQLObjectType({
-        name: "Query",
-        fields: {
-            input: {
-                type: GraphQLDate,
-                args: {
-                    date: {
-                        type: GraphQLDate
-                    }
-                },
-                resolve: function (_, {date}) {
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      input: {
+        type: GraphQLDate,
+        args: {
+          date: {
+            type: GraphQLDate
+          }
+        },
+        resolve: function (_, {date}) {
                     // The date parameter is a Javascript Date object
-                    return date;
-                }
-            }
+          return date
         }
-    })
-});
+      }
+    }
+  })
+})
 
 graphql(schema, `{ input(date: "2016-02-01") }`)
     .then(result => {
-        console.log(`Example query { input(date: "2016-02-01") }: Input a valid date and output the same date`);
-        console.log(result);
+      console.log(`Example query { input(date: "2016-02-01") }: Input a valid date and output the same date`)
+      console.log(result)
     })
-    .catch(console.error);
+    .catch(console.error)
 
 graphql(schema, `{ input(date: "2015-02-29") }`)
     .then(result => {
-        console.log(`Example query { input(date: "2015-02-29") }: Output an error when an invalid date is passed as input (29 Feb 2015 doesn't exist)`);
-        console.log(result);
+      console.log(`Example query { input(date: "2015-02-29") }: Output an error when an invalid date is passed as input (29 Feb 2015 doesn't exist)`)
+      console.log(result)
     })
-    .catch(console.error);
+    .catch(console.error)

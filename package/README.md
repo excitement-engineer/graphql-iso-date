@@ -1,5 +1,5 @@
 # GraphQL ISO Date
-[![npm version](https://badge.fury.io/js/graphql-iso-date.svg)](http://badge.fury.io/js/graphql-iso-date)
+
 [![Build Status](https://travis-ci.org/excitement-engineer/graphql-iso-date.svg?branch=master)](https://travis-ci.org/excitement-engineer/graphql-iso-date)
 
 GraphQL ISO Date is an implementation of a [GraphQL](https://facebook.github.io/graphql/) date scalar type to be used with [graphql.js](https://github.com/graphql/graphql-js). 
