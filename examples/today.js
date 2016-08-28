@@ -14,32 +14,31 @@
 import {
     graphql,
     GraphQLObjectType,
-    GraphQLSchema,
-} from 'graphql';
+    GraphQLSchema
+} from 'graphql'
 
-import GraphQLDate from "../dist"
+import GraphQLDate from '../dist'
 
 let schema = new GraphQLSchema({
-    query: new GraphQLObjectType({
-        name: "Query",
-        fields: {
-            today: {
-                type: GraphQLDate,
-                resolve: function () {
-
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      today: {
+        type: GraphQLDate,
+        resolve: function () {
                     // Return a Javascript Date that
                     // is automatically converted to a string
                     // date in format "YYYY-MM-DD".
-                    return new Date();
-                }
-            }
+          return new Date()
         }
-    })
-});
+      }
+    }
+  })
+})
 
 graphql(schema, `{ today }`)
     .then(result => {
-        console.log("Example query { today }: Query today's date");
-        console.log(result);
+      console.log("Example query { today }: Query today's date")
+      console.log(result)
     })
-    .catch(console.error);
+    .catch(console.error)

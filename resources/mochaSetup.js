@@ -14,9 +14,9 @@
 /**
  * Required for compiling Mocha test code using babel
  */
-require("babel-register");
+require('babel-register')
 
 /**
  * Required for using async/await function
  */
-require("babel-polyfill");
+require('babel-polyfill')
