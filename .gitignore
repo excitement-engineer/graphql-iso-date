@@ -2,6 +2,13 @@
 
 dist/
 
+# Generated when running 'npm pack'
+graphql-iso-date-1.0.1.tgz
+
+# Generated when running 'yarn pack'
+graphql-iso-date-v1.0.1.tgz
+
+
 ### Node ###
 # Logs
 logs

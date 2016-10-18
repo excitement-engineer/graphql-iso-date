@@ -26,10 +26,10 @@ This project includes several examples of the usage of the GraphQL ISO Date in t
 
 Run the examples by downloading this project and running the following commands:
 
-Install dependencies
+Install dependencies using [yarn](https://yarnpkg.com/):
 
-```
-npm install
+```sh
+yarn
 ```
 
 Run the examples
