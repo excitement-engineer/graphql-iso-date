@@ -55,12 +55,12 @@ function parseLiteral (ast):Date {
  * @param {Date} value the date to be serialized
  * @returns {string} the ISO formatted date string
  */
-function serialize (value: ?Date): ?String {
+function serialize (value: ?Date): ?string {
   if (value === null) return null
 
   if (!(value instanceof Date)) {
     throw new TypeError(`Date must be serialized from a ` +
-            `javascript Date instance but got object with type '${typeof value}' and value ${value}`)
+            `javascript Date instance but got object with type '${typeof value}' and value ${String(value)}`)
   } else {
     return moment(value).format(format)
   }
@@ -72,15 +72,15 @@ function serialize (value: ?Date): ?String {
  * @param {string} value the ISO formatted date string
  * @returns {Date} the parsed Date object
  */
-function parseValue (value: ?String): ?Date {
+function parseValue (value: ?string): ?Date {
   if (value === null) return null
 
   if (!(typeof value === 'string' || value instanceof String)) {
-    throw new TypeError(`Value must be parsed from a String but got object with type '${typeof value}' and value ${value}`)
+    throw new TypeError(`Value must be parsed from a String but got object with type '${typeof value}' and value ${String(value)}`)
   } else {
     let dateMoment = moment(value, format, true)
     if (dateMoment.isValid() === false) {
-      throw new Error(`Value ${value} is not a valid date in the format ${format}`)
+      throw new Error(`Value ${String(value)} is not a valid date in the format ${format}`)
     }
     return dateMoment.toDate()
   }
