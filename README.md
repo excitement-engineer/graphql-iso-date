@@ -16,8 +16,14 @@ Any date inputted/outputted in GraphQL using the scalar is automatically validat
 
 Install GraphQL ISO Date from npm
 
-```
+```sh
 npm install --save graphql-iso-date
+```
+
+or from [yarn](https://yarnpkg.com/)
+
+```sh
+yarn add graphql-iso-date
 ```
 
 ##Examples
