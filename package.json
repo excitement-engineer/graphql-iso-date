@@ -13,7 +13,7 @@
   },
   "scripts": {
     "examples": "npm run build && babel-node examples/index.js",
-    "build": "babel src --ignore __tests__ --out-dir dist/",
+    "build": "babel src --ignore *.test.js --out-dir dist/",
     "test": "jest",
     "check": "flow check",
     "prepublish": "npm run build",
