@@ -26,9 +26,9 @@ let schema = new GraphQLSchema({
       today: {
         type: GraphQLDate,
         resolve: function () {
-                    // Return a Javascript Date that
-                    // is automatically converted to a string
-                    // date in format "YYYY-MM-DD".
+          // Return a Javascript Date that
+          // is automatically converted to a string
+          // date in format "YYYY-MM-DD".
           return new Date()
         }
       }

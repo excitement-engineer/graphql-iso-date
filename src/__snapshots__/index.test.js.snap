@@ -1,0 +1,17 @@
+exports[`GraphQLDate literal parsing test parses literals 1`] = `"Invalid date 2011-02-29, only accepts dates in format \'YYYY-MM-DD\'"`;
+
+exports[`GraphQLDate literal parsing test parses literals 2`] = `"Invalid date bla, only accepts dates in format \'YYYY-MM-DD\'"`;
+
+exports[`GraphQLDate literal parsing test parses literals 3`] = `"Can only parse strings to a Date but got kind IntValue"`;
+
+exports[`GraphQLDate serialization test serializes javascript dates 1`] = `"Date must be serialized from a javascript Date instance but got object with type \'number\' and value 5"`;
+
+exports[`GraphQLDate serialization test serializes javascript dates 2`] = `"Date must be serialized from a javascript Date instance but got object with type \'string\' and value 2010-11-10"`;
+
+exports[`GraphQLDate value parsing test parses values 1`] = `"Value must be parsed from a String but got object with type \'number\' and value 5"`;
+
+exports[`GraphQLDate value parsing test parses values 2`] = `"Value 2011-02-29 is not a valid date in the format YYYY-MM-DD"`;
+
+exports[`GraphQLDate value parsing test parses values 3`] = `"Value 2011/02/29 is not a valid date in the format YYYY-MM-DD"`;
+
+exports[`GraphQLDate value parsing test parses values 4`] = `"Value bla is not a valid date in the format YYYY-MM-DD"`;

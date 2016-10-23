@@ -36,7 +36,7 @@ let schema = new GraphQLSchema({
           }
         },
         resolve: function (_, {date}) {
-                    // The date parameter is a Javascript Date object
+          // The date parameter is a Javascript Date object
           return date
         }
       }
