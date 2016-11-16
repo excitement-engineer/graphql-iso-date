@@ -1484,9 +1484,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flow-bin@^0.33.0:
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.33.0.tgz#ef011eace7a6100f1ae08b852db78279032b8750"
+flow-bin@^0.35.0:
+  version "0.35.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.35.0.tgz#63d4eb9582ce352541be98e6a424503217141b07"
 
 for-in@^0.1.5:
   version "0.1.6"
@@ -1645,9 +1645,9 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-graphql@^0.7.1:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.7.2.tgz#cc894a32823399b8a0cb012b9e9ecad35cd00f72"
+graphql@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.8.1.tgz#189c4216e32a1d61448148c0db1d0456a7a83e29"
   dependencies:
     iterall "1.0.2"
 
@@ -2544,9 +2544,9 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, "mkdirp@>=0.5 0", mkdirp@~0.5.0, mkdirp@0.5.x:
   dependencies:
     minimist "0.0.8"
 
-moment@^2.15.1:
-  version "2.15.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.15.1.tgz#e979c2a29e22888e60f396f2220a6118f85cd94c"
+moment@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.16.0.tgz#f38f2c97c9889b0ee18fc6cc392e1e443ad2da8e"
 
 ms@0.7.1:
   version "0.7.1"

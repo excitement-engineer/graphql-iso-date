@@ -52,10 +52,10 @@ function parseLiteral (ast):Date {
 /**
  * Parses a Date object to a ISO formatted string representation of a Date object. This is called when a
  * Date object is returned in the `resolve()` function and outputted as an ISO date in the GraphQL response.
- * @param {Date} value the date to be serialized
+ * @param value the date to be serialized
  * @returns {string} the ISO formatted date string
  */
-function serialize (value: ?Date): ?string {
+function serialize (value: mixed): ?string {
   if (value === null) return null
 
   if (!(value instanceof Date)) {
@@ -69,10 +69,10 @@ function serialize (value: ?Date): ?string {
 /**
  * Parses an ISO formatted date string to a Date object. This is called when an ISO date is inputted
  * in GraphQL and passed as a Date object in the `resolve()` functions.
- * @param {string} value the ISO formatted date string
+ * @param value the ISO formatted date string
  * @returns {Date} the parsed Date object
  */
-function parseValue (value: ?string): ?Date {
+function parseValue (value: mixed): ?Date {
   if (value === null) return null
 
   if (!(typeof value === 'string' || value instanceof String)) {
