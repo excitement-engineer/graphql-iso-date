@@ -1,5 +1,5 @@
-// flow-typed signature: 8b6a390c8f84a79f68a5ba41f3665db0
-// flow-typed version: 25c06ef4a8/moment_v2.x.x/flow_>=v0.28.x
+// flow-typed signature: d64a0b521e9f5d2fd65462d221c65373
+// flow-typed version: 1453ac8ae2/moment_v2.x.x/flow_>=v0.28.x
 
 type moment$MomentOptions = {
   y?: number|string,
@@ -195,11 +195,11 @@ declare class moment$Moment {
   toJSON(): string;
   toISOString(): string;
   toObject(): moment$MomentObject;
-  isBefore(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isSame(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isAfter(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isSameOrBefore(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isSameOrAfter(date: moment$Moment|string|number|Date|Array<number>): bool;
+  isBefore(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isSame(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isAfter(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isSameOrBefore(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isSameOrAfter(date?: moment$Moment|string|number|Date|Array<number>): bool;
   isBetween(date: moment$Moment|string|number|Date|Array<number>): bool;
   isDST(): bool;
   isDSTShifted(): bool;
