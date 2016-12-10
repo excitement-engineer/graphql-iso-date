@@ -22,17 +22,17 @@ import {
     GraphQLSchema
 } from 'graphql'
 
-import GraphQLDate from '../dist'
+import {GraphQLLocalDate} from '../dist'
 
 let schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     fields: {
       input: {
-        type: GraphQLDate,
+        type: GraphQLLocalDate,
         args: {
           date: {
-            type: GraphQLDate
+            type: GraphQLLocalDate
           }
         },
         resolve: function (_, {date}) {

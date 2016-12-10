@@ -17,14 +17,14 @@ import {
     GraphQLSchema
 } from 'graphql'
 
-import GraphQLDate from '../dist'
+import {GraphQLLocalDate} from '../dist'
 
 let schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     fields: {
       today: {
-        type: GraphQLDate,
+        type: GraphQLLocalDate,
         resolve: function () {
           // Return a Javascript Date that
           // is automatically converted to a string

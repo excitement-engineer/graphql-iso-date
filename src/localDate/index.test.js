@@ -9,7 +9,7 @@
 
 var Kind = require('graphql/language').Kind
 
-import GraphQLDate from '../'
+import GraphQLDate from './'
 
 describe('GraphQLDate', () => {
   describe('serialization test', () => {
