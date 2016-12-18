@@ -14,6 +14,8 @@ exports[`GraphQLDateTime serialization throws an error when serializing an inval
 
 exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2015-02-29T00:00Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
+exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
 exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T0:60Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T0:60Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
 exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:00" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
@@ -36,7 +38,15 @@ exports[`GraphQLDateTime serialization throws an error when serializing an inval
 
 exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T000059Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T000059Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
+exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T2Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T2Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
+exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T24" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T24. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
 exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T24:01Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T24:01Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
+exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T25Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T25Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
+exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "Invalid date" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string Invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
 exports[`GraphQLDateTime serialization throws error when serializing {} 1`] = `"DateTime cannot be serialized from a non string, non numeric or non Date type {}"`;
 
@@ -55,6 +65,8 @@ exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-s
 exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2015-02-29T00:00:00Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00:00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
 exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2015-02-29T00:00Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
+exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2016-02-01T" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
 exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2016-02-01T0:60Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T0:60Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
@@ -78,7 +90,13 @@ exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-s
 
 exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2016-02-01T000059Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T000059Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
+exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2016-02-01T2Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T2Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
+exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2016-02-01T24" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T24. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
 exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2016-02-01T24:01Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T24:01Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
+
+exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "2016-02-01T25Z" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T25Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 
 exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "Invalid date" 1`] = `"DateTime cannot represent an invalid ISO 8601 date-string Invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHHZ,YYYY-MM-DDTHH:mmZ,YYYY-MM-DDTHH:mm:ssZ,YYYY-MM-DDTHH:mm:ss.SSSZ."`;
 

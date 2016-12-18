@@ -22,7 +22,7 @@ import {
     GraphQLSchema
 } from 'graphql'
 
-import {GraphQLLocalDate} from '../dist'
+import {GraphQLLocalDate} from '../../dist'
 
 let schema = new GraphQLSchema({
   query: new GraphQLObjectType({

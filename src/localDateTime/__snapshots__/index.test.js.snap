@@ -1,0 +1,99 @@
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2015-02-29T00:00" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2015-02-29T00:00:00" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00:00. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2015-02-29T00:00:00.000" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00:00.000. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-01-01T00:00Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-01-01T00:00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T0:60" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T0:60. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:0" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:0. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:0" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:0. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:00.1" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.1. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:00.22" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.22. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:00.223Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.223Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:00Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:60" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:60. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00:60" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:60. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T0000" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T0000. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T000059" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T000059. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T00Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T24:01" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T24:01. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "2016-02-01T25" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T25. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws an error when serializing an invalid date-string "invalid date" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime serialization throws error when serializing {} 1`] = `"LocalDateTime cannot represent a non string, or non Date type {}"`;
+
+exports[`GraphQLLocalDateTime serialization throws error when serializing Array [] 1`] = `"LocalDateTime cannot represent a non string, or non Date type []"`;
+
+exports[`GraphQLLocalDateTime serialization throws error when serializing invalid date 1`] = `"LocalDateTime cannot represent an invalid Date instance"`;
+
+exports[`GraphQLLocalDateTime serialization throws error when serializing null 1`] = `"LocalDateTime cannot represent a non string, or non Date type null"`;
+
+exports[`GraphQLLocalDateTime serialization throws error when serializing true 1`] = `"LocalDateTime cannot represent a non string, or non Date type true"`;
+
+exports[`GraphQLLocalDateTime serialization throws error when serializing undefined 1`] = `"LocalDateTime cannot represent a non string, or non Date type undefined"`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2015-02-29T00:00" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2015-02-29T00:00:00" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00:00. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2015-02-29T00:00:00.000" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2015-02-29T00:00:00.000. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-01-01T00:00Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-01-01T00:00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T0:60" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T0:60. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:0" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:0. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:00:0" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:0. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:00:00.1" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.1. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:00:00.22" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.22. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:00:00.223Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.223Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:00:00Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:00:60" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:60. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:60" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00:60. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T0000" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T0000. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T000059" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T000059. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T00Z" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T24:01" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T24:01. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "2016-02-01T25" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string 2016-02-01T25. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error parsing an invalid datetime-string "invalid date" 1`] = `"LocalDateTime cannot represent an invalid ISO 8601 date-string invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DDTHH,YYYY-MM-DDTHH:mm,YYYY-MM-DDTHH:mm:ss,YYYY-MM-DDTHH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error when parsing {} 1`] = `"LocalDateTime cannot represent non string type {}"`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error when parsing 4566 1`] = `"LocalDateTime cannot represent non string type 4566"`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error when parsing Array [] 1`] = `"LocalDateTime cannot represent non string type []"`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error when parsing null 1`] = `"LocalDateTime cannot represent non string type null"`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error when parsing true 1`] = `"LocalDateTime cannot represent non string type true"`;
+
+exports[`GraphQLLocalDateTime value parsing throws an error when parsing undefined 1`] = `"LocalDateTime cannot represent non string type undefined"`;

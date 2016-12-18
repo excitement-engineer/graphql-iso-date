@@ -5,6 +5,54 @@ import * as Kind from 'graphql/language/kinds';
 
 const {stringify} = require('jest-matcher-utils');
 
+const invalidDates = [
+  // General
+  'Invalid date',
+  // Dateimte with hours
+  '2016-02-01T',
+  '2016-02-01T25Z',
+  '2016-02-01T2Z',
+  '2016-02-01T24',
+  // Datetime with hours and minutes
+  '2016-02-01T24:01Z',
+  '2016-02-01T00:60Z',
+  '2016-02-01T0:60Z',
+  '2016-02-01T00:0Z',
+  '2015-02-29T00:00Z',
+  '2016-02-01T0000',
+  // Datetime with hours, minutes and seconds
+  '2016-02-01T000059Z',
+  '2016-02-01T00:00:60Z',
+  '2016-02-01T00:00:0Z',
+  '2015-02-29T00:00:00Z',
+  '2016-02-01T00:00:00',
+  // Datetime with hours, minutes, seconds and milliseconds
+  '2016-02-01T00:00:00.1Z',
+  '2016-02-01T00:00:00.22Z',
+  '2015-02-29T00:00:00.000Z',
+  '2016-02-01T00:00:00.223',
+]
+
+const validDates = [
+  // Datetime with hours
+  [ '2016-02-01T00Z', new Date(Date.UTC(2016, 1, 1, 0)) ],
+  [ '2016-02-01T13Z', new Date(Date.UTC(2016, 1, 1, 13)) ],
+  [ '2016-02-01T24Z', new Date(Date.UTC(2016, 1, 2, 0)) ],
+  // Datetime with hours and minutes
+  [ '2016-02-01T00:00Z', new Date(Date.UTC(2016, 1, 1, 0, 0)) ],
+  [ '2016-02-01T23:00Z', new Date(Date.UTC(2016, 1, 1, 23, 0)) ],
+  [ '2016-02-01T23:59Z', new Date(Date.UTC(2016, 1, 1, 23, 59)) ],
+  [ '2016-02-01T15:32Z', new Date(Date.UTC(2016, 1, 1, 15, 32)) ],
+  // Datetime with hours, minutes and seconds
+  [ '2016-02-01T00:00:00Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0)) ],
+  [ '2016-02-01T00:00:15Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 15)) ],
+  [ '2016-02-01T00:00:59Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 59)) ],
+  // Datetime with hours, minutes, seconds and milliseconds
+  [ '2016-02-01T00:00:00.000Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 0)) ],
+  [ '2016-02-01T00:00:00.999Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 999)) ],
+  [ '2016-02-01T00:00:00.456Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 456)) ],
+]
+
 describe('GraphQLDateTime', () => {
 
   describe('serialization', () => {
@@ -25,10 +73,7 @@ describe('GraphQLDateTime', () => {
     // Serialize from Date
     [
       [ new Date(Date.UTC(2016, 0, 1)), '2016-01-01T00:00:00.000Z' ],
-      [
-        new Date(Date.UTC(2016, 0, 1, 14, 48, 10, 3)),
-        '2016-01-01T14:48:10.003Z'
-      ],
+      [ new Date(Date.UTC(2016, 0, 1, 14, 48, 10, 3)), '2016-01-01T14:48:10.003Z' ],
     ].forEach(([ value, expected ]) => {
       it(`serializes javascript Date ${stringify(value)} into ${stringify(expected)}`, () => {
         expect(
@@ -43,22 +88,7 @@ describe('GraphQLDateTime', () => {
       ).toThrowErrorMatchingSnapshot();
     });
 
-    // Serializes from date string
-    [
-      // Datetime with hours and minutes
-      '2016-02-01T00:00Z',
-      '2016-02-01T23:00Z',
-      '2016-02-01T23:59Z',
-      '2016-02-01T15:32Z',
-      // Datetime with hours, minutes and seconds
-      '2016-02-01T00:00:00Z',
-      '2016-02-01T00:00:15Z',
-      '2016-02-01T00:00:59Z',
-      // Datetime with hours, minutes, seconds and milliseconds
-      '2016-02-01T00:00:00.000Z',
-      '2016-02-01T00:00:00.999Z',
-      '2016-02-01T00:00:00.456Z',
-    ].forEach(value => {
+    validDates.forEach(([value]) => {
       it(`serializes date-string ${value}`, () => {
         expect(
           GraphQLDateTime.serialize(value)
@@ -66,26 +96,7 @@ describe('GraphQLDateTime', () => {
       });
     });
 
-    [
-      // Datetime with hours and minutes
-      '2016-02-01T24:01Z',
-      '2016-02-01T00:60Z',
-      '2016-02-01T0:60Z',
-      '2016-02-01T00:0Z',
-      '2015-02-29T00:00Z',
-      '2016-02-01T0000',
-      // Datetime with hours, minutes and seconds
-      '2016-02-01T000059Z',
-      '2016-02-01T00:00:60Z',
-      '2016-02-01T00:00:0Z',
-      '2015-02-29T00:00:00Z',
-      '2016-02-01T00:00:00',
-      // Datetime with hours, minutes, seconds and milliseconds
-      '2016-02-01T00:00:00.1Z',
-      '2016-02-01T00:00:00.22Z',
-      '2015-02-29T00:00:00.000Z',
-      '2016-02-01T00:00:00.223',
-    ].forEach(dateString => {
+    invalidDates.forEach(dateString => {
       it(`throws an error when serializing an invalid date-string ${stringify(dateString)}`, () => {
         expect(() =>
           GraphQLDateTime.serialize(dateString)
@@ -130,31 +141,8 @@ describe('GraphQLDateTime', () => {
 
   describe('value parsing', () => {
 
-    [
-      // Datetime with hours and minutes
-      [ '2016-02-01T00:00Z', new Date(Date.UTC(2016, 1, 1, 0, 0)) ],
-      [ '2016-02-01T23:00Z', new Date(Date.UTC(2016, 1, 1, 23, 0)) ],
-      [ '2016-02-01T23:59Z', new Date(Date.UTC(2016, 1, 1, 23, 59)) ],
-      [ '2016-02-01T15:32Z', new Date(Date.UTC(2016, 1, 1, 15, 32)) ],
-      // Datetime with hours, minutes and seconds
-      [ '2016-02-01T00:00:00Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0)) ],
-      [ '2016-02-01T00:00:15Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 15)) ],
-      [ '2016-02-01T00:00:59Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 59)) ],
-      // Datetime with hours, minutes, seconds and milliseconds
-      [
-        '2016-02-01T00:00:00.000Z',
-        new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 0))
-      ],
-      [
-        '2016-02-01T00:00:00.999Z',
-        new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 999))
-      ],
-      [
-        '2016-02-01T00:00:00.456Z',
-        new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 456))
-      ],
-    ].forEach(([ value, expected ]) => {
-      it(`parses date-string ${stringify(value)} into Date ${stringify(expected)}`, () => {
+    validDates.forEach(([ value, expected ]) => {
+      it(`parses date-string ${stringify(value)} into javascript Date ${stringify(expected)}`, () => {
         expect(
           GraphQLDateTime.parseValue(value)
         ).toEqual(expected);
@@ -176,28 +164,7 @@ describe('GraphQLDateTime', () => {
       });
     });
 
-    [
-      // General
-      'Invalid date',
-      // Datetime with hours and minutes
-      '2016-02-01T24:01Z',
-      '2016-02-01T00:60Z',
-      '2016-02-01T0:60Z',
-      '2016-02-01T00:0Z',
-      '2015-02-29T00:00Z',
-      '2016-02-01T0000',
-      // Datetime with hours, minutes and seconds
-      '2016-02-01T000059Z',
-      '2016-02-01T00:00:60Z',
-      '2016-02-01T00:00:0Z',
-      '2015-02-29T00:00:00Z',
-      '2016-02-01T00:00:00',
-      // Datetime with hours, minutes, seconds and milliseconds
-      '2016-02-01T00:00:00.1Z',
-      '2016-02-01T00:00:00.22Z',
-      '2015-02-29T00:00:00.000Z',
-      '2016-02-01T00:00:00.223',
-    ].forEach(dateString => {
+    invalidDates.forEach(dateString => {
       it(`throws an error parsing an invalid date-string ${stringify(dateString)}`, () => {
         expect(() =>
           GraphQLDateTime.parseValue(dateString)
@@ -210,64 +177,19 @@ describe('GraphQLDateTime', () => {
 
     it('parses literal DateTime', () => {
 
-      [
-        // Datetime with hours and minutes
-        [ '2016-02-01T00:00Z', new Date(Date.UTC(2016, 1, 1, 0, 0)) ],
-        [ '2016-02-01T23:00Z', new Date(Date.UTC(2016, 1, 1, 23, 0)) ],
-        [ '2016-02-01T23:59Z', new Date(Date.UTC(2016, 1, 1, 23, 59)) ],
-        [ '2016-02-01T15:32Z', new Date(Date.UTC(2016, 1, 1, 15, 32)) ],
-        // Datetime with hours, minutes and seconds
-        [ '2016-02-01T00:00:00Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0)) ],
-        [ '2016-02-01T00:00:15Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 15)) ],
-        [ '2016-02-01T00:00:59Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 59)) ],
-        // Datetime with hours, minutes, seconds and milliseconds
-        [
-          '2016-02-01T00:00:00.000Z',
-          new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 0))
-        ],
-        [
-          '2016-02-01T00:00:00.999Z',
-          new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 999))
-        ],
-        [
-          '2016-02-01T00:00:00.456Z',
-          new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 456))
-        ],
-      ].forEach(([ value, expected ]) => {
-
+      validDates.forEach(([ value, expected ]) => {
         const literal = {
           kind: Kind.STRING, value
         };
 
-        it(`parses literal ${stringify(literal)} into Date ${stringify(expected)}`, () => {
+        it(`parses literal ${stringify(literal)} into javascript Date ${stringify(expected)}`, () => {
           expect(
             GraphQLDateTime.parseLiteral(literal).toISOString()
           ).toEqual(expected.toISOString());
         });
       });
 
-      [
-        // General
-        'Invalid date',
-        // Datetime with hours and minutes
-        '2016-02-01T24:01Z',
-        '2016-02-01T00:60Z',
-        '2016-02-01T0:60Z',
-        '2016-02-01T00:0Z',
-        '2015-02-29T00:00Z',
-        '2016-02-01T0000',
-        // Datetime with hours, minutes and seconds
-        '2016-02-01T000059Z',
-        '2016-02-01T00:00:60Z',
-        '2016-02-01T00:00:0Z',
-        '2015-02-29T00:00:00Z',
-        '2016-02-01T00:00:00',
-        // Datetime with hours, minutes, seconds and milliseconds
-        '2016-02-01T00:00:00.1Z',
-        '2016-02-01T00:00:00.22Z',
-        '2015-02-29T00:00:00.000Z',
-        '2016-02-01T00:00:00.223',
-      ].forEach(value => {
+      invalidDates.forEach(value => {
         const invalidLiteral = {
           kind: Kind.STRING, value
         };
