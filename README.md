@@ -40,9 +40,9 @@ The value "14:10:20.987" is encoded as string "14:10:20.987". A time with less t
 
 A time at UTC in the ISO-8601 calendar system, such as 10:15:30.000Z.
 
-Time is a representation of a time instant, viewed as hour-minute-second at UTC. Time is represented to millisecond precision. Where a time does not have millisecond resolution, any missing units are implied to be zero. Where a time has a time-zone other than UTC, it is shifted to UTC.
+Time is a representation of a time instant, viewed as hour-minute-second at UTC. A time instant is represented to millisecond precision. Where an instant does not have millisecond resolution, any missing units are implied to be zero. Where an instant has a time-zone other than UTC, it is shifted to UTC.
 
-Time does not represents a date. Instead, it is a description of a time instant such as the opening bell of the New York Stock Exchange for example. It cannot represent an instant on the time-line. By representing an instant as a date-time at UTC, it allows the local date-time at which the instant occurs to be derived for each time-zone.
+Time does not represents a date. Instead, it is a description of a time instant such as the opening bell of the New York Stock Exchange for example. It cannot represent an instant on the time-line. By representing an instant as a date-time at UTC, it allows the local time at which the instant occurs to be derived for each time-zone.
 
 Time is encoded as a string in the format `hh:ss:mm:ss.sssZ` where `hh` indicates a two-digit hour, 00 through 24. `mm` indicates a two-digit minute, 00 through 59. `ss` indicates a two-digit second, 00 through 60 (where 60 is only used to denote an added leap second). `.sss` indicates a fractional second in millisecond precision, .000 through .999. `Z` indicates that the time is at UTC.
 
@@ -54,7 +54,7 @@ A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12
 
 LocalDateTime is a representation of a full date with a local time, viewed as a combination of **LocalDate** and **LocalTime**.
 
-This scalar does not represent a time-zone. Instead, it is a description of the date, as used for birthdays for example, combined with the local time as seen on a wall clock. It can be used to represent the moment that the new year begins for example. It cannot represent an instant on the time-line.
+This scalar does not represent a time-zone. Instead, it is a description of the date, as used for birthdays for example, combined with the local time as seen on a wall clock. It cannot represent an instant on the time-line.
 
 LocalDateTime is encoded encoded as a concatenation of the string encoding of **LocalDate** and **LocalTime** in the format `<LocalDate>T<LocalTime>`, where `T` represents a delimiter separating the date and time.
 
@@ -68,7 +68,7 @@ DateTime is a representation of a full date with a time at UTC, viewed as a comb
 
 DateTime represents an exact instant on the time-line to millisecond precision. It is description of the instant that a user account was created for example. By representing an instant as a date-time at UTC it allows the local date-time at which the instant occurs to be derived for each time-zone.
 
-DateTime is encoded encoded as a concatenation of the string encoding of **LocalDate** and **Time** in the format `<LocalDate>T<Time>`, where `T` represents a delimiter separating the date and time.
+DateTime is encoded as a concatenation of the string encoding of **LocalDate** and **Time** in the format `<LocalDate>T<Time>`, where `T` represents a delimiter separating the date and time.
 
 For example, the value "2nd December 2009, 14:10.20.987 at UTC" is encoded as string "2009-12-02T14:10.20.987Z".
 
