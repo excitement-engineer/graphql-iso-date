@@ -1,7 +1,6 @@
 // @flow
 
 import {GraphQLScalarType} from 'graphql'
-import { GraphQLError } from 'graphql/error'
 import { Kind } from 'graphql/language'
 import moment from 'moment'
 
@@ -23,7 +22,7 @@ export default new GraphQLScalarType({
     if (value instanceof Date) {
       const time = value.getTime()
       if (time === time) { // eslint-disable-line
-        return moment(value).format(RESULT_FORMAT);
+        return moment(value).format(RESULT_FORMAT)
       }
       throw new TypeError('LocalDateTime cannot represent an invalid Date instance')
     } else if (typeof value === 'string' || value instanceof String) {
@@ -66,4 +65,4 @@ export default new GraphQLScalarType({
     }
     return null
   }
-});
+})

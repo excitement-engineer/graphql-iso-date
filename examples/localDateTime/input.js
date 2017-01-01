@@ -32,7 +32,7 @@ let schema = new GraphQLSchema({
         type: GraphQLLocalDateTime,
         args: {
           date: {
-            type: GraphQLLocalDate
+            type: GraphQLLocalDateTime
           }
         },
         resolve: function (_, {date}) {

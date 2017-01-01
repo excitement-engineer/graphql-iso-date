@@ -8,7 +8,7 @@ const {stringify} = require('jest-matcher-utils');
 const invalidDates = [
   // General
   'Invalid date',
-  // Dateimte with hours
+  // Datetime with hours
   '2016-02-01T',
   '2016-02-01T25Z',
   '2016-02-01T2Z',
@@ -175,39 +175,36 @@ describe('GraphQLDateTime', () => {
 
   describe('literial parsing', () => {
 
-    it('parses literal DateTime', () => {
-
-      validDates.forEach(([ value, expected ]) => {
-        const literal = {
-          kind: Kind.STRING, value
-        };
-
-        it(`parses literal ${stringify(literal)} into javascript Date ${stringify(expected)}`, () => {
-          expect(
-            GraphQLDateTime.parseLiteral(literal).toISOString()
-          ).toEqual(expected.toISOString());
-        });
-      });
-
-      invalidDates.forEach(value => {
-        const invalidLiteral = {
-          kind: Kind.STRING, value
-        };
-        it(`returns null when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
-          expect(
-            GraphQLDateTime.parseLiteral(invalidLiteral)
-          ).toEqual(null);
-        });
-      });
-
-      const invalidLiteralFloat = {
-        kind: Kind.FLOAT, value: 5
+    validDates.forEach(([ value, expected ]) => {
+      const literal = {
+        kind: Kind.STRING, value
       };
-      it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
+
+      it(`parses literal ${stringify(literal)} into javascript Date ${stringify(expected)}`, () => {
         expect(
-          GraphQLDateTime.parseLiteral(invalidLiteralFloat)
+          GraphQLDateTime.parseLiteral(literal)
+        ).toEqual(expected);
+      });
+    });
+
+    invalidDates.forEach(value => {
+      const invalidLiteral = {
+        kind: Kind.STRING, value
+      };
+      it(`returns null when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
+        expect(
+          GraphQLDateTime.parseLiteral(invalidLiteral)
         ).toEqual(null);
       });
+    });
+
+    const invalidLiteralFloat = {
+      kind: Kind.FLOAT, value: 5
+    };
+    it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
+      expect(
+        GraphQLDateTime.parseLiteral(invalidLiteralFloat)
+      ).toEqual(null);
     });
   });
 
