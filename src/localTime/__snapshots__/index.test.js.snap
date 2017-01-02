@@ -1,0 +1,95 @@
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "0:60" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 0:60. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:0" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:0. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00:0" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:0. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00:00.1" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.1. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00:00.22" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.22. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00:00.223Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.223Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00:00.1000" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.1000. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00:00Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00:60" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:60. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:00Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "00:60" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:60. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "0000" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 0000. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "000059" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 000059. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "2Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 2Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "24:01" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 24:01. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "24Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 24Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "25" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 25. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws an error when serializing an invalid date-string "Invalid date" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string Invalid date. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime serialization throws error when serializing {} 1`] = `"LocalTime cannot be serialized from a non string, or non Date type {}"`;
+
+exports[`GraphQLLocalTime serialization throws error when serializing Array [] 1`] = `"LocalTime cannot be serialized from a non string, or non Date type []"`;
+
+exports[`GraphQLLocalTime serialization throws error when serializing invalid date 1`] = `"LocalTime cannot represent an invalid Date instance"`;
+
+exports[`GraphQLLocalTime serialization throws error when serializing null 1`] = `"LocalTime cannot be serialized from a non string, or non Date type null"`;
+
+exports[`GraphQLLocalTime serialization throws error when serializing true 1`] = `"LocalTime cannot be serialized from a non string, or non Date type true"`;
+
+exports[`GraphQLLocalTime serialization throws error when serializing undefined 1`] = `"LocalTime cannot be serialized from a non string, or non Date type undefined"`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "0:60" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 0:60. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:0" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:0. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00:0" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:0. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00:00.1" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.1. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00:00.22" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.22. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00:00.223Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.223Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00:00.1000" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00.1000. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00:00Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:00Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00:60" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00:60. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:00Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:00Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "00:60" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 00:60. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "0000" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 0000. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "000059" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 000059. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "2Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 2Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "24:01" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 24:01. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "24Z" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 24Z. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "25" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string 25. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error parsing an invalid time-string "Invalid date" 1`] = `"LocalTime cannot represent an invalid ISO 8601 time-string Invalid date. You must provide a valid time-string in one of the following formats: HH,HH:mm,HH:mm:ss,HH:mm:ss.SSS."`;
+
+exports[`GraphQLLocalTime value parsing throws an error when parsing {} 1`] = `"LocalTime cannot represent non string type {}"`;
+
+exports[`GraphQLLocalTime value parsing throws an error when parsing 4566 1`] = `"LocalTime cannot represent non string type 4566"`;
+
+exports[`GraphQLLocalTime value parsing throws an error when parsing Array [] 1`] = `"LocalTime cannot represent non string type []"`;
+
+exports[`GraphQLLocalTime value parsing throws an error when parsing null 1`] = `"LocalTime cannot represent non string type null"`;
+
+exports[`GraphQLLocalTime value parsing throws an error when parsing true 1`] = `"LocalTime cannot represent non string type true"`;
+
+exports[`GraphQLLocalTime value parsing throws an error when parsing undefined 1`] = `"LocalTime cannot represent non string type undefined"`;
