@@ -16,7 +16,7 @@ const SUPPORTED_FORMAT = [
 
 export default new GraphQLScalarType({
   name: 'DateTime',
-  description: 'An ISO 8601 encoded date-time string in the format YYYY-MM-DDThh:mm:ss.SSSZ',
+  description: 'A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.',
   serialize (value: mixed): string {
     if (value instanceof Date) {
       const time = value.getTime()

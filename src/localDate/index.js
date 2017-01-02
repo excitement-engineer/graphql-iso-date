@@ -20,7 +20,7 @@ const RESULT_FORMAT = 'YYYY-MM-DD'
 
 export default new GraphQLScalarType({
   name: 'LocalDate',
-  description: `A string representation of a date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.`,
+  description: `A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.`,
   serialize (value: mixed): string {
     if (value instanceof Date) {
       const time = value.getTime()

@@ -14,10 +14,8 @@ const SUPPORTED_FORMATS = [
 const RESULT_FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSS'
 
 export default new GraphQLScalarType({
-  name: 'DateTime',
-  description: 'A date-time string without a timezone in ' +
-               'format YYYY-MM-DDThh:mm:ss.SSS. This could be used to represent the ' +
-               'exact time that new years occurs for example; 2017-01-01T00:00:00.000.',
+  name: 'LocalDateTime',
+  description: 'A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000.',
   serialize (value: mixed): string {
     if (value instanceof Date) {
       const time = value.getTime()
