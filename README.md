@@ -2,7 +2,9 @@
 [![npm version](https://badge.fury.io/js/graphql-iso-date.svg)](http://badge.fury.io/js/graphql-iso-date)
 [![Build Status](https://travis-ci.org/excitement-engineer/graphql-iso-date.svg?branch=master)](https://travis-ci.org/excitement-engineer/graphql-iso-date)
 
-GraphQL ISO Date is an implementation of a set of ISO 8601 compliant [GraphQL](https://facebook.github.io/graphql/) date scalar type to be used with [graphql.js](https://github.com/graphql/graphql-js).
+GraphQL ISO Date is an implementation of a set of ISO 8601 compliant [GraphQL](https://facebook.github.io/graphql/) date scalar type to be used with [graphQL.js](https://github.com/graphql/graphql-js).
+
+A basic understanding of GraphQL and of the GraphQL.js implementation is needed to provide context for this library.
 
 This repository contains the following scalars:
 
@@ -12,7 +14,51 @@ This repository contains the following scalars:
 - `LocalDateTime`: A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000.
 - `DateTime`: A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.
 
-## LocalDate
+## Getting started
+
+Install `graphql-iso-date` using yarn
+
+```sh
+yarn add graphql-iso-date
+```
+
+Or using npm
+
+```sh
+npm install --save graphql-iso-date
+```
+
+## Examples
+
+This project includes several examples in the folder `/examples` explaining how to use the various scalars.
+
+Run the examples by downloading this project and running the following commands:
+
+Install dependencies using yarn
+
+```sh
+yarn
+```
+
+Or npm
+
+```sh
+npm install
+```
+
+Run the examples
+
+```
+npm run examples
+```
+
+## Scalars
+
+This section provides a detailed description of each of the scalars.
+
+ > A reference is made to `coercion` in the description below. For further clarification on the meaning of this term, please refer to the GraphQL [spec](http://facebook.github.io/graphql/#sec-Scalars).
+
+### LocalDate
 
 A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
 
@@ -24,7 +70,54 @@ LocalDate is encoded as a string in the format `YYYY-MM-DD` where `YYYY` indicat
 
 For example, the value "2nd of January 2015" is encoded as string "2015-01-02".
 
-## LocalTime
+**Result Coercion**
+
+Javascript Date instances are coerced to LocalDate. Invalid Dates raise a field error.
+
+**Input Coercion**
+
+When expected as an input type, only valid LocalDate encoded strings are accepted. All other input values raise a query error indicating an incorrect type.
+
+
+```js
+import {
+    graphql,
+    GraphQLObjectType,
+    GraphQLSchema,
+} from 'graphql';
+
+import {GraphQLDate} from "graphql-iso-date";
+
+let schema = new GraphQLSchema({
+    query: new GraphQLObjectType({
+        name: "Query",
+        fields: {
+            birthdate: {
+                type: GraphQLDate,
+                resolve: () => {
+
+                    // Return a Javascript Date that
+                    // is automatically converted to a string
+                    // date in format "YYYY-MM-DD".
+                    return new Date(1991, 11, 24);
+                }
+            }
+        }
+    })
+});
+
+graphql(schema, `{ birthdate }`).then(result => {
+
+    // Prints
+    // {
+    //	 data: { today: '1991-12-24' }
+    // }
+    console.log(result);
+
+})
+```
+
+### LocalTime
 
 A time without a time-zone in the ISO-8601 calendar system, such as 10:15:30.000.
 
@@ -36,7 +129,7 @@ LocalTime is encoded as a string in the format `hh:ss:mm:ss.sss` where `hh` indi
 
 The value "14:10:20.987" is encoded as string "14:10:20.987". A time with less than millisecond precision such as "14:10" is encoded as "14:10:00.000".
 
-## Time
+### Time
 
 A time at UTC in the ISO-8601 calendar system, such as 10:15:30.000Z.
 
@@ -48,7 +141,7 @@ Time is encoded as a string in the format `hh:ss:mm:ss.sssZ` where `hh` indicate
 
 The value "14:10:20.987 at UTC" is encoded as string "14:10:20.987Z". A time instant with less than millisecond precision such as "14:10 at UTC" is encoded as "14:10:00.000Z". A time instant with a time-zone other than UTC such as "14:10:20.987 at UTC +1 hour" is encoded as "13:10:20.987Z".
 
-## LocalDateTime
+### LocalDateTime
 
 A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000.
 
@@ -60,7 +153,7 @@ LocalDateTime is encoded encoded as a concatenation of the string encoding of **
 
 For example, the value "2nd December 2009 at 14:10.20.987" is encoded as string "2009-12-02T14:10.20.987".
 
-## DateTime
+### DateTime
 
 A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.
 
@@ -71,147 +164,3 @@ DateTime represents an exact instant on the time-line to millisecond precision. 
 DateTime is encoded as a concatenation of the string encoding of **LocalDate** and **Time** in the format `<LocalDate>T<Time>`, where `T` represents a delimiter separating the date and time.
 
 For example, the value "2nd December 2009, 14:10.20.987 at UTC" is encoded as string "2009-12-02T14:10.20.987Z".
-
-## Getting started
-
-Install GraphQL ISO Date from npm
-
-```sh
-npm install --save graphql-iso-date
-```
-
-or from [yarn](https://yarnpkg.com/)
-
-```sh
-yarn add graphql-iso-date
-```
-
-## Examples
-
-This project includes several examples of the usage of the GraphQL ISO Date in the directory `/examples`.
-
-Run the examples by downloading this project and running the following commands:
-
-Install dependencies using [yarn](https://yarnpkg.com/):
-
-```sh
-yarn
-```
-
-Run the examples
-
-```
-npm run examples
-```
-
-
-### Example 1: Output the current date
-
-Create a simple GraphQL schema with a single query that returns the current date as a javascript date.
-
-```js
-import {
-    graphql,
-    GraphQLObjectType,
-    GraphQLSchema,
-} from 'graphql';
-
-import GraphQLDate from "graphql-iso-date";
-
-let schema = new GraphQLSchema({
-    query: new GraphQLObjectType({
-        name: "Query",
-        fields: {
-            today: {
-                type: GraphQLDate,
-                resolve: function () {
-
-                    // Return a Javascript Date object that
-                    // is automatically converted to a string
-                    // date in format "YYYY-MM-DD".
-                    return new Date();
-                }
-            }
-        }
-    })
-});
-```
-
-Running the query will output a string representation of the Javascript Date in the ISO format `YYYY-MM-DD`.
-
-```js
-graphql(schema, `{ today }`).then(result => {
-
-    // Prints
-    // {
-    //	 data: { today: '2016-07-29' }
-    // }
-    console.log(result);
-
-})
-```
-
-
-### Example 2: Input a date
-
-This example consists of a schema with a single query `input` that takes a GraphQL ISO Date as input (argument `date`) and subsequently outputs it.
-
-```js
-import {
-    graphql,
-    GraphQLObjectType,
-    GraphQLSchema,
-} from 'graphql';
-
-import GraphQLDate from "graphql-iso-date";
-
-let schema = new GraphQLSchema({
-    query: new GraphQLObjectType({
-        name: "Query",
-        fields: {
-            input: {
-                type: GraphQLDate,
-                args: {
-                    date: {
-                        type: GraphQLDate
-                    }
-                },
-                resolve: function (_, {date}) {
-                    // The date parameter is a Javascript Date object
-                    return date;
-                }
-            }
-        }
-    })
-});
-```
-
-Run the query with ISO date `2016-02-01` as input.
-
-```js
-graphql(schema, `{ input(date: "2016-02-01") }`).then(result => {
-
-    // Prints
-    // {
-    //	data: { input: '2016-02-01' }
-    // }
-    console.log(result);
-
-})
-```
-
-GraphQL ISO Date automatically validates any date that is passed in GraphQL. So passing the nonexistent date `2015-02-29` generates an error.
-
-```js
-graphql(schema, `{ input(date: "2015-02-29") }`).then(result => {
-
-    // Prints
-    // {
-    // 	errors:[
-    // 		{ message: 'Invalid date 2015-02-29, only accepts dates in format 'YYYY-MM-DD'' }
-    //	]
-    // }
-    console.log(result);
-
-})
-```
