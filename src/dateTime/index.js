@@ -1,45 +1,41 @@
 // @flow
 
 import {GraphQLScalarType} from 'graphql'
+import type {GraphQLScalarTypeConfig} from 'graphql' // eslint-disable-line
 import { Kind } from 'graphql/language'
-import moment from 'moment'
+import {
+  validateDateTime,
+  validateUnixTimestamp,
+  serializeDateTime,
+  serializeUnixTimestamp,
+  parseDateTime
+} from '../utils'
 
-const MAX_INT = 2147483647
-const MIN_INT = -2147483648
+const formats = 'YYYY-MM-DDThh:mm:ssZ, ' +
+                'YYYY-MM-DDThh:mm:ss±hh:mm, ' +
+                'YYYY-MM-DDThh:mm:ss.sssZ, ' +
+                'YYYY-MM-DDThh:mm:ss.sss±hh:mm'
 
-const SUPPORTED_FORMAT = [
-  'YYYY-MM-DDTHHZ',
-  'YYYY-MM-DDTHH:mmZ',
-  'YYYY-MM-DDTHH:mm:ssZ',
-  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-]
-
-export default new GraphQLScalarType({
+const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'DateTime',
   description: 'A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.',
-  serialize (value: mixed): string {
+  serialize (value) {
     if (value instanceof Date) {
       const time = value.getTime()
       if (time === time) { // eslint-disable-line
-        return moment.utc(value).toISOString()
+        return serializeDateTime(value)
       }
       throw new TypeError('DateTime cannot represent an invalid Date instance')
     } else if (typeof value === 'string' || value instanceof String) {
-      const momentDate = moment.utc(value, SUPPORTED_FORMAT, true)
-      if (momentDate.isValid()) {
+      if (validateDateTime(value)) {
         return value
       }
       throw new TypeError(
-        `DateTime cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${SUPPORTED_FORMAT.toString()}.`
+        `DateTime cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
       )
     } else if (typeof value === 'number' || value instanceof Number) {
-      // Serialize from Unix timestamp: the number of
-      // seconds since 1st Jan 1970.
-
-      // Unix timestamp are 32-bit signed integers
-      if (value === value && value <= MAX_INT && value >= MIN_INT) { // eslint-disable-line
-        const date = moment.unix(value)
-        return date.toISOString()
+      if (validateUnixTimestamp(value)) {
+        return serializeUnixTimestamp(value)
       }
       throw new TypeError(
         'DateTime cannot represent an invalid Unix timestamp ' + value
@@ -51,29 +47,28 @@ export default new GraphQLScalarType({
       )
     }
   },
-  parseValue (value: mixed): Date {
+  parseValue (value) {
     if (!(typeof value === 'string' || value instanceof String)) {
       throw new TypeError(
         `DateTime cannot represent non string type ${JSON.stringify(value)}`
       )
     }
 
-    // Need to check that it is a string in the correct format
-    const momentDate = moment.utc(value, SUPPORTED_FORMAT, true)
-    if (momentDate.isValid()) {
-      return momentDate.toDate()
+    if (validateDateTime(value)) {
+      return parseDateTime(value)
     }
     throw new TypeError(
-      `DateTime cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${SUPPORTED_FORMAT.toString()}.`
+      `DateTime cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
     )
   },
-  parseLiteral (ast): ?Date {
+  parseLiteral (ast) {
     if (ast.kind === Kind.STRING) {
-      const momentDate = moment.utc(ast.value, SUPPORTED_FORMAT, true)
-      if (momentDate.isValid()) {
-        return momentDate.toDate()
+      if (validateDateTime(ast.value)) {
+        return parseDateTime(ast.value)
       }
     }
     return null
   }
-})
+}
+
+export default new GraphQLScalarType(config)

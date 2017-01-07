@@ -9,39 +9,27 @@
  */
 
 import GraphQLLocalDate from './'
-import * as Kind from 'graphql/language/kinds';
-import {stringify} from 'jest-matcher-utils';
+import * as Kind from 'graphql/language/kinds'
+import {stringify} from 'jest-matcher-utils'
 
 const invalidDates = [
   'invalid date',
-  '2016-02-01T25',
-  '2016-02-01T00Z',
-  '2016-02-01T00:00:00.223Z',
-  '2015-02-29',
-  '20162-12-11',
-  '2015-13-11',
-  '2015-8-32',
-  '2015-111',
-  '2016-04-31',
-  '2016-06-31',
-  '2016-09-31',
-  '2016-11-31'
-];
+  '2015-02-29'
+]
 
 const validDates = [
-  [ '2016-12-17', new Date(2016, 11, 17) ],
-  [ '2016-02-01', new Date(2016, 1, 1) ],
-];
+  [ '2016-12-17', new Date(Date.UTC(2016, 11, 17)) ],
+  [ '2016-02-01', new Date(Date.UTC(2016, 1, 1)) ]
+]
 
 describe('GraphQLLocalDate', () => {
-
   describe('serialization', () => {
     [
       {},
       [],
       null,
       undefined,
-      true,
+      true
     ].forEach(invalidInput => {
       it(`throws error when serializing ${stringify(invalidInput)}`, () => {
         expect(() =>
@@ -50,50 +38,49 @@ describe('GraphQLLocalDate', () => {
       })
     });
 
-    //Serialize from Date
+    // Serialize from Date
     [
       [ new Date(2016, 11, 17, 14), '2016-12-17' ],
       [ new Date(2016, 0, 1, 14, 48, 10, 3), '2016-01-01' ],
-      [ new Date(2016, 0, 1), '2016-01-01' ],
+      [ new Date(2016, 0, 1), '2016-01-01' ]
     ].forEach(([ value, expected ]) => {
       it(`serializes javascript Date ${stringify(value)} into ${stringify(expected)}`, () => {
         expect(
           GraphQLLocalDate.serialize(value)
-        ).toEqual(expected);
+        ).toEqual(expected)
       })
-    });
+    })
 
     it(`throws error when serializing invalid javascript Date`, () => {
       expect(() =>
         GraphQLLocalDate.serialize(new Date('invalid date'))
-      ).toThrowErrorMatchingSnapshot();
-    });
+      ).toThrowErrorMatchingSnapshot()
+    })
 
     // Serializes from date string
     validDates.forEach(([value]) => {
       it(`serializes date-string ${value}`, () => {
         expect(
           GraphQLLocalDate.serialize(value)
-        ).toEqual(value);
-      });
-    });
+        ).toEqual(value)
+      })
+    })
 
     invalidDates.forEach(dateString => {
       it(`throws an error when serializing an invalid date-string ${stringify(dateString)}`, () => {
         expect(() =>
           GraphQLLocalDate.serialize(dateString)
-        ).toThrowErrorMatchingSnapshot();
-      });
-    });
-  });
+        ).toThrowErrorMatchingSnapshot()
+      })
+    })
+  })
 
   describe('value parsing', () => {
-
     validDates.forEach(([ value, expected ]) => {
       it(`parses date-string ${stringify(value)} into javascript Date ${stringify(expected)}`, () => {
         expect(
           GraphQLLocalDate.parseValue(value)
-        ).toEqual(expected);
+        ).toEqual(expected)
       })
     });
 
@@ -103,56 +90,55 @@ describe('GraphQLLocalDate', () => {
       4566,
       {},
       [],
-      true,
+      true
     ].forEach(invalidInput => {
       it(`throws an error when parsing ${stringify(invalidInput)}`, () => {
         expect(() =>
           GraphQLLocalDate.parseValue(invalidInput)
-        ).toThrowErrorMatchingSnapshot();
-      });
-    });
+        ).toThrowErrorMatchingSnapshot()
+      })
+    })
 
     invalidDates.forEach(dateString => {
       it(`throws an error parsing an invalid datetime-string ${stringify(dateString)}`, () => {
         expect(() =>
           GraphQLLocalDate.parseValue(dateString)
-        ).toThrowErrorMatchingSnapshot();
+        ).toThrowErrorMatchingSnapshot()
       })
-    });
-  });
+    })
+  })
 
   describe('literial parsing', () => {
-
     validDates.forEach(([ value, expected ]) => {
       const literal = {
         kind: Kind.STRING, value
-      };
+      }
 
       it(`parses literal ${stringify(literal)} into javascript Date ${stringify(expected)}`, () => {
         expect(
           GraphQLLocalDate.parseLiteral(literal).toISOString()
-        ).toEqual(expected.toISOString());
-      });
-    });
+        ).toEqual(expected.toISOString())
+      })
+    })
 
     invalidDates.forEach(value => {
       const invalidLiteral = {
         kind: Kind.STRING, value
-      };
+      }
       it(`returns null when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
         expect(
           GraphQLLocalDate.parseLiteral(invalidLiteral)
-        ).toEqual(null);
-      });
-    });
+        ).toEqual(null)
+      })
+    })
 
     const invalidLiteralFloat = {
       kind: Kind.FLOAT, value: 5
-    };
+    }
     it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
       expect(
         GraphQLLocalDate.parseLiteral(invalidLiteralFloat)
-      ).toEqual(null);
-    });
-  });
-});
+      ).toEqual(null)
+    })
+  })
+})

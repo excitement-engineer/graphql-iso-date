@@ -1,34 +1,33 @@
 // @flow
 
 import {GraphQLScalarType} from 'graphql'
+import type {GraphQLScalarTypeConfig} from 'graphql' // eslint-disable-line
 import { Kind } from 'graphql/language'
-import moment from 'moment'
+import {
+  validateTime,
+  serializeTime,
+  parseTime
+} from '../utils'
 
-const SUPPORTED_FORMAT = [
-  'HHZ',
-  'HH:mmZ',
-  'HH:mm:ssZ',
-  'HH:mm:ss.SSSZ'
-]
+const formats = 'hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm'
 
-export default new GraphQLScalarType({
+const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Time',
-  description: 'A time at UTC in the ISO-8601 calendar system, such as 10:15:30.000Z',
+  description: 'A time at UTC in the ISO-8601 calendar system, such as 10:15:30.00Z',
   serialize (value: mixed): string {
     if (value instanceof Date) {
       const time = value.getTime()
       if (time === time) { // eslint-disable-line
-        return moment.utc(value).toISOString().substring(11)
+        return serializeTime(value)
       }
       throw new TypeError('Time cannot represent an invalid Date instance')
     } else if (typeof value === 'string' || value instanceof String) {
-      const momentDate = moment.utc(value, SUPPORTED_FORMAT, true)
-      if (momentDate.isValid()) {
+      if (validateTime(value)) {
         return value
       }
       throw new TypeError(
         `Time cannot represent an invalid ISO 8601 time-string ${value}. ` +
-        `You must provide a valid time-string in one of the following formats: ${SUPPORTED_FORMAT.toString()}.`
+        `You must provide a valid time-string in one of the following formats: ${formats}.`
       )
     } else {
       throw new TypeError(
@@ -44,23 +43,22 @@ export default new GraphQLScalarType({
       )
     }
 
-    // Need to check that it is a string in the correct format
-    const momentDate = moment.utc(value, SUPPORTED_FORMAT, true)
-    if (momentDate.isValid()) {
-      return momentDate.toDate()
+    if (validateTime(value)) {
+      return parseTime(value)
     }
     throw new TypeError(
       `Time cannot represent an invalid ISO 8601 time-string ${value}. ` +
-      `You must provide a valid time-string in one of the following formats: ${SUPPORTED_FORMAT.toString()}.`
+      `You must provide a valid time-string in one of the following formats: ${formats}.`
     )
   },
   parseLiteral (ast): ?Date {
     if (ast.kind === Kind.STRING) {
-      const momentDate = moment.utc(ast.value, SUPPORTED_FORMAT, true)
-      if (momentDate.isValid()) {
-        return momentDate.toDate()
+      if (validateTime(ast.value)) {
+        return parseTime(ast.value)
       }
     }
     return null
   }
-})
+}
+
+export default new GraphQLScalarType(config)

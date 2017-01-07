@@ -1,27 +1,5 @@
 exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2015-02-29" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-02-29. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
 
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2015-8-32" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-8-32. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2015-13-11" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-13-11. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2015-111" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-111. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2016-02-01T00:00:00.223Z" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.223Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2016-02-01T00Z" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-02-01T00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2016-02-01T25" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-02-01T25. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2016-04-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-04-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2016-06-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-06-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2016-09-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-09-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2016-11-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-11-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "20162-12-11" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 20162-12-11. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
 exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "invalid date" 1`] = `"Date cannot represent an invalid ISO 8601 date-string invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
 
 exports[`GraphQLLocalDate serialization throws error when serializing {} 1`] = `"Date cannot represent a non string, or non Date type {}"`;
@@ -37,28 +15,6 @@ exports[`GraphQLLocalDate serialization throws error when serializing true 1`] =
 exports[`GraphQLLocalDate serialization throws error when serializing undefined 1`] = `"Date cannot represent a non string, or non Date type undefined"`;
 
 exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2015-02-29" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-02-29. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2015-8-32" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-8-32. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2015-13-11" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-13-11. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2015-111" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2015-111. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2016-02-01T00:00:00.223Z" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-02-01T00:00:00.223Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2016-02-01T00Z" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-02-01T00Z. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2016-02-01T25" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-02-01T25. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2016-04-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-04-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2016-06-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-06-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2016-09-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-09-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2016-11-31" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 2016-11-31. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
-
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "20162-12-11" 1`] = `"Date cannot represent an invalid ISO 8601 date-string 20162-12-11. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
 
 exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "invalid date" 1`] = `"Date cannot represent an invalid ISO 8601 date-string invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
 

@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/graphql-iso-date.svg)](http://badge.fury.io/js/graphql-iso-date)
 [![Build Status](https://travis-ci.org/excitement-engineer/graphql-iso-date.svg?branch=master)](https://travis-ci.org/excitement-engineer/graphql-iso-date)
 
-GraphQL ISO Date is an implementation of a set of ISO 8601 compliant [GraphQL](https://facebook.github.io/graphql/) date scalar type to be used with [graphQL.js](https://github.com/graphql/graphql-js).
+GraphQL ISO Date is an implementation of a set of ISO 8601 compliant [GraphQL](https://facebook.github.io/graphql/) date scalar type to be used with [graphQL.js](https://github.com/graphql/graphql-js). All the scalars are based on [RFC 3339](https://tools.ietf.org/html/rfc3339).
 
 A basic understanding of GraphQL and of the GraphQL.js implementation is needed to provide context for this library.
 
@@ -140,6 +140,11 @@ Time does not represents a date. Instead, it is a description of a time instant 
 Time is encoded as a string in the format `hh:ss:mm:ss.sssZ` where `hh` indicates a two-digit hour, 00 through 24. `mm` indicates a two-digit minute, 00 through 59. `ss` indicates a two-digit second, 00 through 60 (where 60 is only used to denote an added leap second). `.sss` indicates a fractional second in millisecond precision, .000 through .999. `Z` indicates that the time is at UTC.
 
 The value "14:10:20.987 at UTC" is encoded as string "14:10:20.987Z". A time instant with less than millisecond precision such as "14:10 at UTC" is encoded as "14:10:00.000Z". A time instant with a time-zone other than UTC such as "14:10:20.987 at UTC +1 hour" is encoded as "13:10:20.987Z".
+
+
+Coercion:
+
+Mention that it coerced into a javascript relative to today. So the string "24:00:00.000Z" is converted to javascript date "2017-01-07T00:00:00.000Z"
 
 ### LocalDateTime
 
