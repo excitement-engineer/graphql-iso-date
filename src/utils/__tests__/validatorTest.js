@@ -4,7 +4,8 @@ import {
   validateTime,
   validateDate,
   validateDateTime,
-  validateUnixTimestamp
+  validateUnixTimestamp,
+  validateJSDate
 } from '../'
 
 describe('validator', () => {
@@ -185,4 +186,15 @@ describe('validator', () => {
       })
     })
   })
+
+  describe('validateJSDate', () => {
+
+    it('identifies invalid Date', () => {
+      expect(validateJSDate(new Date('invalid'))).toBeFalsy();
+    })
+
+    it('identifies a valid Date', () => {
+      expect(validateJSDate(new Date(2016, 1, 1))).toBeTruthy();
+    });
+  });
 })

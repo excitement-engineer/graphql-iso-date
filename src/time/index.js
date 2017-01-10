@@ -5,6 +5,7 @@ import type {GraphQLScalarTypeConfig} from 'graphql' // eslint-disable-line
 import { Kind } from 'graphql/language'
 import {
   validateTime,
+  validateJSDate,
   serializeTime,
   parseTime
 } from '../utils'
@@ -16,8 +17,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
   description: 'A time at UTC in the ISO-8601 calendar system, such as 10:15:30.00Z',
   serialize (value: mixed): string {
     if (value instanceof Date) {
-      const time = value.getTime()
-      if (time === time) { // eslint-disable-line
+      if (validateJSDate(value)) {
         return serializeTime(value)
       }
       throw new TypeError('Time cannot represent an invalid Date instance')

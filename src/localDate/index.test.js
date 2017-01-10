@@ -38,7 +38,6 @@ describe('GraphQLLocalDate', () => {
       })
     });
 
-    // Serialize from Date
     [
       [ new Date(2016, 11, 17, 14), '2016-12-17' ],
       [ new Date(2016, 0, 1, 14, 48, 10, 3), '2016-01-01' ],

@@ -14,5 +14,6 @@ export {
   validateTime,
   validateDate,
   validateDateTime,
-  validateUnixTimestamp
+  validateUnixTimestamp,
+  validateJSDate
 } from './validator'

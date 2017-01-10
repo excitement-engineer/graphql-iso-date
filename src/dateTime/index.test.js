@@ -16,7 +16,7 @@ const invalidDates = [
   '2016-02-01T000059Z',
   // Datetime with hours, minutes, seconds and milliseconds
   '2016-02-01T00:00:00.1Z',
-  // Datetime with hours, minutes, seconds and milliseconds
+  // Datetime with hours, minutes, seconds, milliseconds and timezone.
   '2015-02-24T00:00:00.000+0100'
 ]
 
@@ -50,7 +50,6 @@ describe('GraphQLDateTime', () => {
       })
     });
 
-    // Serialize from Date
     [
       [ new Date(Date.UTC(2016, 0, 1)), '2016-01-01T00:00:00.000Z' ],
       [ new Date(Date.UTC(2016, 0, 1, 14, 48, 10, 30)), '2016-01-01T14:48:10.030Z' ]
