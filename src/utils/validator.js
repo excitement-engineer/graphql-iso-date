@@ -1,4 +1,12 @@
 // @flow
+/**
+ * Copyright (c) 2017, Dirk-Jan Rutten
+ * All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
 // Check whether a certain year is a leap year.
 //
@@ -10,7 +18,7 @@
 // but the years 1600 and 2000 are.
 //
 const leapYear = (year: number): boolean => {
-  return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
+  return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)
 }
 
 // Function that checks whether a time-string is RFC 3339 compliant.
@@ -36,7 +44,7 @@ const leapYear = (year: number): boolean => {
 //
 export const validateTime = (time: string): boolean => {
   const TIME_REGEX = /^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\.\d{3})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
-  return TIME_REGEX.test(time);
+  return TIME_REGEX.test(time)
 }
 
 // Function that checks whether a date-string is RFC 3339 compliant.
@@ -63,46 +71,45 @@ export const validateTime = (time: string): boolean => {
 // 12            December             31
 //
 export const validateDate = (datestring: string): boolean => {
-
   const ISO_8601_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01]))$/
 
   if (!ISO_8601_REGEX.test(datestring)) {
-    return false;
+    return false
   }
 
   // Check if it is a correct date using the javascript Date parse() method.
-  const time = Date.parse(datestring);
+  const time = Date.parse(datestring)
   if (time !== time) { // eslint-disable-line
-    return false;
+    return false
   }
 
   // Verify the correct number of days for
   // the month contained in the date-string.
   if (datestring.length >= 10) {
-    const year = Number(datestring.substr(0,4));
-    const month = Number(datestring.substr(5,2));
-    const day = Number(datestring.substr(8,2));
+    const year = Number(datestring.substr(0, 4))
+    const month = Number(datestring.substr(5, 2))
+    const day = Number(datestring.substr(8, 2))
 
     switch (month) {
       case 2: // February
         if (leapYear(year) && day > 29) {
-          return false;
+          return false
         } else if (!leapYear(year) && day > 28) {
-          return false;
+          return false
         }
-        return true;
+        return true
       case 4: // April
       case 6: // June
       case 9: // September
       case 11: // November
         if (day > 30) {
-          return false;
+          return false
         }
-        break;
+        break
     }
   }
 
-  return true;
+  return true
 }
 
 // Function that checks whether a date-time-string is RFC 3339 compliant.
@@ -115,24 +122,23 @@ export const validateDate = (datestring: string): boolean => {
 // - YYYY-MM-DDThh:mm:ss.sss±hh:mm
 //
 export const validateDateTime = (dateTimeString: string): boolean => {
-
   const ISO_8601_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60))(\.\d{3})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
 
   // Validate the structure of the date-string
   if (!ISO_8601_REGEX.test(dateTimeString)) {
-    return false;
+    return false
   }
 
   // Check if it is a correct date using the javascript Date parse() method.
-  const time = Date.parse(dateTimeString);
+  const time = Date.parse(dateTimeString)
   if (time !== time) { // eslint-disable-line
-    return false;
+    return false
   }
   // Split the date-time-string up into the string-date and time-string part.
   // and check whether these parts are RFC 3339 compliant.
   const index = dateTimeString.indexOf('T')
-  const dateString = dateTimeString.substr(0, index);
-  const timeString = dateTimeString.substr(index + 1);
+  const dateString = dateTimeString.substr(0, index)
+  const timeString = dateTimeString.substr(index + 1)
   return (validateDate(dateString) && validateTime(timeString))
 }
 

@@ -1,5 +1,13 @@
 // @flow
-
+/**
+ * Copyright (c) 2017, Dirk-Jan Rutten
+ * All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+ 
 import {
   validateTime,
   validateDate,
@@ -188,13 +196,12 @@ describe('validator', () => {
   })
 
   describe('validateJSDate', () => {
-
     it('identifies invalid Date', () => {
-      expect(validateJSDate(new Date('invalid'))).toBeFalsy();
+      expect(validateJSDate(new Date('invalid'))).toBeFalsy()
     })
 
     it('identifies a valid Date', () => {
-      expect(validateJSDate(new Date(2016, 1, 1))).toBeTruthy();
-    });
-  });
+      expect(validateJSDate(new Date(2016, 1, 1))).toBeTruthy()
+    })
+  })
 })

@@ -1,6 +1,6 @@
 // @flow
 /**
- * Copyright (c) 2016, Dirk-Jan Rutten
+ * Copyright (c) 2017, Dirk-Jan Rutten
  * All rights reserved.
  *
  * This source code is licensed under the MIT license found in the

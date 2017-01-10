@@ -1,4 +1,13 @@
 // @flow
+/**
+ * Copyright (c) 2017, Dirk-Jan Rutten
+ * All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+ 
 
 // Parses a RFC 3339 compliant time-string into a Date.
 // It does this by combining the current date with the time-string
