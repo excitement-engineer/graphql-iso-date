@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/graphql-iso-date.svg)](http://badge.fury.io/js/graphql-iso-date)
 [![Build Status](https://travis-ci.org/excitement-engineer/graphql-iso-date.svg?branch=master)](https://travis-ci.org/excitement-engineer/graphql-iso-date)
 
-GraphQL ISO Date is an implementation of a set of ISO 8601 compliant [GraphQL](https://facebook.github.io/graphql/) date scalar type to be used with [graphQL.js](https://github.com/graphql/graphql-js). All the scalars are based on [RFC 3339](https://tools.ietf.org/html/rfc3339).
+GraphQL ISO Date is an implementation of a set of ISO 8601 compliant [GraphQL](https://facebook.github.io/graphql/) scalar types to be used with [graphQL.js](https://github.com/graphql/graphql-js). All the scalars are based on the [RFC 3339](https://tools.ietf.org/html/rfc3339) ISO 8601 profile.
 
 A basic understanding of GraphQL and of the GraphQL.js implementation is needed to provide context for this library.
 
@@ -24,6 +24,63 @@ Or using npm
 
 ```sh
 npm install --save graphql-iso-date
+```
+
+GraphQL-iso-date exposes 3 different date/time scalars that can be used in combination with [GraphQL.js](https://github.com/graphql/graphql-js). Let's build a simple schema using the scalars included in this library and execute a query:
+
+```js
+import {
+  graphql,
+  GraphQLObjectType,
+  GraphQLSchema,
+} from 'graphql';
+
+import {
+  GraphQLDate,
+  GraphQLTime,
+  GraphQLDateTime
+} from 'graphql-iso-date';
+
+const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      birthdate: {
+        type: GraphQLDate,
+        resolve: () => new Date(1991, 11, 24);
+      },
+      openingNYSE: {
+        type: GraphQLTime,
+        resolve: () => new Date(Date.UTC(2017, 0, 10, 14, 30);
+      },
+      creationInstant: {
+        type: GraphQLDateTime,
+        resolve: () => new Date(Date.UTC(2017, 0, 10, 21, 33, 15, 233));
+      }
+    }
+  })
+});
+
+const query = `
+  {
+    birthdate
+    openingNYSE
+    creationInstant
+  }
+`;
+
+graphql(schema, query).then(result => {
+
+    // Prints
+    // {
+    //   data: {
+    //     birthdate: '1991-12-24',
+    //     openingNYSE: '14:30:00.000Z',
+    //     creationInstant: '2017-01-10T21:33:15.233Z'
+    //   }
+    // }
+    console.log(result);
+});
 ```
 
 ## Examples
@@ -76,44 +133,6 @@ Javascript Date instances are coerced to the Date scalar. Invalid Dates raise a 
 
 When expected as an input type, only valid Date encoded strings are accepted. All other input values raise a query error indicating an incorrect type.
 
-
-```js
-import {
-    graphql,
-    GraphQLObjectType,
-    GraphQLSchema,
-} from 'graphql';
-
-import {GraphQLDate} from "graphql-iso-date";
-
-let schema = new GraphQLSchema({
-    query: new GraphQLObjectType({
-        name: "Query",
-        fields: {
-            birthdate: {
-                type: GraphQLDate,
-                resolve: () => {
-
-                    // Return a Javascript Date that
-                    // is automatically converted to a string
-                    // date in format "YYYY-MM-DD".
-                    return new Date(1991, 11, 24);
-                }
-            }
-        }
-    })
-});
-
-graphql(schema, `{ birthdate }`).then(result => {
-
-    // Prints
-    // {
-    //	 data: { today: '1991-12-24' }
-    // }
-    console.log(result);
-
-})
-```
 
 ### Time
 
