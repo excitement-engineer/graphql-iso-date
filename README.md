@@ -8,10 +8,8 @@ A basic understanding of GraphQL and of the GraphQL.js implementation is needed 
 
 This repository contains the following scalars:
 
-- `LocalDate`: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
-- `LocalTime`: A time without a time-zone in the ISO-8601 calendar system, such as 10:15:30.000.
+- `Date`: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
 - `Time`: A time at UTC in the ISO-8601 calendar system, such as 10:15:30.000Z.
-- `LocalDateTime`: A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000.
 - `DateTime`: A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.
 
 ## Getting started
@@ -58,25 +56,25 @@ This section provides a detailed description of each of the scalars.
 
  > A reference is made to `coercion` in the description below. For further clarification on the meaning of this term, please refer to the GraphQL [spec](http://facebook.github.io/graphql/#sec-Scalars).
 
-### LocalDate
+### Date
 
 A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
 
-LocalDate is a representation of a date, viewed as year-month-day.
+The Date scalar is a representation of a date, viewed as year-month-day.
 
 This scalar does not represent a time or time-zone. Instead, it is a description of the date, as used for birthdays for example. It cannot represent an instant on the time-line.
 
-LocalDate is encoded as a string in the format `YYYY-MM-DD` where `YYYY` indicates a four-digit year, 0000 through 9999. `MM` indicates a two-digit month of the year, 01 through 12. `DD` indicates a two-digit day of that month, 01 through 31.
+Date is encoded as a string in the format `YYYY-MM-DD` where `YYYY` indicates a four-digit year, 0000 through 9999. `MM` indicates a two-digit month of the year, 01 through 12. `DD` indicates a two-digit day of that month, 01 through 31.
 
 For example, the value "2nd of January 2015" is encoded as string "2015-01-02".
 
 **Result Coercion**
 
-Javascript Date instances are coerced to LocalDate. Invalid Dates raise a field error.
+Javascript Date instances are coerced to the Date scalar. Invalid Dates raise a field error.
 
 **Input Coercion**
 
-When expected as an input type, only valid LocalDate encoded strings are accepted. All other input values raise a query error indicating an incorrect type.
+When expected as an input type, only valid Date encoded strings are accepted. All other input values raise a query error indicating an incorrect type.
 
 
 ```js
@@ -117,18 +115,6 @@ graphql(schema, `{ birthdate }`).then(result => {
 })
 ```
 
-### LocalTime
-
-A time without a time-zone in the ISO-8601 calendar system, such as 10:15:30.000.
-
-LocalTime is a representation of a time, viewed as hour-minute-second. Time is represented to millisecond precision. Where a time does not have millisecond resolution, any missing units are implied to be zero.
-
-This scalar does not represent a date or time-zone. Instead, it is a description of the local time as seen on a wall clock for example. It cannot represent an instant on the time-line.
-
-LocalTime is encoded as a string in the format `hh:ss:mm:ss.sss` where `hh` indicates a two-digit hour, 00 through 24. `mm` indicates a two-digit minute, 00 through 59. `ss` indicates a two-digit second, 00 through 60 (where 60 is only used to denote an added leap second). `.sss` indicates a fractional second in millisecond precision, .000 through .999.
-
-The value "14:10:20.987" is encoded as string "14:10:20.987". A time with less than millisecond precision such as "14:10" is encoded as "14:10:00.000".
-
 ### Time
 
 A time at UTC in the ISO-8601 calendar system, such as 10:15:30.000Z.
@@ -141,31 +127,18 @@ Time is encoded as a string in the format `hh:ss:mm:ss.sssZ` where `hh` indicate
 
 The value "14:10:20.987 at UTC" is encoded as string "14:10:20.987Z". A time instant with less than millisecond precision such as "14:10 at UTC" is encoded as "14:10:00.000Z". A time instant with a time-zone other than UTC such as "14:10:20.987 at UTC +1 hour" is encoded as "13:10:20.987Z".
 
-
 Coercion:
 
 Mention that it coerced into a javascript relative to today. So the string "24:00:00.000Z" is converted to javascript date "2017-01-07T00:00:00.000Z"
-
-### LocalDateTime
-
-A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000.
-
-LocalDateTime is a representation of a full date with a local time, viewed as a combination of **LocalDate** and **LocalTime**.
-
-This scalar does not represent a time-zone. Instead, it is a description of the date, as used for birthdays for example, combined with the local time as seen on a wall clock. It cannot represent an instant on the time-line.
-
-LocalDateTime is encoded encoded as a concatenation of the string encoding of **LocalDate** and **LocalTime** in the format `<LocalDate>T<LocalTime>`, where `T` represents a delimiter separating the date and time.
-
-For example, the value "2nd December 2009 at 14:10.20.987" is encoded as string "2009-12-02T14:10.20.987".
 
 ### DateTime
 
 A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.
 
-DateTime is a representation of a full date with a time at UTC, viewed as a combination of **LocalDate** and **Time**.
+DateTime is a representation of a full date with a time at UTC, viewed as a combination of **Date** and **Time**.
 
 DateTime represents an exact instant on the time-line to millisecond precision. It is description of the instant that a user account was created for example. By representing an instant as a date-time at UTC it allows the local date-time at which the instant occurs to be derived for each time-zone.
 
-DateTime is encoded as a concatenation of the string encoding of **LocalDate** and **Time** in the format `<LocalDate>T<Time>`, where `T` represents a delimiter separating the date and time.
+DateTime is encoded as a concatenation of the string encoding of **Date** and **Time** in the format `<Date>T<Time>`, where `T` represents a delimiter separating the date and time.
 
 For example, the value "2nd December 2009, 14:10.20.987 at UTC" is encoded as string "2009-12-02T14:10.20.987Z".
