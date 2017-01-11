@@ -22,7 +22,9 @@ const formats = 'hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm'
 
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Time',
-  description: 'A time at UTC in the ISO-8601 calendar system, such as 10:15:30.00Z',
+  description: "A time at UTC, such as 10:15:30.000Z, compliant " +
+               "with the RFC 3339 profile of the ISO 8601 standard for representation " +
+               "of dates and times using the Gregorian calendar.",
   serialize (value: mixed): string {
     if (value instanceof Date) {
       if (validateJSDate(value)) {
@@ -34,7 +36,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         return value
       }
       throw new TypeError(
-        `Time cannot represent an invalid ISO 8601 time-string ${value}. ` +
+        `Time cannot represent an invalid time-string ${value}. ` +
         `You must provide a valid time-string in one of the following formats: ${formats}.`
       )
     } else {
@@ -55,7 +57,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseTime(value)
     }
     throw new TypeError(
-      `Time cannot represent an invalid ISO 8601 time-string ${value}. ` +
+      `Time cannot represent an invalid time-string ${value}. ` +
       `You must provide a valid time-string in one of the following formats: ${formats}.`
     )
   },

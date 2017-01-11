@@ -8,63 +8,60 @@
  *
  */
 
-import {GraphQLScalarType} from 'graphql'
-import type {GraphQLScalarTypeConfig} from 'graphql' // eslint-disable-line
-import { Kind } from 'graphql/language'
-import {
-  validateDate,
-  validateJSDate,
-  serializeDate,
-  parseDate
-} from '../utils'
+import {GraphQLScalarType} from "graphql";
+import type {GraphQLScalarTypeConfig} from "graphql";// eslint-disable-line
+import {Kind} from "graphql/language";
+import {validateDate, validateJSDate, serializeDate, parseDate} from "../utils";
 
-const formats = 'YYYY-MM-DD'
+const formats = "YYYY-MM-DD";
 
 const config: GraphQLScalarTypeConfig<Date, string> = {
-  name: 'Date',
-  description: `A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.`,
-  serialize (value) {
+  name: "Date",
+  description: "A date without a time-zone, such as 2007-12-03, compliant " +
+               "with the RFC 3339 profile of the ISO 8601 standard for representation " +
+               "of dates and times using the Gregorian calendar.",
+  serialize(value) {
     if (value instanceof Date) {
       if (validateJSDate(value)) {
-        return serializeDate(value)
+        return serializeDate(value);
       }
-      throw new TypeError('Date cannot represent an invalid Date instance')
-    } else if (typeof value === 'string' || value instanceof String) {
+      throw new TypeError("Date cannot represent an invalid Date instance");
+    } else if (typeof value === "string" || value instanceof String) {
       if (validateDate(value)) {
-        return value
+        return value;
       }
       throw new TypeError(
-        `Date cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
-      )
+        `Date cannot represent an invalid date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
+      );
     } else {
       throw new TypeError(
-        'Date cannot represent a non string, ' +
-        'or non Date type ' + JSON.stringify(value)
-      )
+        "Date cannot represent a non string, " + "or non Date type " +
+          JSON.stringify(value)
+      );
     }
   },
-  parseValue (value) {
-    if (!(typeof value === 'string' || value instanceof String)) {
+  parseValue(value) {
+    if (!(typeof value === "string" || value instanceof String)) {
       throw new TypeError(
         `Date cannot represent non string type ${JSON.stringify(value)}`
-      )
+      );
     }
 
     if (validateDate(value)) {
-      return parseDate(value)
+      return parseDate(value);
     }
     throw new TypeError(
-      `Date cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
-    )
+      `Date cannot represent an invalid date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
+    );
   },
-  parseLiteral (ast) {
+  parseLiteral(ast) {
     if (ast.kind === Kind.STRING) {
       if (validateDate(ast.value)) {
-        return parseDate(ast.value)
+        return parseDate(ast.value);
       }
     }
-    return null
+    return null;
   }
-}
+};
 
 export default new GraphQLScalarType(config)

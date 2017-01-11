@@ -27,7 +27,9 @@ const formats = 'YYYY-MM-DDThh:mm:ssZ, ' +
 
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'DateTime',
-  description: 'A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.',
+  description: "A date-time at UTC, such as 2007-12-03T10:15:30.000Z, compliant " +
+               "with the RFC 3339 profile of the ISO 8601 standard for representation " +
+               "of dates and times using the Gregorian calendar.",
   serialize (value) {
     if (value instanceof Date) {
       if (validateJSDate(value)) {
@@ -39,7 +41,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         return value
       }
       throw new TypeError(
-        `DateTime cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
+        `DateTime cannot represent an invalid date-time-string ${value}. You must provide a valid date-time-string in one of the following formats: ${formats}.`
       )
     } else if (typeof value === 'number' || value instanceof Number) {
       if (validateUnixTimestamp(value)) {
@@ -66,7 +68,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseDateTime(value)
     }
     throw new TypeError(
-      `DateTime cannot represent an invalid ISO 8601 date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
+      `DateTime cannot represent an invalid date-time-string ${value}. You must provide a valid date-time-string in one of the following formats: ${formats}.`
     )
   },
   parseLiteral (ast) {
