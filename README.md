@@ -2,7 +2,6 @@
 
 TODOS:
 
-- Should we mention that it is a date/time string in the description.
 - Mention that we ignore leap seconds because Javascript Dates also do not take these into account and these cannot be known beforehand. Add this to the section "Leap Second Issues"
 
 [![npm version](https://badge.fury.io/js/graphql-iso-date.svg)](http://badge.fury.io/js/graphql-iso-date)
@@ -38,7 +37,7 @@ Or using npm
 npm install --save graphql-iso-date
 ```
 
-GraphQL-iso-date exposes 3 different date/time scalars that can be used in combination with [GraphQL.js](https://github.com/graphql/graphql-js). Let's build a simple schema using the scalars included in this library and execute a query:
+GraphQL-ISO-Date exposes 3 different date/time scalars that can be used in combination with [GraphQL.js](https://github.com/graphql/graphql-js). Let's build a simple schema using the scalars included in this library and execute a query:
 
 ```js
 import {
@@ -127,35 +126,35 @@ This section provides a detailed description of each of the scalars.
 
 ### Date
 
-A date string without a time-zone, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A date string, such as 2007-12-03, compliant with the *"full-date"* format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
-The Date scalar is a representation of a date, viewed as year-month-day.
+This scalar is a description of the date, as used for birthdays for example. It cannot represent an instant on the time-line.
 
-This scalar does not represent a time or time-zone. Instead, it is a description of the date, as used for birthdays for example. It cannot represent an instant on the time-line.
-
-The value "2nd of January 2015" is encoded as string "2015-01-02".
+The value "2nd of January 2015" is represented as date string "2015-01-02".
 
 **Result Coercion**
 
-Javascript Date instances are coerced to the Date scalar. Invalid Dates raise a field error.
+Javascript Date instances are coerced to an RFC 3339 compliant date string date string. Invalid Date instances raise a field error.
 
 **Input Coercion**
 
-When expected as an input type, only valid Date encoded strings are accepted. All other input values raise a query error indicating an incorrect type.
+When expected as an input type, only valid RFC 3339 compliant date strings are accepted. All other input values raise a query error indicating an incorrect type.
 
 ### Time
 
 A time string at UTC, such as 10:15:30.000Z, compliant with the `full-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
-Time is a representation of a time instant, viewed as hour-minute-second at UTC. A time instant is represented to millisecond precision. Where the seconds in a time instant do not have millisecond resolution, it is implied to be zero milliseconds. Where a time instant has a time-zone other than UTC, it is shifted to UTC. The Time scalar ignores leap seconds (thereby assuming that a minute constitutes of 59 seconds), in this respect it diverges from the RFC 3339 profile.
+This scalar is a description of a time instant such as the opening bell of the New York Stock Exchange for example. It cannot represent an exact instant on the time-line.
 
-Time does not represents a date. Instead, it is a description of a time instant such as the opening bell of the New York Stock Exchange for example. It cannot represent an exact instant on the time-line.
+This scalar ignores leap seconds (thereby assuming that a minute constitutes of 59 seconds), in this respect it diverges from the RFC 3339 profile.
 
-The value "14:10:20.987 at UTC" is encoded as string "14:10:20.987Z". A time instant without a millisecond resolution such as "14:10:20 at UTC" is encoded as "14:10:20.000Z". A time instant with a time-zone other than UTC such as "14:10:20.987 at UTC +1 hour" is shifted to UTC: "13:10:20.987Z".
+Fractional seconds are represented to millisecond precision. When RFC compliant time string does not have a fractional second, it is implied to be zero milliseconds. For example, the time string "14:10:20Z" is implied to be "14:10:20.000Z".
+
+Where an RFC 3339 compliant time string has a time-zone other than UTC, it is shifted to UTC. For example, the time string "14:10:20.987+01:00" is shifted to "13:10:20.987Z".
 
 **Result Coercion**
 
-Javascript Date instances are coerced to the Date scalar by extracting the time part and shifting this to UTC accordingly. Invalid Dates raise a field error.
+Javascript Date instances are coerced to an RFC 3339 compliant time string by extracting the UTC time part. Invalid Date instances raise a field error.
 
 **Input Coercion**
 
