@@ -125,11 +125,9 @@ This section provides a detailed description of each of the scalars.
 
 ### Date
 
-A date string, such as 2007-12-03, compliant with the *"full-date"* format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
 This scalar is a description of the date, as used for birthdays for example. It cannot represent an instant on the time-line.
-
-The value "2nd of January 2015" is represented as date string "2015-01-02".
 
 **Result Coercion**
 
