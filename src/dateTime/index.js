@@ -27,9 +27,10 @@ const formats = 'YYYY-MM-DDThh:mm:ssZ, ' +
 
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'DateTime',
-  description: "A date-time at UTC, such as 2007-12-03T10:15:30.000Z, compliant " +
-               "with the RFC 3339 profile of the ISO 8601 standard for representation " +
-               "of dates and times using the Gregorian calendar.",
+  description: 'A date-time string at UTC, such as 2007-12-03T10:15:30.000Z, ' +
+               'compliant with the `date-time` format outlined in section 5.6 of ' +
+               'the RFC 3339 profile of the ISO 8601 standard for representation ' +
+               'of dates and times using the Gregorian calendar.',
   serialize (value) {
     if (value instanceof Date) {
       if (validateJSDate(value)) {

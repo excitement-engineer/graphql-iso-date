@@ -1,16 +1,16 @@
-exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.1Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.1Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.1Z" 1`] = `"Time cannot represent an invalid time-string 00:00:00.1Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.10Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.10Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.10Z" 1`] = `"Time cannot represent an invalid time-string 00:00:00.10Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.45+01" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.45+01. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.45+01" 1`] = `"Time cannot represent an invalid time-string 00:00:00.45+01. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.45+0130" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.45+0130. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.45+0130" 1`] = `"Time cannot represent an invalid time-string 00:00:00.45+0130. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.1000Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.1000Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.1000Z" 1`] = `"Time cannot represent an invalid time-string 00:00:00.1000Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "2016-01-01T00:00:00.223Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 2016-01-01T00:00:00.223Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "2016-01-01T00:00:00.223Z" 1`] = `"Time cannot represent an invalid time-string 2016-01-01T00:00:00.223Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "Invalid date" 1`] = `"Time cannot represent an invalid ISO 8601 time-string Invalid date. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "Invalid date" 1`] = `"Time cannot represent an invalid time-string Invalid date. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
 exports[`GraphQLTime serialization throws error when serializing {} 1`] = `"Time cannot be serialized from a non string, or non Date type {}"`;
 
@@ -24,19 +24,19 @@ exports[`GraphQLTime serialization throws error when serializing true 1`] = `"Ti
 
 exports[`GraphQLTime serialization throws error when serializing undefined 1`] = `"Time cannot be serialized from a non string, or non Date type undefined"`;
 
-exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.1Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.1Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.1Z" 1`] = `"Time cannot represent an invalid time-string 00:00:00.1Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.10Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.10Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.10Z" 1`] = `"Time cannot represent an invalid time-string 00:00:00.10Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.45+01" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.45+01. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.45+01" 1`] = `"Time cannot represent an invalid time-string 00:00:00.45+01. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.45+0130" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.45+0130. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.45+0130" 1`] = `"Time cannot represent an invalid time-string 00:00:00.45+0130. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.1000Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 00:00:00.1000Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "00:00:00.1000Z" 1`] = `"Time cannot represent an invalid time-string 00:00:00.1000Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "2016-01-01T00:00:00.223Z" 1`] = `"Time cannot represent an invalid ISO 8601 time-string 2016-01-01T00:00:00.223Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "2016-01-01T00:00:00.223Z" 1`] = `"Time cannot represent an invalid time-string 2016-01-01T00:00:00.223Z. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
-exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "Invalid date" 1`] = `"Time cannot represent an invalid ISO 8601 time-string Invalid date. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm."`;
+exports[`GraphQLTime value parsing throws an error parsing an invalid time-string "Invalid date" 1`] = `"Time cannot represent an invalid time-string Invalid date. You must provide a valid time-string in one of the following formats: hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm."`;
 
 exports[`GraphQLTime value parsing throws an error when parsing {} 1`] = `"Time cannot represent non string type {}"`;
 

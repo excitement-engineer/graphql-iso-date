@@ -1,13 +1,9 @@
 # GraphQL ISO Date
 
-TODOS:
-
-- Mention that we ignore leap seconds because Javascript Dates also do not take these into account and these cannot be known beforehand. Add this to the section "Leap Second Issues"
-
 [![npm version](https://badge.fury.io/js/graphql-iso-date.svg)](http://badge.fury.io/js/graphql-iso-date)
 [![Build Status](https://travis-ci.org/excitement-engineer/graphql-iso-date.svg?branch=master)](https://travis-ci.org/excitement-engineer/graphql-iso-date)
 
-GraphQL ISO Date is a set of [RFC 3339](./rfc3339.txt) compliant date and time scalar types to be used with [graphQL.js](https://github.com/graphql/graphql-js).
+GraphQL ISO Date is a set of [RFC 3339](./rfc3339.txt) compliant date/time scalar types to be used with [graphQL.js](https://github.com/graphql/graphql-js).
 
 > RFC 3339 *"defines a date and time format for use in Internet
 protocols that is a profile of the ISO 8601 standard for
@@ -19,9 +15,9 @@ A basic understanding of [GraphQL](http://facebook.github.io/graphql/) and of th
 
 This repository contains the following scalars:
 
-- `Date`: A date without a time-zone, such as 2007-12-03, compliant with the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
-- `Time`: A time at UTC, such as 10:15:30.000Z, compliant with the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
-- `DateTime`: A date-time at UTC, such as 2007-12-03T10:15:30.000Z, compliant with the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+- `Date`: A date string, such as 2007-12-03.
+- `Time`: A time string at UTC, such as 10:15:30.000Z
+- `DateTime`: A date-time string at UTC, such as 2007-12-03T10:15:30.000Z.
 
 ## Getting started
 
@@ -58,14 +54,17 @@ const schema = new GraphQLSchema({
     fields: {
       birthdate: {
         type: GraphQLDate,
+        //resolver can take a Date or date string.
         resolve: () => new Date(1991, 11, 24);
       },
       openingNYSE: {
         type: GraphQLTime,
+        //resolver can take a Date or time string.
         resolve: () => new Date(Date.UTC(2017, 0, 10, 14, 30);
       },
-      creationInstant: {
+      instant: {
         type: GraphQLDateTime,
+        // resolver can take Date, date-time string or Unix timestamp (number).
         resolve: () => new Date(Date.UTC(2017, 0, 10, 21, 33, 15, 233));
       }
     }
@@ -76,7 +75,7 @@ const query = `
   {
     birthdate
     openingNYSE
-    creationInstant
+    instant
   }
 `;
 
@@ -87,7 +86,7 @@ graphql(schema, query).then(result => {
     //   data: {
     //     birthdate: '1991-12-24',
     //     openingNYSE: '14:30:00.000Z',
-    //     creationInstant: '2017-01-10T21:33:15.233Z'
+    //     instant: '2017-01-10T21:33:15.233Z'
     //   }
     // }
     console.log(result);
@@ -158,16 +157,20 @@ Javascript Date instances are coerced to an RFC 3339 compliant time string by ex
 
 **Input Coercion**
 
-Mention that it coerced into a javascript relative to today. So the string "24:00:00.000Z" is converted to javascript date "2017-01-07T00:00:00.000Z"
+When expected as an input type, only valid RFC 3339 compliant time strings are accepted. All other input values raise a query error indicating an incorrect type.
 
 ### DateTime
 
-A date-time at UTC in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.000Z.
+A date-time string at UTC, such as 2007-12-03T10:15:30.000Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
-DateTime is a representation of a full date with a time at UTC, viewed as a combination of **Date** and **Time**.
+This scalar is a description of an exact instant on the time-line such as the instant that a user account was created for example.
 
-DateTime represents an exact instant on the time-line to millisecond precision. It is description of the instant that a user account was created for example. By representing an instant as a date-time at UTC it allows the local date-time at which the instant occurs to be derived for each time-zone.
+DateTime is a concatenation of the `Date` and `Time` scalars in the form `<Date>T<Time>`, this means that the same conventions are used as described in the sections associated with these scalars.
 
-DateTime is encoded as a concatenation of the string encoding of **Date** and **Time** in the format `<Date>T<Time>`, where `T` represents a delimiter separating the date and time.
+**Result Coercion**
 
-For example, the value "2nd December 2009, 14:10.20.987 at UTC" is encoded as string "2009-12-02T14:10.20.987Z".
+Javascript Date instances and Unix timestamps (represented as 32-bit signed integers) are coerced to RFC 3339 compliant date-time strings. Invalid Date instances raise a field error.
+
+**Input Coercion**
+
+When expected as an input type, only valid RFC 3339 compliant date-time strings are accepted. All other input values raise a query error indicating an incorrect type.

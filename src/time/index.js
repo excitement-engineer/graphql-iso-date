@@ -18,13 +18,14 @@ import {
   parseTime
 } from '../utils'
 
-const formats = 'hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.SSZ, hh:mm:ss.SS±hh:mm'
+const formats = 'hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm'
 
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Time',
-  description: "A time at UTC, such as 10:15:30.000Z, compliant " +
-               "with the RFC 3339 profile of the ISO 8601 standard for representation " +
-               "of dates and times using the Gregorian calendar.",
+  description: 'A time string at UTC, such as 10:15:30.000Z, compliant with ' +
+               'the `full-time` format outlined in section 5.6 of the RFC 3339' +
+               'profile of the ISO 8601 standard for representation of dates and ' +
+               'times using the Gregorian calendar.',
   serialize (value: mixed): string {
     if (value instanceof Date) {
       if (validateJSDate(value)) {
