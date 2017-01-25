@@ -34,7 +34,7 @@
     "README.md"
   ],
   "dependencies": {
-    "graphql": "^0.8.1",
+    "graphql": "^0.9.0",
     "moment": "^2.16.0"
   },
   "devDependencies": {
