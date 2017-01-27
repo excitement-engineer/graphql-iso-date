@@ -7,7 +7,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- 
-export {default as GraphQLLocalDate} from './date'
+
+export {default as GraphQLDate} from './date'
 export {default as GraphQLTime} from './time'
 export {default as GraphQLDateTime} from './dateTime'

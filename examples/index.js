@@ -1,5 +1,6 @@
+// @flow
 /**
- * Copyright (c) 2016, Dirk-Jan Rutten
+ * Copyright (c) 2017, Dirk-Jan Rutten
  * All rights reserved.
  *
  * This source code is licensed under the MIT license found in the
@@ -7,11 +8,6 @@
  *
  */
 
-/**
- * This is the entry point for all the examples that are executed when calling `npm run examples`.
- *
- * To include another example import it here.
- */
-
-import './localDate'
+import './date'
+import './time'
 import './dateTime'

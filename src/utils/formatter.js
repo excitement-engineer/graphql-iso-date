@@ -7,7 +7,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- 
 
 // Parses a RFC 3339 compliant time-string into a Date.
 // It does this by combining the current date with the time-string
