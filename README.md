@@ -60,7 +60,7 @@ const schema = new GraphQLSchema({
       openingNYSE: {
         type: GraphQLTime,
         //resolver can take a Date or time string.
-        resolve: () => new Date(Date.UTC(2017, 0, 10, 14, 30);
+        resolve: () => new Date(Date.UTC(2017, 0, 10, 14, 30));
       },
       instant: {
         type: GraphQLDateTime,
