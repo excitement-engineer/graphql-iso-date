@@ -13,7 +13,7 @@ representation of dates and times using the Gregorian calendar."*
 
 A basic understanding of [GraphQL](http://facebook.github.io/graphql/) and of the [graphQL.js](https://github.com/graphql/graphql-js) implementation is needed to provide context for this library.
 
-This repository contains the following scalars:
+This library contains the following scalars:
 
 - `Date`: A date string, such as 2007-12-03.
 - `Time`: A time string at UTC, such as 10:15:30Z
@@ -33,7 +33,7 @@ Or using npm
 npm install --save graphql-iso-date
 ```
 
-GraphQL-ISO-Date exposes 3 different date/time scalars that can be used in combination with [GraphQL.js](https://github.com/graphql/graphql-js). Let's build a simple schema using the scalars included in this library and execute a query:
+GraphQL ISO Date exposes 3 different date/time scalars that can be used in combination with [graphQL.js](https://github.com/graphql/graphql-js). Let's build a simple schema using the scalars included in this library and execute a query:
 
 ```js
 import {
@@ -125,7 +125,7 @@ This section provides a detailed description of each of the scalars.
 
 ### Date
 
-A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the [RFC 3339](./rfc3339.txt) profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
 This scalar is a description of the date, as used for birthdays for example. It cannot represent an instant on the time-line.
 
@@ -139,7 +139,7 @@ When expected as an input type, only valid RFC 3339 compliant date strings are a
 
 ### Time
 
-A time string at UTC, such as 10:15:30Z, compliant with the `full-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A time string at UTC, such as 10:15:30Z, compliant with the `full-time` format outlined in section 5.6 of the [RFC 3339](./rfc3339.txt) profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
 This scalar is a description of a time instant such as the opening bell of the New York Stock Exchange for example. It cannot represent an exact instant on the time-line.
 
@@ -157,7 +157,7 @@ When expected as an input type, only valid RFC 3339 compliant time strings are a
 
 ### DateTime
 
-A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the [RFC 3339](./rfc3339.txt) profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
 This scalar is a description of an exact instant on the time-line such as the instant that a user account was created for example.
 
