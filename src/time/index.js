@@ -15,6 +15,7 @@ import {
   validateTime,
   validateJSDate,
   serializeTime,
+  serializeTimeString,
   parseTime
 } from '../utils'
 
@@ -32,7 +33,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       throw new TypeError('Time cannot represent an invalid Date instance')
     } else if (typeof value === 'string' || value instanceof String) {
       if (validateTime(value)) {
-        return value
+        return serializeTimeString(value)
       }
       throw new TypeError(
         `Time cannot represent an invalid time-string ${value}.`

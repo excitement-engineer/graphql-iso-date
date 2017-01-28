@@ -67,13 +67,19 @@ describe('GraphQLTime', () => {
       expect(() =>
         GraphQLTime.serialize(new Date('invalid date'))
       ).toThrowErrorMatchingSnapshot()
-    })
+    });
 
-    validDates.forEach(([value]) => {
-      it(`serializes date-string ${value}`, () => {
+    [
+      [ '00:00:00Z', '00:00:00Z' ],
+      [ '10:30:02.1Z', '10:30:02.1Z' ],
+      [ '16:10:20.1359945Z', '16:10:20.1359945Z' ],
+      [ '00:00:00+01:30', '22:30:00Z' ],
+      [ '00:00:30.3-01:30', '01:30:30.3Z' ]
+    ].forEach(([input, output]) => {
+      it(`serializes time-string ${input} into UTC time-string ${output}`, () => {
         expect(
-          GraphQLTime.serialize(value)
-        ).toEqual(value)
+          GraphQLTime.serialize(input)
+        ).toEqual(output)
       })
     })
 

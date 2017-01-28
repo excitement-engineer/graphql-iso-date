@@ -10,8 +10,10 @@
 
 export {
   serializeTime,
+  serializeTimeString,
   serializeDate,
   serializeDateTime,
+  serializeDateTimeString,
   serializeUnixTimestamp,
   parseTime,
   parseDate,

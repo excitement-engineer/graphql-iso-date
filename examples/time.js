@@ -23,6 +23,10 @@ const schema = new GraphQLSchema({
         type: GraphQLTime,
         resolve: (): string => '14:30:00Z'
       },
+      timezone: {
+        type: GraphQLTime,
+        resolve: (): string => '14:30:00+01:00'
+      },
       input: {
         type: GraphQLTime,
         args: {
@@ -40,6 +44,7 @@ const query = `
 query TimeTest($time: Time) {
   time
   openingNYSE
+  timezone
   input(time: $time)
 }
 `

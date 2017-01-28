@@ -30,7 +30,6 @@ const invalidDates = [
 const validDates = [
   // Datetime with hours, minutes and seconds
   [ '2016-02-01T00:00:15Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 15)) ],
-  [ '2016-02-01T00:00:59Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 59)) ],
   [ '2016-02-01T00:00:00-11:00', new Date(Date.UTC(2016, 1, 1, 11)) ],
   [ '2017-01-07T11:25:00+01:00', new Date(Date.UTC(2017, 0, 7, 10, 25)) ],
   [ '2017-01-07T00:00:00+01:20', new Date(Date.UTC(2017, 0, 6, 22, 40)) ],
@@ -38,7 +37,6 @@ const validDates = [
   [ '2016-02-01T00:00:00.1Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 100)) ],
   [ '2016-02-01T00:00:00.000Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 0)) ],
   [ '2016-02-01T00:00:00.990Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 990)) ],
-  [ '2016-02-01T00:00:00.450Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 450)) ],
   [ '2016-02-01T00:00:00.23498Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 234)) ],
   [ '2017-01-07T11:25:00.450+01:00', new Date(Date.UTC(2017, 0, 7, 10, 25, 0, 450)) ]
 ]
@@ -74,13 +72,18 @@ describe('GraphQLDateTime', () => {
       expect(() =>
         GraphQLDateTime.serialize(new Date('invalid date'))
       ).toThrowErrorMatchingSnapshot()
-    })
+    });
 
-    validDates.forEach(([value]) => {
-      it(`serializes date-string ${value}`, () => {
+    [
+      [ '2016-02-01T00:00:15Z', '2016-02-01T00:00:15Z' ],
+      [ '2016-02-01T00:00:00.23498Z', '2016-02-01T00:00:00.23498Z' ],
+      [ '2016-02-01T00:00:00-11:00', '2016-02-01T11:00:00Z' ],
+      [ '2017-01-07T00:00:00.1+01:20', '2017-01-06T22:40:00.1Z' ]
+    ].forEach(([input, output]) => {
+      it(`serializes date-time-string ${input} into UTC date-time-string ${output}`, () => {
         expect(
-          GraphQLDateTime.serialize(value)
-        ).toEqual(value)
+          GraphQLDateTime.serialize(input)
+        ).toEqual(output)
       })
     })
 

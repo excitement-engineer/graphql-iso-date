@@ -16,6 +16,7 @@ import {
   validateUnixTimestamp,
   validateJSDate,
   serializeDateTime,
+  serializeDateTimeString,
   serializeUnixTimestamp,
   parseDateTime
 } from '../utils'
@@ -34,7 +35,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       throw new TypeError('DateTime cannot represent an invalid Date instance')
     } else if (typeof value === 'string' || value instanceof String) {
       if (validateDateTime(value)) {
-        return value
+        return serializeDateTimeString(value)
       }
       throw new TypeError(
         `DateTime cannot represent an invalid date-time-string ${value}.`

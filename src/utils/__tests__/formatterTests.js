@@ -10,8 +10,10 @@
 
 import {
   serializeTime,
+  serializeTimeString,
   serializeDate,
   serializeDateTime,
+  serializeDateTimeString,
   serializeUnixTimestamp,
   parseTime,
   parseDate,
@@ -31,6 +33,18 @@ describe('formatting', () => {
   ].forEach(([date, time]) => {
     it(`serializes ${stringify(date)} into time-string ${time}`, () => {
       expect(serializeTime(date)).toEqual(time)
+    })
+  });
+
+  [
+    [ '00:00:00.000Z', '00:00:00.000Z' ],
+    [ '12:23:44Z', '12:23:44Z' ],
+    [ '14:38:12+01:00', '13:38:12Z' ],
+    [ '00:00:00.4567+01:30', '22:30:00.4567Z' ],
+    [ '14:38:12.1+01:00', '13:38:12.1Z' ]
+  ].forEach(([input, output]) => {
+    it(`serializes time-string ${input} into UTC time-string ${output}`, () => {
+      expect(serializeTimeString(input)).toEqual(output)
     })
   });
 
@@ -124,6 +138,18 @@ describe('formatting', () => {
   ].forEach(([dateTime, date]) => {
     it(`parses date-time ${stringify(dateTime)} into Date ${stringify(date)}`, () => {
       expect(parseDateTime(dateTime)).toEqual(date)
+    })
+  });
+
+  [
+    [ '2016-02-01T00:00:00Z', '2016-02-01T00:00:00Z' ],
+    [ '2016-02-01T12:23:44Z', '2016-02-01T12:23:44Z' ],
+    [ '2016-02-01T14:38:12-01:00', '2016-02-01T15:38:12Z' ],
+    [ '2016-02-02T00:00:00.4567+01:30', '2016-02-01T22:30:00.4567Z' ],
+    [ '2016-02-01T14:38:12.1+01:00', '2016-02-01T13:38:12.1Z' ]
+  ].forEach(([input, output]) => {
+    it(`serializes date-time-string ${input} into UTC date-time-string ${output}`, () => {
+      expect(serializeDateTimeString(input)).toEqual(output)
     })
   })
 })
