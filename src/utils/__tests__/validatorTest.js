@@ -21,17 +21,22 @@ describe('validator', () => {
     [
       '00:00:00Z',
       '23:00:00Z',
-      '00:59:00Z',
-      '00:00:59Z',
+      '10:59:00Z',
+      '00:11:59Z',
       '00:00:00+01:30',
       '00:00:00-01:30',
+      '00:00:00.1Z',
+      '00:00:00.1-01:30',
+      '00:00:00.34Z',
+      '00:00:00.34-01:30',
       '00:00:00.000Z',
       '00:00:00.999Z',
-      '00:00:00.450Z',
       '00:00:00.450+01:30',
       '00:00:00.450-01:30',
       '00:00:00.450-23:00',
-      '00:00:00.450-00:59'
+      '00:00:00.450-00:59',
+      '00:00:00.45643222345664443Z',
+      '00:00:00.3455334564433+01:00'
     ].forEach(time => {
       it(`identifies ${time} as a valid time`, () => {
         expect(validateTime(time)).toEqual(true)
@@ -53,12 +58,9 @@ describe('validator', () => {
       '13:60:61Z',
       '00:00:00+01',
       '00:00:00+0100',
-      // Time with hours, minutes, seconds and milliseconds
-      '00:00:00.1Z',
-      '00:00:00.10Z',
-      '00:00:00.1000Z',
+      // Time with hours, minutes, seconds and fractional seconds
+      '00:00:00.Z',
       '00:00:00.223',
-      '00:00:00.23+01:00',
       '00:00:00.000+0100',
       '00:00:00.000+01',
       '00:00:00.000+24:00',
@@ -152,11 +154,15 @@ describe('validator', () => {
       '2016-02-01T00:00:00-11:00',
       '2017-01-07T11:25:00+01:00',
       '2017-01-07T00:00:00+01:00',
-      // Datetime with hours, minutes, seconds and milliseconds
+      // Datetime with hours, minutes, seconds and fractional seconds
+      '2017-01-07T00:00:00.0Z',
+      '2017-01-01T00:00:00.0+01:00',
       '2016-02-01T00:00:00.000Z',
       '2016-02-01T00:00:00.990Z',
       '2016-02-01T00:00:00.450Z',
-      '2017-01-07T11:25:00.450+01:00'
+      '2017-01-07T11:25:00.450+01:00',
+      '2017-01-01T10:23:11.45686664Z',
+      '2017-01-01T10:23:11.23545654+01:00'
     ].forEach(dateTime => {
       it(`identifies ${dateTime} as a valid date-time`, () => {
         expect(validateDateTime(dateTime)).toEqual(true)
@@ -178,16 +184,16 @@ describe('validator', () => {
       '2017-01-07T11:25:00+0100',
       '2017-01-07T11:25:00+01',
       '2017-01-07T11:25:00+',
-      // Date-time with hours, minutes, seconds and milliseconds
-      '2016-02-01T00:00:00.1Z',
+      // Date-time with hours, minutes, seconds and fractional seconds
+      '2015-02-26T00:00:00.Z',
       '2015-02-29T00:00:00.000Z',
-      '2016-01-01T00:00:00.0000Z',
       '2016-02-01T00:00:00.223',
       '2016-02-01T00:00:00',
       '2017-01-07T11:25:00.450+0100',
       '2017-01-07T11:25:00.450+01',
       '2017-44-07T11:25:00.450+01:00',
-      '2017-01-07T25:25:00.450+01:00'
+      '2017-01-07T25:25:00.450+01:00',
+      '2017-01-07T11:11:11+24:00'
     ].forEach(dateTime => {
       it(`identifies ${dateTime} as an invalid date-time`, () => {
         expect(validateDateTime(dateTime)).toEqual(false)

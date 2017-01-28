@@ -11,21 +11,15 @@
 import GraphQLTime from './'
 import * as Kind from 'graphql/language/kinds'
 import MockDate from 'mockdate'
-const {stringify} = require('jest-matcher-utils')
+import {stringify} from 'jest-matcher-utils'
 
 // Mock the new Date() call so it always returns 2017-01-01T00:00:00.000Z
 MockDate.set(new Date(Date.UTC(2017, 0, 1)))
 
 const invalidDates = [
-  // General
   'Invalid date',
-  // Time with hours, minutes, seconds and milliseconds
-  '00:00:00.1Z',
-  '00:00:00.10Z',
-  '00:00:00.1000Z',
-  // Date
   '2016-01-01T00:00:00.223Z',
-  // Offset from UTC
+  '10:30:02.Z',
   '00:00:00.45+0130',
   '00:00:00.45+01'
 ]
@@ -33,8 +27,12 @@ const invalidDates = [
 const validDates = [
   [ '00:00:00Z', new Date(Date.UTC(2017, 0, 1)) ],
   [ '00:00:59Z', new Date(Date.UTC(2017, 0, 1, 0, 0, 59)) ],
+  [ '10:30:02.1Z', new Date(Date.UTC(2017, 0, 1, 10, 30, 2, 100)) ],
+  [ '09:09:06.13Z', new Date(Date.UTC(2017, 0, 1, 9, 9, 6, 130)) ],
   [ '10:00:11.003Z', new Date(Date.UTC(2017, 0, 1, 10, 0, 11, 3)) ],
-  [ '00:00:00+01:30', new Date(Date.UTC(2016, 11, 31, 22, 30)) ]
+  [ '16:10:20.1359945Z', new Date(Date.UTC(2017, 0, 1, 16, 10, 20, 135)) ],
+  [ '00:00:00+01:30', new Date(Date.UTC(2016, 11, 31, 22, 30)) ],
+  [ '00:00:30.3-01:30', new Date(Date.UTC(2017, 0, 1, 1, 30, 30, 300)) ]
 ]
 
 describe('GraphQLTime', () => {

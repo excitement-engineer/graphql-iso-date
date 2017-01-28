@@ -10,8 +10,7 @@
 
 import GraphQLDateTime from './'
 import * as Kind from 'graphql/language/kinds'
-
-const {stringify} = require('jest-matcher-utils')
+import {stringify} from 'jest-matcher-utils'
 
 const invalidDates = [
   // General
@@ -22,9 +21,9 @@ const invalidDates = [
   '2016-02-01T00:00Z',
   // Datetime with hours, minutes and seconds
   '2016-02-01T000059Z',
-  // Datetime with hours, minutes, seconds and milliseconds
-  '2016-02-01T00:00:00.1Z',
-  // Datetime with hours, minutes, seconds, milliseconds and timezone.
+  // Datetime with hours, minutes, seconds and fractional seconds
+  '2016-02-01T00:00:00.Z',
+  // Datetime with hours, minutes, seconds, fractional seconds and timezone.
   '2015-02-24T00:00:00.000+0100'
 ]
 
@@ -33,13 +32,15 @@ const validDates = [
   [ '2016-02-01T00:00:15Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 15)) ],
   [ '2016-02-01T00:00:59Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 59)) ],
   [ '2016-02-01T00:00:00-11:00', new Date(Date.UTC(2016, 1, 1, 11)) ],
-  [ '2017-01-07T11:25:00+01:00', new Date('2017-01-07T10:25') ],
-  [ '2017-01-07T00:00:00+01:00', new Date('2017-01-06T23:00') ],
-  // Datetime with hours, minutes, seconds and milliseconds
+  [ '2017-01-07T11:25:00+01:00', new Date(Date.UTC(2017, 0, 7, 10, 25)) ],
+  [ '2017-01-07T00:00:00+01:20', new Date(Date.UTC(2017, 0, 6, 22, 40)) ],
+  // Datetime with hours, minutes, seconds and fractional seconds
+  [ '2016-02-01T00:00:00.1Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 100)) ],
   [ '2016-02-01T00:00:00.000Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 0)) ],
   [ '2016-02-01T00:00:00.990Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 990)) ],
   [ '2016-02-01T00:00:00.450Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 450)) ],
-  [ '2017-01-07T11:25:00.450+01:00', new Date('2017-01-07T10:25:00.450Z') ]
+  [ '2016-02-01T00:00:00.23498Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 234)) ],
+  [ '2017-01-07T11:25:00.450+01:00', new Date(Date.UTC(2017, 0, 7, 10, 25, 0, 450)) ]
 ]
 
 describe('GraphQLDateTime', () => {

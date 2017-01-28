@@ -21,7 +21,7 @@ const schema = new GraphQLSchema({
       },
       instant: {
         type: GraphQLDateTime,
-        resolve: (): string => '2017-01-27T21:46:33Z'
+        resolve: (): string => '2017-01-27T21:46:33.6756Z'
       },
       unix: {
         type: GraphQLDateTime,

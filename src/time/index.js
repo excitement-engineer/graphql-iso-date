@@ -18,11 +18,9 @@ import {
   parseTime
 } from '../utils'
 
-const formats = 'hh:mm:ssZ, hh:mm:ss±hh:mm, hh:mm:ss.sssZ, hh:mm:ss.sss±hh:mm'
-
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Time',
-  description: 'A time string at UTC, such as 10:15:30.000Z, compliant with ' +
+  description: 'A time string at UTC, such as 10:15:30Z, compliant with ' +
                'the `full-time` format outlined in section 5.6 of the RFC 3339' +
                'profile of the ISO 8601 standard for representation of dates and ' +
                'times using the Gregorian calendar.',
@@ -37,8 +35,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         return value
       }
       throw new TypeError(
-        `Time cannot represent an invalid time-string ${value}. ` +
-        `You must provide a valid time-string in one of the following formats: ${formats}.`
+        `Time cannot represent an invalid time-string ${value}.`
       )
     } else {
       throw new TypeError(
@@ -58,8 +55,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseTime(value)
     }
     throw new TypeError(
-      `Time cannot represent an invalid time-string ${value}. ` +
-      `You must provide a valid time-string in one of the following formats: ${formats}.`
+      `Time cannot represent an invalid time-string ${value}.`
     )
   },
   parseLiteral (ast): ?Date {

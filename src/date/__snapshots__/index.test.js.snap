@@ -1,6 +1,6 @@
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
+exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29."`;
 
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
+exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
 
 exports[`GraphQLLocalDate serialization throws error when serializing {} 1`] = `"Date cannot represent a non string, or non Date type {}"`;
 
@@ -14,9 +14,9 @@ exports[`GraphQLLocalDate serialization throws error when serializing true 1`] =
 
 exports[`GraphQLLocalDate serialization throws error when serializing undefined 1`] = `"Date cannot represent a non string, or non Date type undefined"`;
 
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
+exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29."`;
 
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date. You must provide a valid date-string in one of the following formats: YYYY-MM-DD."`;
+exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
 
 exports[`GraphQLLocalDate value parsing throws an error when parsing {} 1`] = `"Date cannot represent non string type {}"`;
 

@@ -20,14 +20,9 @@ import {
   parseDateTime
 } from '../utils'
 
-const formats = 'YYYY-MM-DDThh:mm:ssZ, ' +
-                'YYYY-MM-DDThh:mm:ss±hh:mm, ' +
-                'YYYY-MM-DDThh:mm:ss.sssZ, ' +
-                'YYYY-MM-DDThh:mm:ss.sss±hh:mm'
-
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'DateTime',
-  description: 'A date-time string at UTC, such as 2007-12-03T10:15:30.000Z, ' +
+  description: 'A date-time string at UTC, such as 2007-12-03T10:15:30Z, ' +
                'compliant with the `date-time` format outlined in section 5.6 of ' +
                'the RFC 3339 profile of the ISO 8601 standard for representation ' +
                'of dates and times using the Gregorian calendar.',
@@ -42,7 +37,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         return value
       }
       throw new TypeError(
-        `DateTime cannot represent an invalid date-time-string ${value}. You must provide a valid date-time-string in one of the following formats: ${formats}.`
+        `DateTime cannot represent an invalid date-time-string ${value}.`
       )
     } else if (typeof value === 'number' || value instanceof Number) {
       if (validateUnixTimestamp(value)) {
@@ -69,7 +64,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseDateTime(value)
     }
     throw new TypeError(
-      `DateTime cannot represent an invalid date-time-string ${value}. You must provide a valid date-time-string in one of the following formats: ${formats}.`
+      `DateTime cannot represent an invalid date-time-string ${value}.`
     )
   },
   parseLiteral (ast) {

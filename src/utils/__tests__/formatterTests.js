@@ -81,9 +81,14 @@ describe('formatting', () => {
 
   [
     [ '00:00:59Z', new Date(Date.UTC(2017, 0, 1, 0, 0, 59)) ],
-    [ '00:00:00.000Z', new Date(Date.UTC(2017, 0, 1)) ],
     [ '00:00:00+01:30', new Date(Date.UTC(2016, 11, 31, 22, 30)) ],
+    [ '00:00:00.1Z', new Date(Date.UTC(2017, 0, 1, 0, 0, 0, 100)) ],
+    [ '00:00:00.12Z', new Date(Date.UTC(2017, 0, 1, 0, 0, 0, 120)) ],
+    [ '00:00:00.000Z', new Date(Date.UTC(2017, 0, 1)) ],
     [ '00:00:00.993Z', new Date(Date.UTC(2017, 0, 1, 0, 0, 0, 993)) ],
+    [ '00:00:00.123456Z', new Date(Date.UTC(2017, 0, 1, 0, 0, 0, 123)) ],
+    // No rounding takes place!
+    [ '00:00:00.12399Z', new Date(Date.UTC(2017, 0, 1, 0, 0, 0, 123)) ],
     [ '00:00:00.450+01:30', new Date(Date.UTC(2016, 11, 31, 22, 30, 0, 450)) ],
     [ '00:00:00.450-01:30', new Date(Date.UTC(2017, 0, 1, 1, 30, 0, 450)) ]
   ].forEach(([time, date]) => {
@@ -109,10 +114,12 @@ describe('formatting', () => {
     [ '2016-02-01T00:00:00-11:00', new Date(Date.UTC(2016, 1, 1, 11)) ],
     [ '2017-01-07T11:25:00+01:00', new Date(Date.UTC(2017, 0, 7, 10, 25)) ],
     [ '2017-01-07T00:00:00+01:00', new Date(Date.UTC(2017, 0, 6, 23)) ],
-    // Datetime with hours, minutes, seconds and milliseconds
+    // Datetime with hours, minutes, seconds and fractional seconds.
+    [ '2016-02-01T00:00:00.12Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 120)) ],
+    [ '2016-02-01T00:00:00.123456Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 123)) ],
+    [ '2016-02-01T00:00:00.12399Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 123)) ],
     [ '2016-02-01T00:00:00.000Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 0)) ],
-    [ '2016-02-01T00:00:00.990Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 990)) ],
-    [ '2016-02-01T00:00:00.450Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 450)) ],
+    [ '2016-02-01T00:00:00.993Z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 993)) ],
     [ '2017-01-07T11:25:00.450+01:00', new Date(Date.UTC(2017, 0, 7, 10, 25, 0, 450)) ]
   ].forEach(([dateTime, date]) => {
     it(`parses date-time ${stringify(dateTime)} into Date ${stringify(date)}`, () => {

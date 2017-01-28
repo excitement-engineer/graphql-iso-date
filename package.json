@@ -13,12 +13,12 @@
   },
   "scripts": {
     "examples": "npm run build && babel-node examples/index.js",
-    "build": "babel src --ignore *.test.js --out-dir dist/",
+    "build": "babel src --ignore __tests__,*.test.js --out-dir dist/",
     "test": "jest",
     "watch": "jest --watch",
     "check": "flow check",
     "prepublish": "npm run build",
-    "lint": "standard --fix",
+    "lint": "standard",
     "travis": "npm run test && npm run check && npm run lint && npm run examples"
   },
   "keywords": [

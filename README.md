@@ -16,8 +16,8 @@ A basic understanding of [GraphQL](http://facebook.github.io/graphql/) and of th
 This repository contains the following scalars:
 
 - `Date`: A date string, such as 2007-12-03.
-- `Time`: A time string at UTC, such as 10:15:30.000Z
-- `DateTime`: A date-time string at UTC, such as 2007-12-03T10:15:30.000Z.
+- `Time`: A time string at UTC, such as 10:15:30Z
+- `DateTime`: A date-time string at UTC, such as 2007-12-03T10:15:30Z.
 
 ## Getting started
 
@@ -139,13 +139,11 @@ When expected as an input type, only valid RFC 3339 compliant date strings are a
 
 ### Time
 
-A time string at UTC, such as 10:15:30.000Z, compliant with the `full-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A time string at UTC, such as 10:15:30Z, compliant with the `full-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
 This scalar is a description of a time instant such as the opening bell of the New York Stock Exchange for example. It cannot represent an exact instant on the time-line.
 
 This scalar ignores leap seconds (thereby assuming that a minute constitutes of 59 seconds), in this respect it diverges from the RFC 3339 profile.
-
-Fractional seconds are represented to millisecond precision. When RFC compliant time string does not have a fractional second, it is implied to be zero milliseconds. For example, the time string "14:10:20Z" is implied to be "14:10:20.000Z".
 
 Where an RFC 3339 compliant time string has a time-zone other than UTC, it is shifted to UTC. For example, the time string "14:10:20.987+01:00" is shifted to "13:10:20.987Z".
 
@@ -159,7 +157,7 @@ When expected as an input type, only valid RFC 3339 compliant time strings are a
 
 ### DateTime
 
-A date-time string at UTC, such as 2007-12-03T10:15:30.000Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 
 This scalar is a description of an exact instant on the time-line such as the instant that a user account was created for example.
 

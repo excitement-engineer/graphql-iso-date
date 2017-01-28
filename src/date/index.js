@@ -13,8 +13,6 @@ import type {GraphQLScalarTypeConfig} from "graphql";// eslint-disable-line
 import {Kind} from 'graphql/language'
 import {validateDate, validateJSDate, serializeDate, parseDate} from '../utils'
 
-const formats = 'YYYY-MM-DD'
-
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Date',
   description: 'A date string, such as 2007-12-03, compliant with the `full-date`' +
@@ -32,11 +30,11 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         return value
       }
       throw new TypeError(
-        `Date cannot represent an invalid date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
+        `Date cannot represent an invalid date-string ${value}.`
       )
     } else {
       throw new TypeError(
-        'Date cannot represent a non string, ' + 'or non Date type ' +
+        'Date cannot represent a non string, or non Date type ' +
           JSON.stringify(value)
       )
     }
@@ -52,7 +50,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseDate(value)
     }
     throw new TypeError(
-      `Date cannot represent an invalid date-string ${value}. You must provide a valid date-string in one of the following formats: ${formats}.`
+      `Date cannot represent an invalid date-string ${value}.`
     )
   },
   parseLiteral (ast) {

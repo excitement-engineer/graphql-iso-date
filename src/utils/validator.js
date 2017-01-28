@@ -28,8 +28,10 @@ const leapYear = (year: number): boolean => {
 //
 // - hh:mm:ssZ
 // - hh:mm:ss±hh:mm
-// - hh:mm:ss.sssZ
-// - hh:mm:ss.sss±hh:mm
+// - hh:mm:ss.*sZ
+// - hh:mm:ss.*s±hh:mm
+//
+// Where *s is a fraction of seconds with at least 1 digit.
 //
 // Note, this validator assumes that all minutes have
 // 59 seconds. This assumption does not follow RFC 3339
@@ -43,7 +45,7 @@ const leapYear = (year: number): boolean => {
 // - Leap seconds cannot be known in advance.
 //
 export const validateTime = (time: string): boolean => {
-  const TIME_REGEX = /^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\.\d{3})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
+  const TIME_REGEX = /^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\.\d{1,})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
   return TIME_REGEX.test(time)
 }
 
@@ -118,11 +120,13 @@ export const validateDate = (datestring: string): boolean => {
 //
 // - YYYY-MM-DDThh:mm:ssZ
 // - YYYY-MM-DDThh:mm:ss±hh:mm
-// - YYYY-MM-DDThh:mm:ss.sssZ
-// - YYYY-MM-DDThh:mm:ss.sss±hh:mm
+// - YYYY-MM-DDThh:mm:ss.*sZ
+// - YYYY-MM-DDThh:mm:ss.*s±hh:mm
+//
+// Where *s is a fraction of seconds with at least 1 digit.
 //
 export const validateDateTime = (dateTimeString: string): boolean => {
-  const ISO_8601_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60))(\.\d{3})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
+  const ISO_8601_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60))(\.\d{1,})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
 
   // Validate the structure of the date-string
   if (!ISO_8601_REGEX.test(dateTimeString)) {
