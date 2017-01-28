@@ -135,7 +135,7 @@ Javascript Date instances are coerced to an RFC 3339 compliant date string date 
 
 **Input Coercion**
 
-When expected as an input type, only valid RFC 3339 compliant date strings are accepted. All other input values raise a query error indicating an incorrect type.
+When expected as an input type, only RFC 3339 compliant date strings are accepted. All other input values raise a query error indicating an incorrect type.
 
 ### Time
 
@@ -153,7 +153,7 @@ Javascript Date instances are coerced to an RFC 3339 compliant time string by ex
 
 **Input Coercion**
 
-When expected as an input type, only valid RFC 3339 compliant time strings are accepted. All other input values raise a query error indicating an incorrect type.
+When expected as an input type, only RFC 3339 compliant time strings are accepted. All other input values raise a query error indicating an incorrect type.
 
 ### DateTime
 
@@ -169,4 +169,4 @@ Javascript Date instances and Unix timestamps (represented as 32-bit signed inte
 
 **Input Coercion**
 
-When expected as an input type, only valid RFC 3339 compliant date-time strings are accepted. All other input values raise a query error indicating an incorrect type.
+When expected as an input type, only RFC 3339 compliant date-time strings are accepted. All other input values raise a query error indicating an incorrect type.
