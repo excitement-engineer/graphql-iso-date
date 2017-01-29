@@ -1,6 +1,6 @@
 {
   "name": "graphql-iso-date",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A GraphQL scalar type that represents a date in the ISO format YYYY-MM-DD.",
   "main": "dist/index.js",
   "homepage": "https://github.com/excitement-engineer/graphql-iso-date",
