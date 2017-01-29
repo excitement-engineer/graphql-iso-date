@@ -6,6 +6,16 @@ node_js:
 - '5'
 - '4'
 
+script:
+  - if [[ "$TRAVIS_JOB_NUMBER" == *.1 ]]; then npm test; else npm run testonly; fi
+
+after_failure:
+  - (cd resources; python travis_after_all.py)
+
+after_success:
+  - (cd resources; python travis_after_all.py)
+  - export $(cat resources/.to_export_back)
+
 deploy:
   provider: npm
   skip_cleanup: true
@@ -15,3 +25,4 @@ deploy:
   on:
     tags: true
     branch: master
+    condition: "$BUILD_LEADER$BUILD_AGGREGATE_STATUS = YESothers_succeeded"
