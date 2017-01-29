@@ -14,13 +14,12 @@
   "scripts": {
     "examples": "npm run build && babel-node examples/index.js",
     "build": "babel src --ignore __tests__,*.test.js --out-dir dist/",
-    "test": "npm run testonly && npm run check && npm run lint && npm run examples",
+    "test": "npm run examples && npm run testonly && npm run check && npm run lint",
     "testonly": "jest",
     "watch": "jest --watch",
     "check": "flow check",
     "prepublish": ". ./resources/prepublish.sh",
-    "lint": "standard",
-    "travis": "npm run test && npm run check && npm run lint && npm run examples"
+    "lint": "standard"
   },
   "keywords": [
     "GraphQL",
