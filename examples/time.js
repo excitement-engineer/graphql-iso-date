@@ -11,20 +11,26 @@
 import { graphql, GraphQLObjectType, GraphQLSchema } from 'graphql'
 import { GraphQLTime } from '../dist'
 
+/**
+ * Example of the GraphQLTime scalar.
+ */
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     fields: {
       time: {
         type: GraphQLTime,
+        // Resolve can take a javascript Date.
         resolve: (): Date => new Date()
       },
       openingNYSE: {
         type: GraphQLTime,
+        // Resolve can take a time string.
         resolve: (): string => '14:30:00Z'
       },
       timezone: {
         type: GraphQLTime,
+        // Resolve takes a time string with a timezone and shifts it to UTC.
         resolve: (): string => '14:30:00+01:00'
       },
       input: {
@@ -34,6 +40,7 @@ const schema = new GraphQLSchema({
             type: GraphQLTime
           }
         },
+        // When passed as argument the time string is parsed to a javascript Date.
         resolve: (_, input: { time: Date }): Date => input.time
       }
     }

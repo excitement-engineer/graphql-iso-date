@@ -131,7 +131,7 @@ This scalar is a description of the date, as used for birthdays for example. It 
 
 **Result Coercion**
 
-Javascript Date instances are coerced to an RFC 3339 compliant date string date string. Invalid Date instances raise a field error.
+Javascript Date instances are coerced to an RFC 3339 compliant date string. Invalid Date instances raise a field error.
 
 **Input Coercion**
 

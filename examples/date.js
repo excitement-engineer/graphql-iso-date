@@ -11,16 +11,21 @@
 import { graphql, GraphQLObjectType, GraphQLSchema } from 'graphql'
 import { GraphQLDate } from '../dist'
 
+/**
+ * Example of the GraphQLDate scalar.
+ */
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     fields: {
       today: {
         type: GraphQLDate,
+        // Resolve can take a javascript Date
         resolve: (): Date => new Date()
       },
       birthdate: {
         type: GraphQLDate,
+        // Resolve can take a date string.
         resolve: (): string => '1991-12-24'
       },
       input: {
@@ -30,6 +35,7 @@ const schema = new GraphQLSchema({
             type: GraphQLDate
           }
         },
+        // When passed as argument the date string is parsed to a javascript Date.
         resolve: (_, input: { date: Date }): Date => input.date
       }
     }

@@ -13,6 +13,17 @@ import type {GraphQLScalarTypeConfig} from "graphql";// eslint-disable-line
 import {Kind} from 'graphql/language'
 import {validateDate, validateJSDate, serializeDate, parseDate} from '../utils'
 
+/**
+ * An RFC 3339 compliant date scalar.
+ *
+ * Input:
+ *    This scalar takes an RFC 3339 date string as input and
+ *    parses it to a javascript Date.
+ *
+ * Output:
+ *    This scalar serializes javascript Dates and
+ *    RFC 3339 date strings to RFC 3339 date strings.
+ */
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Date',
   description: 'A date string, such as 2007-12-03, compliant with the `full-date`' +

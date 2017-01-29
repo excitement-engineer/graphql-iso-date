@@ -8,7 +8,7 @@
  *
  */
 
-// Parses a RFC 3339 compliant time-string into a Date.
+// Parses an RFC 3339 compliant time-string into a Date.
 // It does this by combining the current date with the time-string
 // to create a new Date instance.
 //
@@ -21,7 +21,7 @@ export const parseTime = (time: string): Date => {
   return new Date(currentDateString.substr(0, currentDateString.indexOf('T') + 1) + time)
 }
 
-// Serializes a Date into a RFC 3339 compliant time-string in the
+// Serializes a Date into an RFC 3339 compliant time-string in the
 // format hh:mm:ss.sssZ.
 export const serializeTime = (date: Date): string => {
   const dateTimeString = date.toISOString()
@@ -67,7 +67,7 @@ export const serializeTimeString = (time: string): string => {
   }
 }
 
-// Parses a RFC 3339 compliant date-string into a Date.
+// Parses an RFC 3339 compliant date-string into a Date.
 //
 // Example:
 // parseDate('2016-01-01') parses to a Date corresponding to
@@ -88,12 +88,12 @@ export const serializeDate = (date: Date): string => {
   return [year, month, day].join('-')
 }
 
-// Parses a RFC 3339 compliant date-time-string into a Date.
+// Parses an RFC 3339 compliant date-time-string into a Date.
 export const parseDateTime = (dateTime: string): Date => {
   return new Date(dateTime)
 }
 
-// Serializes a Date into a RFC 3339 compliant date-time-string
+// Serializes a Date into an RFC 3339 compliant date-time-string
 // in the format YYYY-MM-DDThh:mm:ss.sssZ.
 export const serializeDateTime = (dateTime: Date): string => {
   return dateTime.toISOString()
@@ -136,7 +136,7 @@ export const serializeDateTimeString = (dateTime: string): string => {
   }
 }
 
-// Serializes a Unix timestamp to a RFC 3339 compliant date-time-string
+// Serializes a Unix timestamp to an RFC 3339 compliant date-time-string
 // in the format YYYY-MM-DDThh:mm:ss.sssZ
 export const serializeUnixTimestamp = (timestamp: number): string => {
   return new Date(timestamp * 1000).toISOString()
