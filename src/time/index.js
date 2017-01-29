@@ -19,6 +19,18 @@ import {
   parseTime
 } from '../utils'
 
+/**
+ * An RFC 3339 compliant time scalar.
+ *
+ * Input:
+ *    This scalar takes an RFC 3339 time string as input and
+ *    parses it to a javascript Date (with a year-month-day relative
+ *    to the current day).
+ *
+ * Output:
+ *    This scalar serializes javascript Dates and
+ *    RFC 3339 time strings to RFC 3339 UTC time strings.
+ */
 const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Time',
   description: 'A time string at UTC, such as 10:15:30Z, compliant with ' +
