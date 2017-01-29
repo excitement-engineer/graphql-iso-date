@@ -1,6 +1,6 @@
 {
   "name": "graphql-iso-date",
-  "version": "3.0.0",
+  "version": "2.1.0",
   "description": "A set of RFC 3339 compliant date/time GraphQL scalar types.",
   "main": "dist/index.js",
   "homepage": "https://github.com/excitement-engineer/graphql-iso-date",
@@ -14,10 +14,11 @@
   "scripts": {
     "examples": "npm run build && babel-node examples/index.js",
     "build": "babel src --ignore __tests__,*.test.js --out-dir dist/",
-    "test": "jest",
+    "test": "npm run testonly && npm run check && npm run lint && npm run examples",
+    "testonly": "jest",
     "watch": "jest --watch",
     "check": "flow check",
-    "prepublish": "npm run build",
+    "prepublish": ". ./resources/prepublish.sh",
     "lint": "standard",
     "travis": "npm run test && npm run check && npm run lint && npm run examples"
   },

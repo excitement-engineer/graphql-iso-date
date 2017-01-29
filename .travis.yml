@@ -1,11 +1,17 @@
 language: node_js
-
 cache: yarn
-
 node_js:
-  - "7"
-  - "6"
-  - "5"
-  - "4"
+- '7'
+- '6'
+- '5'
+- '4'
 
-script: yarn run travis
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: "dirkjanrutten@gmail.com"
+  api_key:
+    secure: VezZd77ytFyIGsRB124Z9fDDppm/MiHARrHRv8ZvEH1sdj39Y/Gm54381FuUSbaoemnWlOnRtgspaKjdyJsBwKUkhTJaud6YZqP2NIG4xSBJHRxnqOJ7PbLSFusXKq429wJE8DZTb/d/M9lPG/DxrinTDtp+7r/YAnkljGMOjDLhxwR544iHh9lzWUN/s9RHOs6klaE0oKzh36AFdcukSWOe5E9v8CJBJlhid9UJzmnjb9NTv0tjX9VP9dON6kkDO5XvNzwKmdu62Y4ch4WtyDXMSqxy01a46XduW5qVOVdlza3PxTq2Y2Zu0ok3rRzKKlxA35qGvWFbtskbZcdRkWOa5aIxaAFK+F1bKhuKRHidufzZLtiP9fVAC0sF+AOpMjQBhBBScvZU5S35yQUU+elesg9w+3+IELp7v0C/bOQYkUWEhgdmyCTxxwtITvvLSOAe/L0zumBz5v6j7spquDJ7x/ZkqmMxBvIzxmgnJXUdgaSJCTBoB3MhsIJiHXfAwdJ6ficOgAkaKSoDSqIf7N9cZWWl2iBJ9fow+6mzmKvfNROc+yFu6e1843XrwTSPFAD2Xx3Js2BGwhZz6h+3NoRaASgb3+bKAj04DN33OMxnCMHsXqQyKBx8dUSWBxQMafD0KeroVZ6fC4rQqMndRj8vFWuJO1+43Ja7Gn8V9CQ=
+  on:
+    tags: true
+    branch: master
