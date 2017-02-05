@@ -23,10 +23,9 @@ const validDates = [
 ]
 
 describe('GraphQLDate', () => {
-
   it('has a description', () => {
-    expect(GraphQLDate.description).toMatchSnapshot();
-  });
+    expect(GraphQLDate.description).toMatchSnapshot()
+  })
 
   describe('serialization', () => {
     [
