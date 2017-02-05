@@ -5,24 +5,20 @@ node_js:
 - '6'
 - '5'
 - '4'
-
 script:
-  - if [[ "$TRAVIS_JOB_NUMBER" == *.1 ]]; then npm test; else npm run testonly; fi
-
+- if [[ "$TRAVIS_JOB_NUMBER" == *.1 ]]; then npm test; else npm run testonly; fi
 after_failure:
-  - (cd resources; python travis_after_all.py)
-
+- (cd resources; python travis_after_all.py)
 after_success:
-  - (cd resources; python travis_after_all.py)
-  - export $(cat resources/.to_export_back)
-
+- (cd resources; python travis_after_all.py)
+- export $(cat resources/.to_export_back)
 deploy:
   provider: npm
   skip_cleanup: true
-  email: "dirkjanrutten@gmail.com"
+  email: dirkjanrutten@gmail.com
   api_key:
-    secure: VezZd77ytFyIGsRB124Z9fDDppm/MiHARrHRv8ZvEH1sdj39Y/Gm54381FuUSbaoemnWlOnRtgspaKjdyJsBwKUkhTJaud6YZqP2NIG4xSBJHRxnqOJ7PbLSFusXKq429wJE8DZTb/d/M9lPG/DxrinTDtp+7r/YAnkljGMOjDLhxwR544iHh9lzWUN/s9RHOs6klaE0oKzh36AFdcukSWOe5E9v8CJBJlhid9UJzmnjb9NTv0tjX9VP9dON6kkDO5XvNzwKmdu62Y4ch4WtyDXMSqxy01a46XduW5qVOVdlza3PxTq2Y2Zu0ok3rRzKKlxA35qGvWFbtskbZcdRkWOa5aIxaAFK+F1bKhuKRHidufzZLtiP9fVAC0sF+AOpMjQBhBBScvZU5S35yQUU+elesg9w+3+IELp7v0C/bOQYkUWEhgdmyCTxxwtITvvLSOAe/L0zumBz5v6j7spquDJ7x/ZkqmMxBvIzxmgnJXUdgaSJCTBoB3MhsIJiHXfAwdJ6ficOgAkaKSoDSqIf7N9cZWWl2iBJ9fow+6mzmKvfNROc+yFu6e1843XrwTSPFAD2Xx3Js2BGwhZz6h+3NoRaASgb3+bKAj04DN33OMxnCMHsXqQyKBx8dUSWBxQMafD0KeroVZ6fC4rQqMndRj8vFWuJO1+43Ja7Gn8V9CQ=
+    secure: b/xf5WxoNhvVEUCIw7I3iqurPzR/CSgereQS0sFQV5aWYTWLQMi+YtUptOuHg/Yau0pYhg77EaOJfwUPOlZk/HgjIkV094hKqq2HDaa9/Foqejdrz/1F9lWy9zNLoNIeZ9CnI5h460wRNj08Rz6ex4xUz0wm9dnDF85xl/wDoQbLmpKUDXQUeWK77uvD/sijXrK/mtmCCQD8L466JGiBC+9RX+IZk2SqEr2vNcnpk6pjHYvkzjDE8B9UIu9qK0QuWg3RMzc1ABvZvFhC9AyW6iMoliYI44VN8coXM8Gtpo6BLfyh2wdb/mbWGYnPb030qu0nYZJ89jwTrd6VTqwAM6oGaNvT0964eNnqpipE1Gx8YcHXLAdTWC+yB5zSthZunG5Hz5WsZAIHC9UUoj33DSbiQAf36SokfLPNZ/Uj1hnQwuGozCRywWA18K/r7+/FlB+f0Q/e72rQDA/9ocdDghwxYkxgaqtKaWnYDVAGuIliRWw+cikLbQDxbcfY7MTg3MUcmdh3pOrWNrwPEpn6H5O9Kci6mpVwx92eZJd/kXBLQlGI5McI+q1vws+l01v/zw+cUs5GItLJavNK/4U0G7EZYMi9b6xzdIaykct0r7Y0Wnpm2NQrs0DN+3WQxUji/HaWNR7z+/Pv1pdKYpdpOuB1RLJXCd2Olddxj+/0p+4=
   on:
     tags: true
     branch: master
-    condition: "$BUILD_LEADER$BUILD_AGGREGATE_STATUS = YESothers_succeeded"
+    condition: $BUILD_LEADER$BUILD_AGGREGATE_STATUS = YESothers_succeeded
