@@ -1,31 +1,33 @@
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29."`;
+exports[`GraphQLDate has a description 1`] = `"A date string, such as 2007-12-03, compliant with the \`full-date\`format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."`;
 
-exports[`GraphQLLocalDate serialization throws an error when serializing an invalid date-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
+exports[`GraphQLDate serialization throws an error when serializing an invalid date-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29."`;
 
-exports[`GraphQLLocalDate serialization throws error when serializing {} 1`] = `"Date cannot represent a non string, or non Date type {}"`;
+exports[`GraphQLDate serialization throws an error when serializing an invalid date-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
 
-exports[`GraphQLLocalDate serialization throws error when serializing Array [] 1`] = `"Date cannot represent a non string, or non Date type []"`;
+exports[`GraphQLDate serialization throws error when serializing {} 1`] = `"Date cannot represent a non string, or non Date type {}"`;
 
-exports[`GraphQLLocalDate serialization throws error when serializing invalid javascript Date 1`] = `"Date cannot represent an invalid Date instance"`;
+exports[`GraphQLDate serialization throws error when serializing Array [] 1`] = `"Date cannot represent a non string, or non Date type []"`;
 
-exports[`GraphQLLocalDate serialization throws error when serializing null 1`] = `"Date cannot represent a non string, or non Date type null"`;
+exports[`GraphQLDate serialization throws error when serializing invalid javascript Date 1`] = `"Date cannot represent an invalid Date instance"`;
 
-exports[`GraphQLLocalDate serialization throws error when serializing true 1`] = `"Date cannot represent a non string, or non Date type true"`;
+exports[`GraphQLDate serialization throws error when serializing null 1`] = `"Date cannot represent a non string, or non Date type null"`;
 
-exports[`GraphQLLocalDate serialization throws error when serializing undefined 1`] = `"Date cannot represent a non string, or non Date type undefined"`;
+exports[`GraphQLDate serialization throws error when serializing true 1`] = `"Date cannot represent a non string, or non Date type true"`;
 
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29."`;
+exports[`GraphQLDate serialization throws error when serializing undefined 1`] = `"Date cannot represent a non string, or non Date type undefined"`;
 
-exports[`GraphQLLocalDate value parsing throws an error parsing an invalid datetime-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
+exports[`GraphQLDate value parsing throws an error parsing an invalid datetime-string "2015-02-29" 1`] = `"Date cannot represent an invalid date-string 2015-02-29."`;
 
-exports[`GraphQLLocalDate value parsing throws an error when parsing {} 1`] = `"Date cannot represent non string type {}"`;
+exports[`GraphQLDate value parsing throws an error parsing an invalid datetime-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
 
-exports[`GraphQLLocalDate value parsing throws an error when parsing 4566 1`] = `"Date cannot represent non string type 4566"`;
+exports[`GraphQLDate value parsing throws an error when parsing {} 1`] = `"Date cannot represent non string type {}"`;
 
-exports[`GraphQLLocalDate value parsing throws an error when parsing Array [] 1`] = `"Date cannot represent non string type []"`;
+exports[`GraphQLDate value parsing throws an error when parsing 4566 1`] = `"Date cannot represent non string type 4566"`;
 
-exports[`GraphQLLocalDate value parsing throws an error when parsing null 1`] = `"Date cannot represent non string type null"`;
+exports[`GraphQLDate value parsing throws an error when parsing Array [] 1`] = `"Date cannot represent non string type []"`;
 
-exports[`GraphQLLocalDate value parsing throws an error when parsing true 1`] = `"Date cannot represent non string type true"`;
+exports[`GraphQLDate value parsing throws an error when parsing null 1`] = `"Date cannot represent non string type null"`;
 
-exports[`GraphQLLocalDate value parsing throws an error when parsing undefined 1`] = `"Date cannot represent non string type undefined"`;
+exports[`GraphQLDate value parsing throws an error when parsing true 1`] = `"Date cannot represent non string type true"`;
+
+exports[`GraphQLDate value parsing throws an error when parsing undefined 1`] = `"Date cannot represent non string type undefined"`;

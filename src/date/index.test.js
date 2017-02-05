@@ -8,7 +8,7 @@
  *
  */
 
-import GraphQLLocalDate from './'
+import GraphQLDate from './'
 import * as Kind from 'graphql/language/kinds'
 import {stringify} from 'jest-matcher-utils'
 
@@ -22,7 +22,12 @@ const validDates = [
   [ '2016-02-01', new Date(Date.UTC(2016, 1, 1)) ]
 ]
 
-describe('GraphQLLocalDate', () => {
+describe('GraphQLDate', () => {
+
+  it('has a description', () => {
+    expect(GraphQLDate.description).toMatchSnapshot();
+  });
+
   describe('serialization', () => {
     [
       {},
@@ -33,7 +38,7 @@ describe('GraphQLLocalDate', () => {
     ].forEach(invalidInput => {
       it(`throws error when serializing ${stringify(invalidInput)}`, () => {
         expect(() =>
-          GraphQLLocalDate.serialize(invalidInput)
+          GraphQLDate.serialize(invalidInput)
         ).toThrowErrorMatchingSnapshot()
       })
     });
@@ -45,14 +50,14 @@ describe('GraphQLLocalDate', () => {
     ].forEach(([ value, expected ]) => {
       it(`serializes javascript Date ${stringify(value)} into ${stringify(expected)}`, () => {
         expect(
-          GraphQLLocalDate.serialize(value)
+          GraphQLDate.serialize(value)
         ).toEqual(expected)
       })
     })
 
     it(`throws error when serializing invalid javascript Date`, () => {
       expect(() =>
-        GraphQLLocalDate.serialize(new Date('invalid date'))
+        GraphQLDate.serialize(new Date('invalid date'))
       ).toThrowErrorMatchingSnapshot()
     })
 
@@ -60,7 +65,7 @@ describe('GraphQLLocalDate', () => {
     validDates.forEach(([value]) => {
       it(`serializes date-string ${value}`, () => {
         expect(
-          GraphQLLocalDate.serialize(value)
+          GraphQLDate.serialize(value)
         ).toEqual(value)
       })
     })
@@ -68,7 +73,7 @@ describe('GraphQLLocalDate', () => {
     invalidDates.forEach(dateString => {
       it(`throws an error when serializing an invalid date-string ${stringify(dateString)}`, () => {
         expect(() =>
-          GraphQLLocalDate.serialize(dateString)
+          GraphQLDate.serialize(dateString)
         ).toThrowErrorMatchingSnapshot()
       })
     })
@@ -78,7 +83,7 @@ describe('GraphQLLocalDate', () => {
     validDates.forEach(([ value, expected ]) => {
       it(`parses date-string ${stringify(value)} into javascript Date ${stringify(expected)}`, () => {
         expect(
-          GraphQLLocalDate.parseValue(value)
+          GraphQLDate.parseValue(value)
         ).toEqual(expected)
       })
     });
@@ -93,7 +98,7 @@ describe('GraphQLLocalDate', () => {
     ].forEach(invalidInput => {
       it(`throws an error when parsing ${stringify(invalidInput)}`, () => {
         expect(() =>
-          GraphQLLocalDate.parseValue(invalidInput)
+          GraphQLDate.parseValue(invalidInput)
         ).toThrowErrorMatchingSnapshot()
       })
     })
@@ -101,7 +106,7 @@ describe('GraphQLLocalDate', () => {
     invalidDates.forEach(dateString => {
       it(`throws an error parsing an invalid datetime-string ${stringify(dateString)}`, () => {
         expect(() =>
-          GraphQLLocalDate.parseValue(dateString)
+          GraphQLDate.parseValue(dateString)
         ).toThrowErrorMatchingSnapshot()
       })
     })
@@ -115,7 +120,7 @@ describe('GraphQLLocalDate', () => {
 
       it(`parses literal ${stringify(literal)} into javascript Date ${stringify(expected)}`, () => {
         expect(
-          GraphQLLocalDate.parseLiteral(literal).toISOString()
+          GraphQLDate.parseLiteral(literal).toISOString()
         ).toEqual(expected.toISOString())
       })
     })
@@ -126,7 +131,7 @@ describe('GraphQLLocalDate', () => {
       }
       it(`returns null when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
         expect(
-          GraphQLLocalDate.parseLiteral(invalidLiteral)
+          GraphQLDate.parseLiteral(invalidLiteral)
         ).toEqual(null)
       })
     })
@@ -136,7 +141,7 @@ describe('GraphQLLocalDate', () => {
     }
     it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
       expect(
-        GraphQLLocalDate.parseLiteral(invalidLiteralFloat)
+        GraphQLDate.parseLiteral(invalidLiteralFloat)
       ).toEqual(null)
     })
   })
