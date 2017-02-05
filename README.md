@@ -145,7 +145,7 @@ This scalar is a description of a time instant such as the opening bell of the N
 
 This scalar ignores leap seconds (thereby assuming that a minute constitutes of 59 seconds), in this respect it diverges from the RFC 3339 profile.
 
-Where an RFC 3339 compliant time string has a time-zone other than UTC, it is shifted to UTC. For example, the time string "14:10:20.987+01:00" is shifted to "13:10:20.987Z".
+Where an RFC 3339 compliant time string has a time-zone other than UTC, it is shifted to UTC. For example, the time string "14:10:20+01:00" is shifted to "13:10:20Z".
 
 **Result Coercion**
 
@@ -161,7 +161,9 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 
 This scalar is a description of an exact instant on the time-line such as the instant that a user account was created for example.
 
-DateTime is a concatenation of the `Date` and `Time` scalars in the form `<Date>T<Time>`, this means that the same conventions are used as described in the sections associated with these scalars.
+This scalar ignores leap seconds (thereby assuming that a minute constitutes of 59 seconds), in this respect it diverges from the RFC 3339 profile.
+
+Where an RFC 3339 compliant date-time string has a time-zone other than UTC, it is shifted to UTC. For example, the date-time string "2016-01-01T14:10:20+01:00" is shifted to "2016-01-01T13:10:20".
 
 **Result Coercion**
 
