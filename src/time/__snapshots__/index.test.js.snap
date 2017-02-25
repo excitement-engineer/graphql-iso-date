@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`GraphQLTime has a description 1`] = `"A time string at UTC, such as 10:15:30Z, compliant with the \`full-time\` format outlined in section 5.6 of the RFC 3339profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."`;
 
 exports[`GraphQLTime serialization throws an error when serializing an invalid date-string "00:00:00.45+01" 1`] = `"Time cannot represent an invalid time-string 00:00:00.45+01."`;
