@@ -47,7 +47,7 @@
     "eslint-plugin-flowtype": "^2.30.0",
     "flow-bin": "^0.38.0",
     "graphql": "^0.9.1",
-    "jest": "^18.1.0",
+    "jest": "^19.0.2",
     "mockdate": "^2.0.1",
     "standard": "^8.6.0"
   },
