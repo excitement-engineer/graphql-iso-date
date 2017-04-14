@@ -43,9 +43,9 @@ describe('GraphQLDate', () => {
     });
 
     [
-      [ new Date(2016, 11, 17, 14), '2016-12-17' ],
-      [ new Date(2016, 0, 1, 14, 48, 10, 3), '2016-01-01' ],
-      [ new Date(2016, 0, 1), '2016-01-01' ]
+      [ new Date(Date.UTC(2016, 11, 17, 14)), '2016-12-17' ],
+      [ new Date(Date.UTC(2016, 0, 1, 14, 48, 10, 3)), '2016-01-01' ],
+      [ new Date(Date.UTC(2016, 0, 1)), '2016-01-01' ]
     ].forEach(([ value, expected ]) => {
       it(`serializes javascript Date ${stringify(value)} into ${stringify(expected)}`, () => {
         expect(
