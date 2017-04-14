@@ -51,7 +51,7 @@ describe('formatting', () => {
   [
     [ new Date(Date.UTC(2016, 1, 1)), '2016-02-01' ],
     [ new Date(Date.UTC(2016, 1, 1, 4, 5, 5)), '2016-02-01' ],
-    [ new Date(2016, 2, 3), '2016-03-03' ]
+    [ new Date(Date.UTC(2016, 2, 3)), '2016-03-03' ]
   ].forEach(([date, dateString]) => {
     it(`serializes ${stringify(date)} into date-string ${dateString}`, () => {
       expect(serializeDate(date)).toEqual(dateString)
