@@ -19,12 +19,10 @@ import {
   parseDate,
   parseDateTime
 } from '../'
-
+import {stringify} from 'jest-matcher-utils'
 import MockDate from 'mockdate'
 // Mock the new Date() call so it always returns 2017-01-01T00:00:00.000Z
 MockDate.set(new Date(Date.UTC(2017, 0, 1)))
-
-import {stringify} from 'jest-matcher-utils'
 
 describe('formatting', () => {
   [
