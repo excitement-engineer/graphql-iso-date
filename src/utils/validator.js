@@ -73,9 +73,9 @@ export const validateTime = (time: string): boolean => {
 // 12            December             31
 //
 export const validateDate = (datestring: string): boolean => {
-  const ISO_8601_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01]))$/
+  const RFC_3339_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01]))$/
 
-  if (!ISO_8601_REGEX.test(datestring)) {
+  if (!RFC_3339_REGEX.test(datestring)) {
     return false
   }
 
@@ -126,10 +126,10 @@ export const validateDate = (datestring: string): boolean => {
 // Where *s is a fraction of seconds with at least 1 digit.
 //
 export const validateDateTime = (dateTimeString: string): boolean => {
-  const ISO_8601_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60))(\.\d{1,})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
+  const RFC_3339_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60))(\.\d{1,})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
 
   // Validate the structure of the date-string
-  if (!ISO_8601_REGEX.test(dateTimeString)) {
+  if (!RFC_3339_REGEX.test(dateTimeString)) {
     return false
   }
 
