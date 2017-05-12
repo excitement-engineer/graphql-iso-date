@@ -79,36 +79,28 @@ export const validateDate = (datestring: string): boolean => {
     return false
   }
 
-  // Check if it is a correct date using the javascript Date parse() method.
-  const time = Date.parse(datestring)
-  if (time !== time) { // eslint-disable-line
-    return false
-  }
-
   // Verify the correct number of days for
   // the month contained in the date-string.
-  if (datestring.length >= 10) {
-    const year = Number(datestring.substr(0, 4))
-    const month = Number(datestring.substr(5, 2))
-    const day = Number(datestring.substr(8, 2))
+  const year = Number(datestring.substr(0, 4))
+  const month = Number(datestring.substr(5, 2))
+  const day = Number(datestring.substr(8, 2))
 
-    switch (month) {
-      case 2: // February
-        if (leapYear(year) && day > 29) {
-          return false
-        } else if (!leapYear(year) && day > 28) {
-          return false
-        }
-        return true
-      case 4: // April
-      case 6: // June
-      case 9: // September
-      case 11: // November
-        if (day > 30) {
-          return false
-        }
-        break
-    }
+  switch (month) {
+    case 2: // February
+      if (leapYear(year) && day > 29) {
+        return false
+      } else if (!leapYear(year) && day > 28) {
+        return false
+      }
+      return true
+    case 4: // April
+    case 6: // June
+    case 9: // September
+    case 11: // November
+      if (day > 30) {
+        return false
+      }
+      break
   }
 
   return true
