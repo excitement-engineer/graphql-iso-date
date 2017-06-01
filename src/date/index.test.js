@@ -89,7 +89,16 @@ describe('GraphQLDate', () => {
 
     [
       null,
-      undefined,
+      undefined
+    ].forEach(invalidInput => {
+      it(`parses ${stringify(invalidInput)} into javascript undefined`, () => {
+        expect(
+          GraphQLDate.parseValue(invalidInput)
+        ).toBeUndefined()
+      })
+    });
+
+    [
       4566,
       {},
       [],
