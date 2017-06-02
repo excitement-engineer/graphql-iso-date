@@ -142,7 +142,16 @@ describe('GraphQLDateTime', () => {
 
     [
       null,
-      undefined,
+      undefined
+    ].forEach(invalidInput => {
+      it(`parses ${stringify(invalidInput)} into javascript undefined`, () => {
+        expect(
+          GraphQLDateTime.parseValue(invalidInput)
+        ).toBeUndefined()
+      })
+    });
+
+    [
       4566,
       {},
       [],
@@ -189,7 +198,7 @@ describe('GraphQLDateTime', () => {
     })
 
     const invalidLiteralFloat = {
-      kind: Kind.FLOAT, value: 5
+      kind: Kind.FLOAT, value: '5'
     }
     it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
       expect(

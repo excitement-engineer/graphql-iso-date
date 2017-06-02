@@ -54,8 +54,4 @@ exports[`GraphQLDateTime value parsing throws an error when parsing 4566 1`] = `
 
 exports[`GraphQLDateTime value parsing throws an error when parsing Array [] 1`] = `"DateTime cannot represent non string type []"`;
 
-exports[`GraphQLDateTime value parsing throws an error when parsing null 1`] = `"DateTime cannot represent non string type null"`;
-
 exports[`GraphQLDateTime value parsing throws an error when parsing true 1`] = `"DateTime cannot represent non string type true"`;
-
-exports[`GraphQLDateTime value parsing throws an error when parsing undefined 1`] = `"DateTime cannot represent non string type undefined"`;

@@ -89,7 +89,16 @@ describe('GraphQLDate', () => {
 
     [
       null,
-      undefined,
+      undefined
+    ].forEach(invalidInput => {
+      it(`parses ${stringify(invalidInput)} into javascript undefined`, () => {
+        expect(
+          GraphQLDate.parseValue(invalidInput)
+        ).toBeUndefined()
+      })
+    });
+
+    [
       4566,
       {},
       [],
@@ -119,8 +128,8 @@ describe('GraphQLDate', () => {
 
       it(`parses literal ${stringify(literal)} into javascript Date ${stringify(expected)}`, () => {
         expect(
-          GraphQLDate.parseLiteral(literal).toISOString()
-        ).toEqual(expected.toISOString())
+          GraphQLDate.parseLiteral(literal)
+        ).toEqual(expected)
       })
     })
 
@@ -136,7 +145,7 @@ describe('GraphQLDate', () => {
     })
 
     const invalidLiteralFloat = {
-      kind: Kind.FLOAT, value: 5
+      kind: Kind.FLOAT, value: '5'
     }
     it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
       expect(

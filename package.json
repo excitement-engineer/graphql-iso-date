@@ -36,7 +36,7 @@
     "README.md"
   ],
   "peerDependencies": {
-    "graphql": "^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0"
+    "graphql": "^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0 || ^0.10.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -47,7 +47,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "eslint-plugin-flowtype": "^2.32.1",
     "flow-bin": "^0.46.0",
-    "graphql": "^0.9.6",
+    "graphql": "^0.10.1",
     "jest": "^20.0.1",
     "mockdate": "^2.0.1",
     "standard": "^10.0.2"
