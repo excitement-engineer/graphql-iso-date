@@ -95,7 +95,7 @@ graphql(schema, query).then(result => {
 
 ## Examples
 
-This project includes several examples in the folder `/examples` explaining how to use the various scalars.
+This project includes several examples in the folder `/examples` explaining how to use the various scalars. You can also see a [live editable example on Launchpad](https://launchpad.graphql.com/vkvpvznr3).
 
 Run the examples by downloading this project and running the following commands:
 
