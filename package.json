@@ -45,9 +45,9 @@
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "eslint-plugin-flowtype": "^2.34.0",
-    "flow-bin": "^0.47.0",
-    "graphql": "^0.10.1",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "flow-bin": "^0.52.0",
+    "graphql": "^0.10.5",
     "jest": "^20.0.4",
     "mockdate": "^2.0.1",
     "standard": "^10.0.2"
