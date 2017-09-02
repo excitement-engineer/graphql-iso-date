@@ -6,7 +6,7 @@ node_js:
 - '5'
 - '4'
 script:
-- if [[ "$TRAVIS_JOB_NUMBER" == *.1 ]]; then npm test; else npm run testonly; fi
+- if [[ "$TRAVIS_JOB_NUMBER" == *.1 ]]; then npm test && npm run coverage; else npm run testonly; fi
 
 jobs:
   include:
