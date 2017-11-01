@@ -58,7 +58,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
     }
 
     if (validateDate(value)) {
-      return parseDate(value)
+      return value;
     }
     throw new TypeError(
       `Date cannot represent an invalid date-string ${value}.`
