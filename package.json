@@ -49,7 +49,7 @@
     "codecov": "^2.3.0",
     "eslint-plugin-flowtype": "^2.35.0",
     "flow-bin": "^0.53.1",
-    "graphql": "^0.11.2",
+    "graphql": "^0.12.0",
     "jest": "^20.0.4",
     "mockdate": "^2.0.2",
     "standard": "^10.0.3"
