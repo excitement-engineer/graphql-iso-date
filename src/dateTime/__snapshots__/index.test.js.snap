@@ -24,9 +24,9 @@ exports[`GraphQLDateTime serialization throws an error when serializing an inval
 
 exports[`GraphQLDateTime serialization throws an error when serializing an invalid date-string "Invalid date" 1`] = `"DateTime cannot represent an invalid date-time-string Invalid date."`;
 
-exports[`GraphQLDateTime serialization throws error when serializing {} 1`] = `"DateTime cannot be serialized from a non string, non numeric or non Date type {}"`;
+exports[`GraphQLDateTime serialization throws error when serializing [] 1`] = `"DateTime cannot be serialized from a non string, non numeric or non Date type []"`;
 
-exports[`GraphQLDateTime serialization throws error when serializing Array [] 1`] = `"DateTime cannot be serialized from a non string, non numeric or non Date type []"`;
+exports[`GraphQLDateTime serialization throws error when serializing {} 1`] = `"DateTime cannot be serialized from a non string, non numeric or non Date type {}"`;
 
 exports[`GraphQLDateTime serialization throws error when serializing invalid date 1`] = `"DateTime cannot represent an invalid Date instance"`;
 
@@ -48,10 +48,10 @@ exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-s
 
 exports[`GraphQLDateTime value parsing throws an error parsing an invalid date-string "Invalid date" 1`] = `"DateTime cannot represent an invalid date-time-string Invalid date."`;
 
+exports[`GraphQLDateTime value parsing throws an error when parsing [] 1`] = `"DateTime cannot represent non string type []"`;
+
 exports[`GraphQLDateTime value parsing throws an error when parsing {} 1`] = `"DateTime cannot represent non string type {}"`;
 
 exports[`GraphQLDateTime value parsing throws an error when parsing 4566 1`] = `"DateTime cannot represent non string type 4566"`;
-
-exports[`GraphQLDateTime value parsing throws an error when parsing Array [] 1`] = `"DateTime cannot represent non string type []"`;
 
 exports[`GraphQLDateTime value parsing throws an error when parsing true 1`] = `"DateTime cannot represent non string type true"`;
