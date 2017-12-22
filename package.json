@@ -2,7 +2,7 @@
   "name": "graphql-iso-date",
   "version": "3.3.0",
   "description": "A set of RFC 3339 compliant date/time GraphQL scalar types.",
-  "main": "dist/index.js",
+  "main": "index.js",
   "homepage": "https://github.com/excitement-engineer/graphql-iso-date",
   "bugs": {
     "url": "https://github.com/excitement-engineer/graphql-iso-date/issues"
@@ -12,16 +12,19 @@
     "url": "https://github.com/excitement-engineer/graphql-iso-date.git"
   },
   "scripts": {
-    "examples": "npm run build && babel-node examples/index.js",
-    "build": "babel src --ignore __tests__,*.test.js --out-dir dist/ && npm run build-dot-flow",
-    "build-dot-flow": "find ./src -name '*.js' -not -path '*/__tests__*' -not -name '*.test.js' | while read filepath; do cp $filepath `echo $filepath | sed 's/\\/src\\//\\/dist\\//g'`.flow; done",
+    "examples": "npm run build:babel && babel-node examples/index.js",
+    "build": "npm run build:clean && npm run build:babel && npm run build:package-json && npm run build:flow",
+    "build:clean": "rm -rf ./dist",
+    "build:package-json": "node ./resources/clean-package-json.js",
+    "build:babel": "babel src --ignore __tests__,*.test.js --out-dir dist/ ",
+    "build:flow": "find ./src -name '*.js' -not -path '*/__tests__*' -not -name '*.test.js' | while read filepath; do cp $filepath `echo $filepath | sed 's/\\/src\\//\\/dist\\//g'`.flow; done",
     "test": "npm run examples && npm run testonly && npm run check && npm run lint",
     "testonly": "jest",
     "coverage": "codecov",
     "watch": "jest --watch",
     "check": "flow check",
-    "prepublish": ". ./resources/prepublish.sh",
-    "lint": "standard"
+    "prepublishOnly": ". ./resources/prepublish.sh",
+    "lint": "standard src/"
   },
   "keywords": [
     "GraphQL",
