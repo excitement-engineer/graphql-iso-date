@@ -1,12 +1,5 @@
 # This script is adapted from https://github.com/graphql/graphql-js.
 
-# Because of a long-running npm issue (https://github.com/npm/npm/issues/3059)
-# prepublish runs after `npm install` and `npm pack`.
-# In order to only run prepublish before `npm publish`, we have to check argv.
-if node -e "process.exit(($npm_config_argv).original[0].indexOf('pu') === 0)"; then
-  exit 0;
-fi
-
 # Publishing to NPM is currently supported by Travis CI, which ensures that all
 # tests pass first and the deployed module contains the correct file structure.
 # In order to prevent inadvertently circumventing this, we ensure that a CI
@@ -21,12 +14,3 @@ fi;
 # When Travis CI publishes to NPM, we need to make
 # sure that the files are built into dist.
 npm run build;
-
-# Ensure a vanilla package.json before deploying so other tools do not interpret
-# The built output as requiring any further transformation.
-node -e "var package = require('./package.json'); \
-  delete package.scripts; \
-  delete package.options; \
-  delete package.devDependencies; \
-  delete package.standard; \
-  require('fs').writeFileSync('package.json', JSON.stringify(package));"
