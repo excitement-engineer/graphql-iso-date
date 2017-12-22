@@ -1,17 +1,20 @@
 language: node_js
+
 cache: yarn
+
+# https://github.com/nodejs/LTS
 node_js:
-- '7'
+- '8'
 - '6'
-- '5'
 - '4'
+
 script:
 - if [[ "$TRAVIS_JOB_NUMBER" == *.1 ]]; then npm test && npm run coverage; else npm run testonly; fi
 
 jobs:
   include:
     - stage: npm release
-      node_js: '7'
+      node_js: '8'
       script: echo "Deploying to npm ..."
       deploy:
         provider: npm
