@@ -14,5 +14,3 @@ fi;
 # When Travis CI publishes to NPM, we need to make
 # sure that the files are built into dist.
 npm run build;
-
-cp -r ./dist/* ./

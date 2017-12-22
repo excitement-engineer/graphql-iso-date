@@ -12,7 +12,7 @@
     "url": "https://github.com/excitement-engineer/graphql-iso-date.git"
   },
   "scripts": {
-    "examples": "npm run build && babel-node examples/index.js",
+    "examples": "npm run build:babel && babel-node examples/index.js",
     "build": "npm run build:clean && npm run build:babel && npm run build:package-json && npm run build:flow",
     "build:clean": "rm -rf ./dist",
     "build:package-json": "node ./resources/clean-package-json.js",
