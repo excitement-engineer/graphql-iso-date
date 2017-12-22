@@ -28,4 +28,6 @@ exports[`GraphQLDate value parsing throws an error when parsing 4566 1`] = `"Dat
 
 exports[`GraphQLDate value parsing throws an error when parsing Array [] 1`] = `"Date cannot represent non string type []"`;
 
+exports[`GraphQLDate value parsing throws an error when parsing null 1`] = `"Date cannot represent non string type null"`;
+
 exports[`GraphQLDate value parsing throws an error when parsing true 1`] = `"Date cannot represent non string type true"`;

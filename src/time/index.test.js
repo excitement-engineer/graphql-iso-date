@@ -105,22 +105,18 @@ describe('GraphQLTime', () => {
       })
     });
 
-    [
-      null,
-      undefined
-    ].forEach(invalidInput => {
-      it(`parses ${stringify(invalidInput)} into javascript undefined`, () => {
-        expect(
-          GraphQLTime.parseValue(invalidInput)
-        ).toBeUndefined()
-      })
+    it(`parses undefined into javascript undefined`, () => {
+      expect(
+        GraphQLTime.parseValue(undefined)
+      ).toBeUndefined()
     });
 
     [
       4566,
       {},
       [],
-      true
+      true,
+      null
     ].forEach(invalidInput => {
       it(`throws an error when parsing ${stringify(invalidInput)}`, () => {
         expect(() =>
