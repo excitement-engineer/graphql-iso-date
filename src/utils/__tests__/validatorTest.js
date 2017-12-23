@@ -110,7 +110,7 @@ describe('validator', () => {
       '2016-09-31',
       '2016-11-31',
       '2016-02-30',
-      '9999-00-31'
+      '9999-00-31',
     ].forEach(date => {
       it(`identifies ${date} as an invalid date`, () => {
         expect(validateDate(date)).toEqual(false)

@@ -6,9 +6,9 @@ exports[`GraphQLDate serialization throws an error when serializing an invalid d
 
 exports[`GraphQLDate serialization throws an error when serializing an invalid date-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
 
-exports[`GraphQLDate serialization throws error when serializing {} 1`] = `"Date cannot represent a non string, or non Date type {}"`;
+exports[`GraphQLDate serialization throws error when serializing [] 1`] = `"Date cannot represent a non string, or non Date type []"`;
 
-exports[`GraphQLDate serialization throws error when serializing Array [] 1`] = `"Date cannot represent a non string, or non Date type []"`;
+exports[`GraphQLDate serialization throws error when serializing {} 1`] = `"Date cannot represent a non string, or non Date type {}"`;
 
 exports[`GraphQLDate serialization throws error when serializing invalid javascript Date 1`] = `"Date cannot represent an invalid Date instance"`;
 
@@ -22,11 +22,11 @@ exports[`GraphQLDate value parsing throws an error parsing an invalid datetime-s
 
 exports[`GraphQLDate value parsing throws an error parsing an invalid datetime-string "invalid date" 1`] = `"Date cannot represent an invalid date-string invalid date."`;
 
+exports[`GraphQLDate value parsing throws an error when parsing [] 1`] = `"Date cannot represent non string type []"`;
+
 exports[`GraphQLDate value parsing throws an error when parsing {} 1`] = `"Date cannot represent non string type {}"`;
 
 exports[`GraphQLDate value parsing throws an error when parsing 4566 1`] = `"Date cannot represent non string type 4566"`;
-
-exports[`GraphQLDate value parsing throws an error when parsing Array [] 1`] = `"Date cannot represent non string type []"`;
 
 exports[`GraphQLDate value parsing throws an error when parsing null 1`] = `"Date cannot represent non string type null"`;
 
