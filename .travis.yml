@@ -8,17 +8,13 @@ node_js:
 script:
 - npm test && npm run coverage
 
-jobs:
-  include:
-    - stage: npm release
-      node_js: '8'
-      script: echo "Deploying to npm ..."
-      deploy:
-        provider: npm
-        skip_cleanup: true
-        email: dirkjanrutten@gmail.com
-        api_key:
-          secure: b/xf5WxoNhvVEUCIw7I3iqurPzR/CSgereQS0sFQV5aWYTWLQMi+YtUptOuHg/Yau0pYhg77EaOJfwUPOlZk/HgjIkV094hKqq2HDaa9/Foqejdrz/1F9lWy9zNLoNIeZ9CnI5h460wRNj08Rz6ex4xUz0wm9dnDF85xl/wDoQbLmpKUDXQUeWK77uvD/sijXrK/mtmCCQD8L466JGiBC+9RX+IZk2SqEr2vNcnpk6pjHYvkzjDE8B9UIu9qK0QuWg3RMzc1ABvZvFhC9AyW6iMoliYI44VN8coXM8Gtpo6BLfyh2wdb/mbWGYnPb030qu0nYZJ89jwTrd6VTqwAM6oGaNvT0964eNnqpipE1Gx8YcHXLAdTWC+yB5zSthZunG5Hz5WsZAIHC9UUoj33DSbiQAf36SokfLPNZ/Uj1hnQwuGozCRywWA18K/r7+/FlB+f0Q/e72rQDA/9ocdDghwxYkxgaqtKaWnYDVAGuIliRWw+cikLbQDxbcfY7MTg3MUcmdh3pOrWNrwPEpn6H5O9Kci6mpVwx92eZJd/kXBLQlGI5McI+q1vws+l01v/zw+cUs5GItLJavNK/4U0G7EZYMi9b6xzdIaykct0r7Y0Wnpm2NQrs0DN+3WQxUji/HaWNR7z+/Pv1pdKYpdpOuB1RLJXCd2Olddxj+/0p+4=
-        on:
-          tags: true
-          branch: master
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: dirkjanrutten@gmail.com
+  api_key:
+    secure: b/xf5WxoNhvVEUCIw7I3iqurPzR/CSgereQS0sFQV5aWYTWLQMi+YtUptOuHg/Yau0pYhg77EaOJfwUPOlZk/HgjIkV094hKqq2HDaa9/Foqejdrz/1F9lWy9zNLoNIeZ9CnI5h460wRNj08Rz6ex4xUz0wm9dnDF85xl/wDoQbLmpKUDXQUeWK77uvD/sijXrK/mtmCCQD8L466JGiBC+9RX+IZk2SqEr2vNcnpk6pjHYvkzjDE8B9UIu9qK0QuWg3RMzc1ABvZvFhC9AyW6iMoliYI44VN8coXM8Gtpo6BLfyh2wdb/mbWGYnPb030qu0nYZJ89jwTrd6VTqwAM6oGaNvT0964eNnqpipE1Gx8YcHXLAdTWC+yB5zSthZunG5Hz5WsZAIHC9UUoj33DSbiQAf36SokfLPNZ/Uj1hnQwuGozCRywWA18K/r7+/FlB+f0Q/e72rQDA/9ocdDghwxYkxgaqtKaWnYDVAGuIliRWw+cikLbQDxbcfY7MTg3MUcmdh3pOrWNrwPEpn6H5O9Kci6mpVwx92eZJd/kXBLQlGI5McI+q1vws+l01v/zw+cUs5GItLJavNK/4U0G7EZYMi9b6xzdIaykct0r7Y0Wnpm2NQrs0DN+3WQxUji/HaWNR7z+/Pv1pdKYpdpOuB1RLJXCd2Olddxj+/0p+4=
+  on:
+    tags: true
+    branch: master
+      
