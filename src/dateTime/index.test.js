@@ -10,6 +10,7 @@
 
 import GraphQLDateTime from './'
 import * as Kind from 'graphql/language/kinds'
+// flowlint-next-line untyped-import:off
 import {stringify} from 'jest-matcher-utils'
 
 const invalidDates = [
@@ -140,22 +141,20 @@ describe('GraphQLDateTime', () => {
       })
     });
 
-    [
-      null,
-      undefined
-    ].forEach(invalidInput => {
-      it(`parses ${stringify(invalidInput)} into javascript undefined`, () => {
-        expect(
-          GraphQLDateTime.parseValue(invalidInput)
-        ).toBeUndefined()
-      })
+  
+    it(`parses undefined into undefined`, () => {
+      expect(
+        GraphQLDateTime.parseValue(undefined)
+      ).toBeUndefined()
     });
+  
 
     [
       4566,
       {},
       [],
-      true
+      true,
+      null
     ].forEach(invalidInput => {
       it(`throws an error when parsing ${stringify(invalidInput)}`, () => {
         expect(() =>

@@ -10,7 +10,9 @@
 
 import GraphQLTime from './'
 import * as Kind from 'graphql/language/kinds'
+// flowlint-next-line untyped-import:off
 import MockDate from 'mockdate'
+// flowlint-next-line untyped-import:off
 import {stringify} from 'jest-matcher-utils'
 
 // Mock the new Date() call so it always returns 2017-01-01T00:00:00.000Z
@@ -105,22 +107,18 @@ describe('GraphQLTime', () => {
       })
     });
 
-    [
-      null,
-      undefined
-    ].forEach(invalidInput => {
-      it(`parses ${stringify(invalidInput)} into javascript undefined`, () => {
-        expect(
-          GraphQLTime.parseValue(invalidInput)
-        ).toBeUndefined()
-      })
+    it(`parses undefined into javascript undefined`, () => {
+      expect(
+        GraphQLTime.parseValue(undefined)
+      ).toBeUndefined()
     });
 
     [
       4566,
       {},
       [],
-      true
+      true,
+      null
     ].forEach(invalidInput => {
       it(`throws an error when parsing ${stringify(invalidInput)}`, () => {
         expect(() =>
