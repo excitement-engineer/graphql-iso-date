@@ -136,7 +136,7 @@ describe('GraphQLTime', () => {
     })
   })
 
-  describe('literial parsing', () => {
+  describe('literal parsing', () => {
     validDates.forEach(([ value, expected ]) => {
       const literal = {
         kind: Kind.STRING, value
@@ -153,20 +153,20 @@ describe('GraphQLTime', () => {
       const invalidLiteral = {
         kind: Kind.STRING, value
       }
-      it(`returns null when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
-        expect(
+      it(`throws error when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
+        expect(() =>
           GraphQLTime.parseLiteral(invalidLiteral)
-        ).toEqual(null)
+        ).toThrowErrorMatchingSnapshot()
       })
     })
 
     const invalidLiteralFloat = {
       kind: Kind.FLOAT, value: '5'
     }
-    it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
-      expect(
+    it(`throws error when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
+      expect(() =>
         GraphQLTime.parseLiteral(invalidLiteralFloat)
-      ).toEqual(null)
+      ).toThrowErrorMatchingSnapshot()
     })
   })
 })

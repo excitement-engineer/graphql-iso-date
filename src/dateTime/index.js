@@ -11,6 +11,7 @@
 import {GraphQLScalarType} from 'graphql'
 import type {GraphQLScalarTypeConfig} from 'graphql' // eslint-disable-line
 import { Kind } from 'graphql/language'
+import { GraphQLError } from 'graphql/error'
 import {
   validateDateTime,
   validateUnixTimestamp,
@@ -18,8 +19,12 @@ import {
   serializeDateTime,
   serializeDateTimeString,
   serializeUnixTimestamp,
-  parseDateTime
+  parseDateTime,
+  createParseHandler
 } from '../utils'
+
+const SCALAR_NAME = 'DateTime'
+const handleParse = createParseHandler(SCALAR_NAME, validateDateTime, parseDateTime)
 
 /**
  * An RFC 3339 compliant date-time scalar.
@@ -34,7 +39,7 @@ import {
  *    to RFC 3339 UTC date-time strings.
  */
 const config: GraphQLScalarTypeConfig<Date, string> = {
-  name: 'DateTime',
+  name: SCALAR_NAME,
   description: 'A date-time string at UTC, such as 2007-12-03T10:15:30Z, ' +
                'compliant with the `date-time` format outlined in section 5.6 of ' +
                'the RFC 3339 profile of the ISO 8601 standard for representation ' +
@@ -67,26 +72,10 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
     }
   },
   parseValue (value) {
-    if (!(typeof value === 'string' || value instanceof String)) {
-      throw new TypeError(
-        `DateTime cannot represent non string type ${JSON.stringify(value)}`
-      )
-    }
-
-    if (validateDateTime(value)) {
-      return parseDateTime(value)
-    }
-    throw new TypeError(
-      `DateTime cannot represent an invalid date-time-string ${value}.`
-    )
+    return handleParse(value)
   },
   parseLiteral (ast) {
-    if (ast.kind === Kind.STRING) {
-      if (validateDateTime(ast.value)) {
-        return parseDateTime(ast.value)
-      }
-    }
-    return null
+    return handleParse(ast.kind === Kind.STRING ? ast.value : null, ast)
   }
 }
 
