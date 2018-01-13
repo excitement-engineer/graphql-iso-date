@@ -2,7 +2,7 @@
   "name": "graphql-iso-date",
   "version": "3.3.0",
   "description": "A set of RFC 3339 compliant date/time GraphQL scalar types.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "homepage": "https://github.com/excitement-engineer/graphql-iso-date",
   "bugs": {
     "url": "https://github.com/excitement-engineer/graphql-iso-date/issues"
