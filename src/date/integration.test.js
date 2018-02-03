@@ -8,7 +8,7 @@
  *
  */
 
- import { graphql, GraphQLObjectType, GraphQLSchema, GraphQLError, GraphQLInputObjectType } from 'graphql'
+ import { graphql, GraphQLObjectType, GraphQLSchema, GraphQLError } from 'graphql'
  import GraphQLDate from './'
 
  const schema = new GraphQLSchema({
@@ -17,7 +17,7 @@
      fields: {
        validDate: {
          type: GraphQLDate,
-         resolve: () => new Date("2016-05-02")
+         resolve: () => new Date('2016-05-02')
        },
        validDateString: {
          type: GraphQLDate,
@@ -29,7 +29,7 @@
        },
        invalidDate: {
          type: GraphQLDate,
-         resolve: () => new Date("wrong")
+         resolve: () => new Date('wrong')
        },
        invalidType: {
          type: GraphQLDate,
@@ -46,31 +46,31 @@
        }
      }
    })
- });
- 
- it("executes a query that includes a date", async () => {
+ })
+
+ it('executes a query that includes a date', async () => {
    const query = `
      query DateTest($date: Date!) {
        validDate
        validDateString
        input(date: $date)
      }
-   `;
+   `
 
    const variables = { date: '2017-10-01' }
 
-   const response = await graphql(schema, query, null, null, variables);
-   
+   const response = await graphql(schema, query, null, null, variables)
+
    expect(response).toEqual({
      data: {
-       validDate: "2016-05-02",
-       input: "2017-10-01",
-       validDateString: "1991-12-24"
+       validDate: '2016-05-02',
+       input: '2017-10-01',
+       validDateString: '1991-12-24'
      }
-   });
- });
- 
- it("parses input to a JS Date", done => {
+   })
+ })
+
+ it('parses input to a JS Date', done => {
    const schema = new GraphQLSchema({
      query: new GraphQLObjectType({
        name: 'Query',
@@ -84,39 +84,38 @@
            },
            resolve: (_, input) => {
              try {
-               expect(input.date).toEqual(new Date(Date.UTC(2016, 11, 17)));
-               done();
-             } catch(e) {
-               done.fail(e);
+               expect(input.date).toEqual(new Date(Date.UTC(2016, 11, 17)))
+               done()
+             } catch (e) {
+               done.fail(e)
              }
            }
+         }
        }
-     }
+     })
    })
-   });
-   
+
    const query = `
      query DateTest($date: Date!) {
        input(date: $date)
      }
-   `;
+   `
    const variables = { date: '2016-12-17' }
 
-   graphql(schema, query, null, null, variables);
- });
- 
- it("errors if there is an invalid date returned from the resolver", async () => {
+   graphql(schema, query, null, null, variables)
+ })
+
+ it('errors if there is an invalid date returned from the resolver', async () => {
    const query = `
      {
        invalidDateString
        invalidDate
        invalidType
      }
-   `;
+   `
 
+   const response = await graphql(schema, query)
 
-   const response = await graphql(schema, query);
-   
    expect(response).toEqual({
      data: {
        invalidDateString: null,
@@ -124,77 +123,77 @@
        invalidType: null
      },
      errors: [
-       new GraphQLError("Date cannot represent an invalid date-string 2017-01-001."),
-       new GraphQLError("Date cannot represent an invalid Date instance"),
-       new GraphQLError("Date cannot represent a non string, or non Date type 5")
+       new GraphQLError('Date cannot represent an invalid date-string 2017-01-001.'),
+       new GraphQLError('Date cannot represent an invalid Date instance'),
+       new GraphQLError('Date cannot represent a non string, or non Date type 5')
      ]
-   });
- });
- 
- it("errors if the variable value is not a valid date", async () => {
+   })
+ })
+
+ it('errors if the variable value is not a valid date', async () => {
    const query = `
      query DateTest($date: Date!) {
        input(date: $date)
      }
-   `;
+   `
 
    const variables = { date: '2017-10-001' }
 
-   const response = await graphql(schema, query, null, null, variables);
-   
+   const response = await graphql(schema, query, null, null, variables)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Variable \"$date\" got invalid value \"2017-10-001\"; Expected type Date; Date cannot represent an invalid date-string 2017-10-001.")
+       new GraphQLError('Variable "$date" got invalid value "2017-10-001"; Expected type Date; Date cannot represent an invalid date-string 2017-10-001.')
      ]
-   }); 
- });
- 
- it("errors if the variable value is not of type string", async () => {
+   })
+ })
+
+ it('errors if the variable value is not of type string', async () => {
    const query = `
      query DateTest($date: Date!) {
        input(date: $date)
      }
-   `;
+   `
 
    const variables = { date: 4 }
 
-   const response = await graphql(schema, query, null, null, variables);
-   
+   const response = await graphql(schema, query, null, null, variables)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Variable \"$date\" got invalid value 4; Expected type Date; Date cannot represent non string type 4")
+       new GraphQLError('Variable "$date" got invalid value 4; Expected type Date; Date cannot represent non string type 4')
      ]
-   }); 
- });
- 
- it("errors if the literal input value is not a valid date", async () => {
+   })
+ })
+
+ it('errors if the literal input value is not a valid date', async () => {
    const query = `
      {
        input(date: "2017-10-001")
      }
-   `;
+   `
 
-   const response = await graphql(schema, query);
-   
+   const response = await graphql(schema, query)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Expected type Date, found \"2017-10-001\"; Date cannot represent an invalid date-string 2017-10-001.")
+       new GraphQLError('Expected type Date, found "2017-10-001"; Date cannot represent an invalid date-string 2017-10-001.')
      ]
-   }); 
- });
- 
- it("errors if the literal input value in a query is not a string", async () => {
+   })
+ })
+
+ it('errors if the literal input value in a query is not a string', async () => {
    const query = `
      {
        input(date: 4)
      }
-   `;
+   `
 
-   const response = await graphql(schema, query);
-   
+   const response = await graphql(schema, query)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Expected type Date, found 4; Date cannot represent non string type 4")
+       new GraphQLError('Expected type Date, found 4; Date cannot represent non string type 4')
      ]
-   }); 
- });
+   })
+ })

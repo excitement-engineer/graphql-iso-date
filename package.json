@@ -24,7 +24,7 @@
     "watch": "jest --watch",
     "check": "flow check",
     "prepublishOnly": ". ./resources/prepublish.sh",
-    "lint": "standard src/"
+    "lint": "standard"
   },
   "keywords": [
     "GraphQL",

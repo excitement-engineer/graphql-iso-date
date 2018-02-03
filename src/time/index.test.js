@@ -105,7 +105,7 @@ describe('GraphQLTime', () => {
           GraphQLTime.parseValue(value)
         ).toEqual(expected)
       })
-    });
+    })
 
     it(`parses undefined into javascript undefined`, () => {
       expect(
@@ -156,7 +156,7 @@ describe('GraphQLTime', () => {
       it(`errors when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
         expect(() =>
           GraphQLTime.parseLiteral(invalidLiteral)
-        ).toThrowErrorMatchingSnapshot();
+        ).toThrowErrorMatchingSnapshot()
       })
     });
 
@@ -175,6 +175,5 @@ describe('GraphQLTime', () => {
         ).toThrowError()
       })
     })
-  
   })
 })

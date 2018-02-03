@@ -77,7 +77,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         `Time cannot represent non string type ${String(ast.value != null ? ast.value : null)}`
       )
     }
-    const value = ast.value;
+    const value = ast.value
     if (validateTime(value)) {
       return parseTime(value)
     }

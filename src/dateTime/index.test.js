@@ -139,15 +139,13 @@ describe('GraphQLDateTime', () => {
           GraphQLDateTime.parseValue(value)
         ).toEqual(expected)
       })
-    });
+    })
 
-  
     it(`parses undefined into undefined`, () => {
       expect(
         GraphQLDateTime.parseValue(undefined)
       ).toBeUndefined()
     });
-  
 
     [
       4566,
@@ -205,9 +203,8 @@ describe('GraphQLDateTime', () => {
       it(`errors when parsing invalid literal ${stringify(literal)}`, () => {
         expect(() =>
           GraphQLDateTime.parseLiteral(literal)
-        ).toThrowErrorMatchingSnapshot();
+        ).toThrowErrorMatchingSnapshot()
       })
-    });
-    
+    })
   })
 })

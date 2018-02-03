@@ -86,7 +86,7 @@ describe('GraphQLDate', () => {
           GraphQLDate.parseValue(value)
         ).toEqual(expected)
       })
-    });
+    })
 
     it(`parses undefined into javascript undefined`, () => {
       expect(
@@ -137,13 +137,13 @@ describe('GraphQLDate', () => {
       it(`errors when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
         expect(() =>
           GraphQLDate.parseLiteral(invalidLiteral)
-        ).toThrowErrorMatchingSnapshot();
+        ).toThrowErrorMatchingSnapshot()
       })
     });
 
     [
       {
-        kind: Kind.FLOAT, value: '5',
+        kind: Kind.FLOAT, value: '5'
       },
       ({
         kind: Kind.DOCUMENT
@@ -153,9 +153,8 @@ describe('GraphQLDate', () => {
       it(`errors when parsing invalid literal ${stringify(literal)}`, () => {
         expect(() =>
           GraphQLDate.parseLiteral(literal)
-        ).toThrowErrorMatchingSnapshot();
+        ).toThrowErrorMatchingSnapshot()
       })
-    });
-    
+    })
   })
 })
