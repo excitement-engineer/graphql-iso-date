@@ -13,4 +13,4 @@ delete package.devDependencies;
 delete package.standard;
 delete package.jest;
 
-fs.writeFileSync('./dist/package.json', JSON.stringify(package, null, 2));
+fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
