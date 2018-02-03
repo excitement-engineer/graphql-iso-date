@@ -177,10 +177,9 @@
    const response = await graphql(schema, query);
    
    expect(response).toEqual({
-     data: {
-     //TODO: This is a bug. It should error.
-     input: null
-   }
+     errors: [
+       new GraphQLError("Expected type Date, found \"2017-10-001\"; Date cannot represent an invalid date-string 2017-10-001.")
+     ]
    }); 
  });
  
@@ -194,9 +193,8 @@
    const response = await graphql(schema, query);
    
    expect(response).toEqual({
-     data: {
-     //TODO: This is a bug. It should error.
-     input: null
-   }
+     errors: [
+       new GraphQLError("Expected type Date, found 4; Date cannot represent non string type 4")
+     ]
    }); 
  });

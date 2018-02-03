@@ -153,20 +153,20 @@ describe('GraphQLTime', () => {
       const invalidLiteral = {
         kind: Kind.STRING, value
       }
-      it(`returns null when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
-        expect(
+      it(`errors when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
+        expect(() =>
           GraphQLTime.parseLiteral(invalidLiteral)
-        ).toEqual(null)
+        ).toThrowErrorMatchingSnapshot();
       })
     })
 
     const invalidLiteralFloat = {
       kind: Kind.FLOAT, value: '5'
     }
-    it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
-      expect(
+    it(`errors when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
+      expect(() =>
         GraphQLTime.parseLiteral(invalidLiteralFloat)
-      ).toEqual(null)
+      ).toThrowError()
     })
   })
 })
