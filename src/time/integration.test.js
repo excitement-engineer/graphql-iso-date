@@ -8,14 +8,14 @@
  *
  */
 
- import { graphql, GraphQLObjectType, GraphQLSchema, GraphQLError, GraphQLInputObjectType } from 'graphql'
+ import { graphql, GraphQLObjectType, GraphQLSchema, GraphQLError } from 'graphql'
  import GraphQLTime from './'
  // flowlint-next-line untyped-import:off
  import MockDate from 'mockdate'
 
  // Mock the new Date() call so it always returns 2017-01-01T00:00:00.000Z
  MockDate.set(new Date(Date.UTC(2017, 0, 1)))
- 
+
  const schema = new GraphQLSchema({
    query: new GraphQLObjectType({
      name: 'Query',
@@ -34,11 +34,11 @@
        },
        invalidTimeString: {
          type: GraphQLTime,
-         resolve: () => "2222",
+         resolve: () => '2222'
        },
        invalidJSDate: {
          type: GraphQLTime,
-         resolve: () => new Date("wrong")
+         resolve: () => new Date('wrong')
        },
        invalidType: {
          type: GraphQLTime,
@@ -52,12 +52,12 @@
            }
          },
          resolve: (_, input) => input.time
+       }
      }
-   }
+   })
  })
- });
- 
- it("executes a query that includes a time", async () => {
+
+ it('executes a query that includes a time', async () => {
    const query = `
      query TimeTest($time: Time!) {
        validJSDate
@@ -65,41 +65,41 @@
        validTimeString
        input(time: $time)
      }
-   `;
+   `
 
    const variables = { time: '14:30:00Z' }
 
-   const response = await graphql(schema, query, null, null, variables);
-   
+   const response = await graphql(schema, query, null, null, variables)
+
    expect(response).toEqual({
      data: {
        validJSDate: '14:48:10.003Z',
-       validUTCTimeString: "14:30:00Z",
+       validUTCTimeString: '14:30:00Z',
        validTimeString: '22:30:00Z',
-       input: "14:30:00.000Z",
+       input: '14:30:00.000Z'
      }
-   });
- });
- 
- it("shifts an input time to UTC", async () => {
+   })
+ })
+
+ it('shifts an input time to UTC', async () => {
    const query = `
      query TimeTest($time: Time!) {
        input(time: $time)
      }
-   `;
+   `
 
    const variables = { time: '00:00:00+01:30' }
 
-   const response = await graphql(schema, query, null, null, variables);
-   
+   const response = await graphql(schema, query, null, null, variables)
+
    expect(response).toEqual({
      data: {
-       input: "22:30:00.000Z"
+       input: '22:30:00.000Z'
      }
-   });
- });
- 
- it("parses input to a JS Date", done => {
+   })
+ })
+
+ it('parses input to a JS Date', done => {
    const schema = new GraphQLSchema({
      query: new GraphQLObjectType({
        name: 'Query',
@@ -113,40 +113,39 @@
            },
            resolve: (_, input) => {
              try {
-               expect(input.time).toEqual(new Date(Date.UTC(2016, 11, 31, 22, 30)));
-               done();
-             } catch(e) {
-               done.fail(e);
+               expect(input.time).toEqual(new Date(Date.UTC(2016, 11, 31, 22, 30)))
+               done()
+             } catch (e) {
+               done.fail(e)
              }
            }
+         }
        }
-     }
+     })
    })
-   });
-   
+
    const query = `
      query TimeTest($time: Time!) {
        input(time: $time)
      }
-   `;
+   `
 
    const variables = { time: '00:00:00+01:30' }
 
-   graphql(schema, query, null, null, variables);
- });
- 
- it("errors if there is an invalid time returned from the resolver", async () => {
+   graphql(schema, query, null, null, variables)
+ })
+
+ it('errors if there is an invalid time returned from the resolver', async () => {
    const query = `
      {
        invalidTimeString
        invalidJSDate
        invalidType
      }
-   `;
- 
- 
-   const response = await graphql(schema, query);
- 
+   `
+
+   const response = await graphql(schema, query)
+
    expect(response).toEqual({
      data: {
        invalidTimeString: null,
@@ -154,77 +153,77 @@
        invalidType: null
      },
      errors: [
-       new GraphQLError("Time cannot represent an invalid time-string 2222."),
-       new GraphQLError("Time cannot represent an invalid Date instance"),
-       new GraphQLError("Time cannot be serialized from a non string, or non Date type 5")
+       new GraphQLError('Time cannot represent an invalid time-string 2222.'),
+       new GraphQLError('Time cannot represent an invalid Date instance'),
+       new GraphQLError('Time cannot be serialized from a non string, or non Date type 5')
      ]
-   });
- });
- 
- it("errors if the variable value is not a valid time", async () => {
+   })
+ })
+
+ it('errors if the variable value is not a valid time', async () => {
    const query = `
      query TimeTest($time: Time!) {
        input(time: $time)
      }
-   `;
- 
+   `
+
    const variables = { time: '__2222' }
- 
-   const response = await graphql(schema, query, null, null, variables);
- 
+
+   const response = await graphql(schema, query, null, null, variables)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Variable \"$time\" got invalid value \"__2222\"; Expected type Time; Time cannot represent an invalid time-string __2222.")
+       new GraphQLError('Variable "$time" got invalid value "__2222"; Expected type Time; Time cannot represent an invalid time-string __2222.')
      ]
-   }); 
- });
- 
- it("errors if the variable value is not of type string", async () => {
+   })
+ })
+
+ it('errors if the variable value is not of type string', async () => {
    const query = `
      query DateTest($time: Time!) {
        input(time: $time)
      }
-   `;
- 
+   `
+
    const variables = { time: 4 }
- 
-   const response = await graphql(schema, query, null, null, variables);
- 
+
+   const response = await graphql(schema, query, null, null, variables)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Variable \"$time\" got invalid value 4; Expected type Time; Time cannot represent non string type 4")
+       new GraphQLError('Variable "$time" got invalid value 4; Expected type Time; Time cannot represent non string type 4')
      ]
-   }); 
- });
- 
- it("errors if the literal input value is not a valid time", async () => {
+   })
+ })
+
+ it('errors if the literal input value is not a valid time', async () => {
    const query = `
      {
        input(time: "__invalid__")
      }
-   `;
- 
-   const response = await graphql(schema, query);
- 
+   `
+
+   const response = await graphql(schema, query)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Expected type Time, found \"__invalid__\"; Time cannot represent an invalid time-string __invalid__.")
+       new GraphQLError('Expected type Time, found "__invalid__"; Time cannot represent an invalid time-string __invalid__.')
      ]
-   }); 
- });
- 
- it("errors if the literal input value in a query is not a string", async () => {
+   })
+ })
+
+ it('errors if the literal input value in a query is not a string', async () => {
    const query = `
      {
        input(time: 4)
      }
-   `;
- 
-   const response = await graphql(schema, query);
- 
+   `
+
+   const response = await graphql(schema, query)
+
    expect(response).toEqual({
      errors: [
-       new GraphQLError("Expected type Time, found 4; Time cannot represent non string type 4")
+       new GraphQLError('Expected type Time, found 4; Time cannot represent non string type 4')
      ]
-   }); 
- });
+   })
+ })

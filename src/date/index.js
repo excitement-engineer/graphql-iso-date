@@ -70,7 +70,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         `Date cannot represent non string type ${String(ast.value != null ? ast.value : null)}`
       )
     }
-    const { value } = ast;
+    const { value } = ast
     if (validateDate(value)) {
       return parseDate(value)
     }
@@ -79,6 +79,5 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
     )
   }
 }
-
 
 export default new GraphQLScalarType(config)

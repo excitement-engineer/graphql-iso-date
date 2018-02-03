@@ -83,10 +83,10 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
   parseLiteral (ast) {
     if (ast.kind !== Kind.STRING) {
       throw new TypeError(
-        `DateTime cannot represent non string type ${String(ast.value != null ? ast.value : null) }`
+        `DateTime cannot represent non string type ${String(ast.value != null ? ast.value : null)}`
       )
     }
-    const { value } = ast;
+    const { value } = ast
     if (validateDateTime(value)) {
       return parseDateTime(value)
     }

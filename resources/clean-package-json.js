@@ -3,14 +3,14 @@
  * interpret the built output as requiring any further transformation.
  */
 
-const fs = require('fs');
+const fs = require('fs')
 
-const package = require('../package.json');
+const packageJson = require('../package.json')
 
-delete package.scripts;
-delete package.options;
-delete package.devDependencies;
-delete package.standard;
-delete package.jest;
+delete packageJson.scripts
+delete packageJson.options
+delete packageJson.devDependencies
+delete packageJson.standard
+delete packageJson.jest
 
-fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2))
