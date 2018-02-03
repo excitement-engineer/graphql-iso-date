@@ -207,10 +207,9 @@
    const response = await graphql(schema, query);
  
    expect(response).toEqual({
-     data: {
-     //TODO: This is a bug. It should error.
-     input: null
-   }
+     errors: [
+       new GraphQLError("Expected type Time, found \"__invalid__\"; Time cannot represent an invalid time-string __invalid__.")
+     ]
    }); 
  });
  
@@ -224,9 +223,8 @@
    const response = await graphql(schema, query);
  
    expect(response).toEqual({
-     data: {
-     //TODO: This is a bug. It should error.
-     input: null
-   }
+     errors: [
+       new GraphQLError("Expected type Time, found 4; Time cannot represent non string type 4")
+     ]
    }); 
  });

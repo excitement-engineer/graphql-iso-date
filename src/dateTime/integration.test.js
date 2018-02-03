@@ -213,10 +213,9 @@
    const response = await graphql(schema, query);
    
    expect(response).toEqual({
-     data: {
-     //TODO: This is a bug. It should error.
-     input: null
-   }
+     errors: [
+       new GraphQLError("Expected type DateTime, found \"2017-10-001T00:00:00\"; DateTime cannot represent an invalid date-time-string 2017-10-001T00:00:00.")
+     ]
    }); 
  });
  
@@ -230,9 +229,8 @@
    const response = await graphql(schema, query);
    
    expect(response).toEqual({
-     data: {
-     //TODO: This is a bug. It should error.
-     input: null
-   }
+     errors: [
+       new GraphQLError("Expected type DateTime, found 4; DateTime cannot represent non string type 4")
+     ]
    }); 
  });

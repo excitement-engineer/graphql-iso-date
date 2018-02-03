@@ -189,20 +189,25 @@ describe('GraphQLDateTime', () => {
       const invalidLiteral = {
         kind: Kind.STRING, value
       }
-      it(`returns null when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
-        expect(
+      it(`errors when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
+        expect(() =>
           GraphQLDateTime.parseLiteral(invalidLiteral)
-        ).toEqual(null)
+        ).toThrowErrorMatchingSnapshot()
       })
-    })
+    });
 
-    const invalidLiteralFloat = {
+    [{
       kind: Kind.FLOAT, value: '5'
-    }
-    it(`returns null when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
-      expect(
-        GraphQLDateTime.parseLiteral(invalidLiteralFloat)
-      ).toEqual(null)
-    })
+    }, ({
+      kind: Kind.DOCUMENT
+      // flowlint-next-line unclear-type:off
+    }: any)].forEach(literal => {
+      it(`errors when parsing invalid literal ${stringify(literal)}`, () => {
+        expect(() =>
+          GraphQLDateTime.parseLiteral(literal)
+        ).toThrowErrorMatchingSnapshot();
+      })
+    });
+    
   })
 })
