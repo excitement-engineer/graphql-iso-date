@@ -139,15 +139,23 @@ describe('GraphQLDate', () => {
           GraphQLDate.parseLiteral(invalidLiteral)
         ).toThrowErrorMatchingSnapshot();
       })
-    })
+    });
 
-    const invalidLiteralFloat = {
-      kind: Kind.FLOAT, value: '5'
-    }
-    it(`errors when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
-      expect(() =>
-        GraphQLDate.parseLiteral(invalidLiteralFloat)
-      ).toThrowError(new Error("Date cannot represent non string type 5"));
-    })
+    [
+      {
+        kind: Kind.FLOAT, value: '5',
+      },
+      ({
+        kind: Kind.DOCUMENT
+        // flowlint-next-line unclear-type:off
+      }: any)
+    ].forEach(literal => {
+      it(`errors when parsing invalid literal ${stringify(literal)}`, () => {
+        expect(() =>
+          GraphQLDate.parseLiteral(literal)
+        ).toThrowErrorMatchingSnapshot();
+      })
+    });
+    
   })
 })

@@ -194,15 +194,20 @@ describe('GraphQLDateTime', () => {
           GraphQLDateTime.parseLiteral(invalidLiteral)
         ).toThrowErrorMatchingSnapshot()
       })
-    })
+    });
 
-    const invalidLiteralFloat = {
+    [{
       kind: Kind.FLOAT, value: '5'
-    }
-    it(`errors when parsing invalid literal ${stringify(invalidLiteralFloat)}`, () => {
-      expect(() =>
-        GraphQLDateTime.parseLiteral(invalidLiteralFloat)
-      ).toThrowError(new Error("DateTime cannot represent non string type 5"))
-    })
+    }, ({
+      kind: Kind.DOCUMENT
+      // flowlint-next-line unclear-type:off
+    }: any)].forEach(literal => {
+      it(`errors when parsing invalid literal ${stringify(literal)}`, () => {
+        expect(() =>
+          GraphQLDateTime.parseLiteral(literal)
+        ).toThrowErrorMatchingSnapshot();
+      })
+    });
+    
   })
 })
