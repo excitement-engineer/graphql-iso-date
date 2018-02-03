@@ -27,3 +27,5 @@ export {
   validateUnixTimestamp,
   validateJSDate
 } from './validator'
+
+export { default as createParseHandler } from './createParseHandler'
