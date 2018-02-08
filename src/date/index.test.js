@@ -9,7 +9,7 @@
  */
 
 import GraphQLDate from './'
-import * as Kind from 'graphql/language/kinds'
+import { Kind } from 'graphql'
 // flowlint-next-line untyped-import:off
 import {stringify} from 'jest-matcher-utils'
 

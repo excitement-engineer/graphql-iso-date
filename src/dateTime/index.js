@@ -8,9 +8,8 @@
  *
  */
 
-import {GraphQLScalarType} from 'graphql'
+import {GraphQLScalarType, Kind} from 'graphql'
 import type {GraphQLScalarTypeConfig} from 'graphql' // eslint-disable-line
-import { Kind } from 'graphql/language'
 import {
   validateDateTime,
   validateUnixTimestamp,
