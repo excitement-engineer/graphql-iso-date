@@ -9,7 +9,7 @@
  */
 
 import GraphQLTime from './'
-import * as Kind from 'graphql/language/kinds'
+import { Kind } from 'graphql'
 // flowlint-next-line untyped-import:off
 import MockDate from 'mockdate'
 // flowlint-next-line untyped-import:off
