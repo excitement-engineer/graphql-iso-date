@@ -51,7 +51,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "codecov": "^3.0.0",
     "eslint-plugin-flowtype": "^2.40.1",
-    "flow-bin": "^0.65.0",
+    "flow-bin": "^0.76.0",
     "graphql": "^0.13.0",
     "jest": "^22.0.4",
     "mockdate": "^2.0.2",
