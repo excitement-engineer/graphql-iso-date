@@ -32,7 +32,7 @@ import {
  *    RFC 3339 date-time strings and unix timestamps
  *    to RFC 3339 UTC date-time strings.
  */
-const config: GraphQLScalarTypeConfig<Date, string> = {
+export const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'DateTime',
   description: 'A date-time string at UTC, such as 2007-12-03T10:15:30Z, ' +
                'compliant with the `date-time` format outlined in section 5.6 of ' +

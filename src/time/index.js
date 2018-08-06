@@ -30,7 +30,7 @@ import {
  *    This scalar serializes javascript Dates and
  *    RFC 3339 time strings to RFC 3339 UTC time strings.
  */
-const config: GraphQLScalarTypeConfig<Date, string> = {
+export const config: GraphQLScalarTypeConfig<Date, string> = {
   name: 'Time',
   description: 'A time string at UTC, such as 10:15:30Z, compliant with ' +
                'the `full-time` format outlined in section 5.6 of the RFC 3339' +
