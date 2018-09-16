@@ -86,12 +86,6 @@ describe('GraphQLDate', () => {
           GraphQLDate.parseValue(value)
         ).toEqual(expected)
       })
-    })
-
-    it(`parses undefined into javascript undefined`, () => {
-      expect(
-        GraphQLDate.parseValue(undefined)
-      ).toBeUndefined()
     });
 
     [

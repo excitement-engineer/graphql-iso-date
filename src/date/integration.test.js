@@ -54,6 +54,7 @@ it('executes a query that includes a date', async () => {
        validDate
        validDateString
        input(date: $date)
+       inputNull: input
      }
    `
 
@@ -65,7 +66,8 @@ it('executes a query that includes a date', async () => {
     data: {
       validDate: '2016-05-02',
       input: '2017-10-01',
-      validDateString: '1991-12-24'
+      validDateString: '1991-12-24',
+      inputNull: null
     }
   })
 })
