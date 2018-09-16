@@ -20,7 +20,7 @@ import {
   parseDateTime
 } from '../'
 // flowlint-next-line untyped-import:off
-import {stringify} from 'jest-matcher-utils'
+import { stringify } from 'jest-matcher-utils'
 // flowlint-next-line untyped-import:off
 import MockDate from 'mockdate'
 // Mock the new Date() call so it always returns 2017-01-01T00:00:00.000Z

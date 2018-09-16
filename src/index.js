@@ -8,6 +8,6 @@
  *
  */
 
-export {default as GraphQLDate} from './date'
-export {default as GraphQLTime} from './time'
-export {default as GraphQLDateTime} from './dateTime'
+export { default as GraphQLDate } from './date'
+export { default as GraphQLTime } from './time'
+export { default as GraphQLDateTime } from './dateTime'
