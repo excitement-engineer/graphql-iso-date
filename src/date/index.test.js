@@ -8,142 +8,128 @@
  *
  */
 
-import GraphQLDate from './'
-import { Kind } from 'graphql'
+import GraphQLDate from "./";
+import { Kind } from "graphql";
 // flowlint-next-line untyped-import:off
-import {stringify} from 'jest-matcher-utils'
+import { stringify } from "jest-matcher-utils";
 
-const invalidDates = [
-  'invalid date',
-  '2015-02-29'
-]
+const invalidDates = ["invalid date", "2015-02-29"];
 
 const validDates = [
-  [ '2016-12-17', new Date(Date.UTC(2016, 11, 17)) ],
-  [ '2016-02-01', new Date(Date.UTC(2016, 1, 1)) ]
-]
+  ["2016-12-17", new Date(Date.UTC(2016, 11, 17))],
+  ["2016-02-01", new Date(Date.UTC(2016, 1, 1))]
+];
 
-describe('GraphQLDate', () => {
-  it('has a description', () => {
-    expect(GraphQLDate.description).toMatchSnapshot()
-  })
+describe("GraphQLDate", () => {
+  it("has a description", () => {
+    expect(GraphQLDate.description).toMatchSnapshot();
+  });
 
-  describe('serialization', () => {
-    [
-      {},
-      [],
-      null,
-      undefined,
-      true
-    ].forEach(invalidInput => {
+  describe("serialization", () => {
+    [{}, [], null, undefined, true].forEach(invalidInput => {
       it(`throws error when serializing ${stringify(invalidInput)}`, () => {
         expect(() =>
           GraphQLDate.serialize(invalidInput)
-        ).toThrowErrorMatchingSnapshot()
-      })
+        ).toThrowErrorMatchingSnapshot();
+      });
     });
 
     [
-      [ new Date(Date.UTC(2016, 11, 17, 14)), '2016-12-17' ],
-      [ new Date(Date.UTC(2016, 0, 1, 14, 48, 10, 3)), '2016-01-01' ],
-      [ new Date(Date.UTC(2016, 0, 1)), '2016-01-01' ]
-    ].forEach(([ value, expected ]) => {
-      it(`serializes javascript Date ${stringify(value)} into ${stringify(expected)}`, () => {
-        expect(
-          GraphQLDate.serialize(value)
-        ).toEqual(expected)
-      })
-    })
+      [new Date(Date.UTC(2016, 11, 17, 14)), "2016-12-17"],
+      [new Date(Date.UTC(2016, 0, 1, 14, 48, 10, 3)), "2016-01-01"],
+      [new Date(Date.UTC(2016, 0, 1)), "2016-01-01"]
+    ].forEach(([value, expected]) => {
+      it(`serializes javascript Date ${stringify(value)} into ${stringify(
+        expected
+      )}`, () => {
+        expect(GraphQLDate.serialize(value)).toEqual(expected);
+      });
+    });
 
     it(`throws error when serializing invalid javascript Date`, () => {
       expect(() =>
-        GraphQLDate.serialize(new Date('invalid date'))
-      ).toThrowErrorMatchingSnapshot()
-    })
+        GraphQLDate.serialize(new Date("invalid date"))
+      ).toThrowErrorMatchingSnapshot();
+    });
 
     // Serializes from date string
     validDates.forEach(([value]) => {
       it(`serializes date-string ${value}`, () => {
-        expect(
-          GraphQLDate.serialize(value)
-        ).toEqual(value)
-      })
-    })
-
-    invalidDates.forEach(dateString => {
-      it(`throws an error when serializing an invalid date-string ${stringify(dateString)}`, () => {
-        expect(() =>
-          GraphQLDate.serialize(dateString)
-        ).toThrowErrorMatchingSnapshot()
-      })
-    })
-  })
-
-  describe('value parsing', () => {
-    validDates.forEach(([ value, expected ]) => {
-      it(`parses date-string ${stringify(value)} into javascript Date ${stringify(expected)}`, () => {
-        expect(
-          GraphQLDate.parseValue(value)
-        ).toEqual(expected)
-      })
-    })
-
-    it(`parses undefined into javascript undefined`, () => {
-      expect(
-        GraphQLDate.parseValue(undefined)
-      ).toBeUndefined()
+        expect(GraphQLDate.serialize(value)).toEqual(value);
+      });
     });
 
-    [
-      4566,
-      {},
-      [],
-      true,
-      null
-    ].forEach(invalidInput => {
+    invalidDates.forEach(dateString => {
+      it(`throws an error when serializing an invalid date-string ${stringify(
+        dateString
+      )}`, () => {
+        expect(() =>
+          GraphQLDate.serialize(dateString)
+        ).toThrowErrorMatchingSnapshot();
+      });
+    });
+  });
+
+  describe("value parsing", () => {
+    validDates.forEach(([value, expected]) => {
+      it(`parses date-string ${stringify(
+        value
+      )} into javascript Date ${stringify(expected)}`, () => {
+        expect(GraphQLDate.parseValue(value)).toEqual(expected);
+      });
+    });
+
+    [4566, {}, [], true, null].forEach(invalidInput => {
       it(`throws an error when parsing ${stringify(invalidInput)}`, () => {
         expect(() =>
           GraphQLDate.parseValue(invalidInput)
-        ).toThrowErrorMatchingSnapshot()
-      })
-    })
+        ).toThrowErrorMatchingSnapshot();
+      });
+    });
 
     invalidDates.forEach(dateString => {
-      it(`throws an error parsing an invalid datetime-string ${stringify(dateString)}`, () => {
+      it(`throws an error parsing an invalid datetime-string ${stringify(
+        dateString
+      )}`, () => {
         expect(() =>
           GraphQLDate.parseValue(dateString)
-        ).toThrowErrorMatchingSnapshot()
-      })
-    })
-  })
+        ).toThrowErrorMatchingSnapshot();
+      });
+    });
+  });
 
-  describe('literial parsing', () => {
-    validDates.forEach(([ value, expected ]) => {
+  describe("literial parsing", () => {
+    validDates.forEach(([value, expected]) => {
       const literal = {
-        kind: Kind.STRING, value
-      }
+        kind: Kind.STRING,
+        value
+      };
 
-      it(`parses literal ${stringify(literal)} into javascript Date ${stringify(expected)}`, () => {
-        expect(
-          GraphQLDate.parseLiteral(literal)
-        ).toEqual(expected)
-      })
-    })
+      it(`parses literal ${stringify(literal)} into javascript Date ${stringify(
+        expected
+      )}`, () => {
+        expect(GraphQLDate.parseLiteral(literal)).toEqual(expected);
+      });
+    });
 
     invalidDates.forEach(value => {
       const invalidLiteral = {
-        kind: Kind.STRING, value
-      }
-      it(`errors when parsing invalid literal ${stringify(invalidLiteral)}`, () => {
+        kind: Kind.STRING,
+        value
+      };
+      it(`errors when parsing invalid literal ${stringify(
+        invalidLiteral
+      )}`, () => {
         expect(() =>
           GraphQLDate.parseLiteral(invalidLiteral)
-        ).toThrowErrorMatchingSnapshot()
-      })
+        ).toThrowErrorMatchingSnapshot();
+      });
     });
 
     [
       {
-        kind: Kind.FLOAT, value: '5'
+        kind: Kind.FLOAT,
+        value: "5"
       },
       ({
         kind: Kind.DOCUMENT
@@ -153,8 +139,8 @@ describe('GraphQLDate', () => {
       it(`errors when parsing invalid literal ${stringify(literal)}`, () => {
         expect(() =>
           GraphQLDate.parseLiteral(literal)
-        ).toThrowErrorMatchingSnapshot()
-      })
-    })
-  })
-})
+        ).toThrowErrorMatchingSnapshot();
+      });
+    });
+  });
+});
