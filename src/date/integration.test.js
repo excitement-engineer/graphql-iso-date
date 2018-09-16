@@ -54,6 +54,7 @@
        validDate
        validDateString
        input(date: $date)
+       inputNull: input
      }
    `
 
@@ -65,7 +66,8 @@
      data: {
        validDate: '2016-05-02',
        input: '2017-10-01',
-       validDateString: '1991-12-24'
+       validDateString: '1991-12-24',
+       inputNull: null
      }
    })
  })
