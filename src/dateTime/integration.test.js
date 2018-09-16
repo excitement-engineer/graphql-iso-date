@@ -68,6 +68,7 @@ it('executes a query that includes a DateTime', async () => {
        validDateString
        validUnixTimestamp
        input(date: $date)
+       inputNull: input
      }
    `
 
@@ -81,7 +82,8 @@ it('executes a query that includes a DateTime', async () => {
       validUTCDateString: '1991-12-24T00:00:00Z',
       validDateString: '2016-02-01T11:00:00Z',
       input: '2017-10-01T00:00:00.000Z',
-      validUnixTimestamp: '1997-01-27T00:41:18.000Z'
+      validUnixTimestamp: '1997-01-27T00:41:18.000Z',
+      inputNull: null
     }
   })
 })

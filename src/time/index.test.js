@@ -105,12 +105,6 @@ describe('GraphQLTime', () => {
           GraphQLTime.parseValue(value)
         ).toEqual(expected)
       })
-    })
-
-    it(`parses undefined into javascript undefined`, () => {
-      expect(
-        GraphQLTime.parseValue(undefined)
-      ).toBeUndefined()
     });
 
     [

@@ -64,6 +64,7 @@ it('executes a query that includes a time', async () => {
        validUTCTimeString
        validTimeString
        input(time: $time)
+       inputNull: input
      }
    `
 
@@ -76,7 +77,8 @@ it('executes a query that includes a time', async () => {
       validJSDate: '14:48:10.003Z',
       validUTCTimeString: '14:30:00Z',
       validTimeString: '22:30:00Z',
-      input: '14:30:00.000Z'
+      input: '14:30:00.000Z',
+      inputNull: null
     }
   })
 })

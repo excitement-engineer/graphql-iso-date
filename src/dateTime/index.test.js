@@ -139,12 +139,6 @@ describe('GraphQLDateTime', () => {
           GraphQLDateTime.parseValue(value)
         ).toEqual(expected)
       })
-    })
-
-    it(`parses undefined into undefined`, () => {
-      expect(
-        GraphQLDateTime.parseValue(undefined)
-      ).toBeUndefined()
     });
 
     [
