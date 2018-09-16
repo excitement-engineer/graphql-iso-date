@@ -8,9 +8,9 @@
  *
  */
 
-import {GraphQLScalarType, Kind} from 'graphql'
+import { GraphQLScalarType, Kind } from 'graphql'
 import type {GraphQLScalarTypeConfig} from "graphql";// eslint-disable-line
-import {validateDate, validateJSDate, serializeDate, parseDate} from '../utils'
+import { validateDate, validateJSDate, serializeDate, parseDate } from '../utils'
 
 /**
  * An RFC 3339 compliant date scalar.

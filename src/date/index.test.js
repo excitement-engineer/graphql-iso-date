@@ -11,7 +11,7 @@
 import GraphQLDate from './'
 import { Kind } from 'graphql'
 // flowlint-next-line untyped-import:off
-import {stringify} from 'jest-matcher-utils'
+import { stringify } from 'jest-matcher-utils'
 
 const invalidDates = [
   'invalid date',
