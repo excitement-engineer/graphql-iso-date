@@ -98,7 +98,7 @@ graphql(schema, query).then(result => {
 
 This project includes several examples in the folder `/examples` explaining how to use the various scalars. You can also see some live editable examples on Launchpad:
 
-* [returning Date, Time, and DateTime](https://launchpad.graphql.com/vkvpvznr3)
+* [returning Date, Time, and DateTime](https://codesandbox.io/s/k9xm5z7223)
 * [taking a Date as a query parameter](https://codesandbox.io/s/m5782nj1w9)
 
 Run the examples by downloading this project and running the following commands:
