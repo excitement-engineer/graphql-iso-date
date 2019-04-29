@@ -16,9 +16,9 @@
 // Suppose the current date is 2016-01-01, then
 // parseTime('11:00:12Z') parses to a Date corresponding to
 // 2016-01-01T11:00:12Z.
-export const parseTime = (time: string): Date => {
+export const parseTime = (time: string | String): Date => {
   const currentDateString = new Date().toISOString()
-  return new Date(currentDateString.substr(0, currentDateString.indexOf('T') + 1) + time)
+  return new Date(currentDateString.substr(0, currentDateString.indexOf('T') + 1) + time.toString())
 }
 
 // Serializes a Date into an RFC 3339 compliant time-string in the
@@ -30,10 +30,10 @@ export const serializeTime = (date: Date): string => {
 
 // Serializes an RFC 3339 compliant time-string by shifting
 // it to UTC.
-export const serializeTimeString = (time: string): string => {
+export const serializeTimeString = (time: string | String): string => {
   // If already formatted to UTC then return the time string
   if (time.indexOf('Z') !== -1) {
-    return time
+    return time.toString()
   } else {
     // These are time-strings with timezone information,
     // these need to be shifted to UTC.
@@ -72,8 +72,8 @@ export const serializeTimeString = (time: string): string => {
 // Example:
 // parseDate('2016-01-01') parses to a Date corresponding to
 // 2016-01-01T00:00:00.000Z.
-export const parseDate = (date: string): Date => {
-  return new Date(date)
+export const parseDate = (date: string | String): Date => {
+  return new Date(date.toString())
 }
 
 // Serializes a Date into a RFC 3339 compliant date-string
@@ -83,8 +83,8 @@ export const serializeDate = (date: Date): string => {
 }
 
 // Parses an RFC 3339 compliant date-time-string into a Date.
-export const parseDateTime = (dateTime: string): Date => {
-  return new Date(dateTime)
+export const parseDateTime = (dateTime: string | String): Date => {
+  return new Date(dateTime.toString())
 }
 
 // Serializes a Date into an RFC 3339 compliant date-time-string
@@ -95,7 +95,8 @@ export const serializeDateTime = (dateTime: Date): string => {
 
 // Serializes an RFC 3339 compliant date-time-string by shifting
 // it to UTC.
-export const serializeDateTimeString = (dateTime: string): string => {
+export const serializeDateTimeString = (dateTime: string | String): string => {
+  dateTime = dateTime.toString()
   // If already formatted to UTC then return the time string
   if (dateTime.indexOf('Z') !== -1) {
     return dateTime
@@ -132,6 +133,6 @@ export const serializeDateTimeString = (dateTime: string): string => {
 
 // Serializes a Unix timestamp to an RFC 3339 compliant date-time-string
 // in the format YYYY-MM-DDThh:mm:ss.sssZ
-export const serializeUnixTimestamp = (timestamp: number): string => {
-  return new Date(timestamp * 1000).toISOString()
+export const serializeUnixTimestamp = (timestamp: number | Number): string => {
+  return new Date(timestamp.valueOf() * 1000).toISOString()
 }

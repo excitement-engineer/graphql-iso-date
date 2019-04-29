@@ -49,18 +49,19 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         return serializeDateTimeString(value)
       }
       throw new TypeError(
-        `DateTime cannot represent an invalid date-time-string ${value}.`
+        `DateTime cannot represent an invalid date-time-string ${value.toString()}.`
       )
     } else if (typeof value === 'number' || value instanceof Number) {
       if (validateUnixTimestamp(value)) {
         return serializeUnixTimestamp(value)
       }
       throw new TypeError(
-        'DateTime cannot represent an invalid Unix timestamp ' + value
+        'DateTime cannot represent an invalid Unix timestamp ' + value.valueOf()
       )
     } else {
       throw new TypeError(
         'DateTime cannot be serialized from a non string, ' +
+        // $FlowFixMe
         'non numeric or non Date type ' + JSON.stringify(value)
       )
     }
@@ -68,6 +69,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
   parseValue (value) {
     if (!(typeof value === 'string' || value instanceof String)) {
       throw new TypeError(
+        // $FlowFixMe
         `DateTime cannot represent non string type ${JSON.stringify(value)}`
       )
     }
@@ -76,7 +78,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseDateTime(value)
     }
     throw new TypeError(
-      `DateTime cannot represent an invalid date-time-string ${value}.`
+      `DateTime cannot represent an invalid date-time-string ${value.toString()}.`
     )
   },
   parseLiteral (ast) {

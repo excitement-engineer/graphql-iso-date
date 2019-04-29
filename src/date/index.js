@@ -37,14 +37,15 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       throw new TypeError('Date cannot represent an invalid Date instance')
     } else if (typeof value === 'string' || value instanceof String) {
       if (validateDate(value)) {
-        return value
+        return value.toString()
       }
       throw new TypeError(
-        `Date cannot represent an invalid date-string ${value}.`
+        `Date cannot represent an invalid date-string ${value.toString()}.`
       )
     } else {
       throw new TypeError(
         'Date cannot represent a non string, or non Date type ' +
+        // $FlowFixMe
           JSON.stringify(value)
       )
     }
@@ -52,6 +53,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
   parseValue (value) {
     if (!(typeof value === 'string' || value instanceof String)) {
       throw new TypeError(
+        // $FlowFixMe
         `Date cannot represent non string type ${JSON.stringify(value)}`
       )
     }
@@ -60,7 +62,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseDate(value)
     }
     throw new TypeError(
-      `Date cannot represent an invalid date-string ${value}.`
+      `Date cannot represent an invalid date-string ${value.toString()}.`
     )
   },
   parseLiteral (ast) {
