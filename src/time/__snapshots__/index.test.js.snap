@@ -53,3 +53,5 @@ exports[`GraphQLTime value parsing throws an error when parsing 4566 1`] = `"Tim
 exports[`GraphQLTime value parsing throws an error when parsing null 1`] = `"Time cannot represent non string type null"`;
 
 exports[`GraphQLTime value parsing throws an error when parsing true 1`] = `"Time cannot represent non string type true"`;
+
+exports[`GraphQLTime value parsing throws an error when parsing undefined 1`] = `"Time cannot represent non string type undefined"`;

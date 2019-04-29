@@ -146,7 +146,8 @@ describe('GraphQLDateTime', () => {
       {},
       [],
       true,
-      null
+      null,
+      undefined
     ].forEach(invalidInput => {
       it(`throws an error when parsing ${stringify(invalidInput)}`, () => {
         expect(() =>
