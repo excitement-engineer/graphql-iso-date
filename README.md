@@ -85,7 +85,7 @@ graphql(schema, query).then(result => {
     // Prints
     // {
     //   data: {
-    //     birthdate: '1991-12-24',
+    //     birthdate: '1991-11-24',
     //     openingNYSE: '14:30:00.000Z',
     //     instant: '2017-01-10T21:33:15.233Z'
     //   }
