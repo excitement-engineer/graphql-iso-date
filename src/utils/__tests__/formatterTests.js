@@ -140,16 +140,4 @@ describe('formatting', () => {
       expect(parseDateTime(dateTime)).toEqual(date)
     })
   });
-
-  [
-    [ '2016-02-01T00:00:00Z', '2016-02-01T00:00:00Z' ],
-    [ '2016-02-01T12:23:44Z', '2016-02-01T12:23:44Z' ],
-    [ '2016-02-01T14:38:12-01:00', '2016-02-01T15:38:12Z' ],
-    [ '2016-02-02T00:00:00.4567+01:30', '2016-02-01T22:30:00.4567Z' ],
-    [ '2016-02-01T14:38:12.1+01:00', '2016-02-01T13:38:12.1Z' ]
-  ].forEach(([input, output]) => {
-    it(`serializes date-time-string ${input} into UTC date-time-string ${output}`, () => {
-      expect(serializeDateTimeString(input)).toEqual(output)
-    })
-  })
 })
