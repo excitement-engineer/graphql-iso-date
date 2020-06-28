@@ -80,7 +80,7 @@ it('executes a query that includes a DateTime', async () => {
     data: {
       validDate: '2016-05-02T10:31:42.200Z',
       validUTCDateString: '1991-12-24T00:00:00Z',
-      validDateString: '2016-02-01T11:00:00Z',
+      validDateString: '2016-02-01T00:00:00-11:00',
       input: '2017-10-01T00:00:00.000Z',
       validUnixTimestamp: '1997-01-27T00:41:18.000Z',
       inputNull: null

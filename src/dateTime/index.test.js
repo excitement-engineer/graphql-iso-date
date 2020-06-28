@@ -79,19 +79,6 @@ describe('GraphQLDateTime', () => {
       ).toThrowErrorMatchingSnapshot()
     });
 
-    [
-      [ '2016-02-01T00:00:15Z', '2016-02-01T00:00:15Z' ],
-      [ '2016-02-01T00:00:00.23498Z', '2016-02-01T00:00:00.23498Z' ],
-      [ '2016-02-01T00:00:00-11:00', '2016-02-01T11:00:00Z' ],
-      [ '2017-01-07T00:00:00.1+01:20', '2017-01-06T22:40:00.1Z' ]
-    ].forEach(([input, output]) => {
-      it(`serializes date-time-string ${input} into UTC date-time-string ${output}`, () => {
-        expect(
-          GraphQLDateTime.serialize(input)
-        ).toEqual(output)
-      })
-    })
-
     invalidDates.forEach(dateString => {
       it(`throws an error when serializing an invalid date-string ${stringify(dateString)}`, () => {
         expect(() =>
