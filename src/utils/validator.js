@@ -44,8 +44,9 @@ const leapYear = (year: number): boolean => {
 //   equals NaN.
 // - Leap seconds cannot be known in advance.
 //
-export const validateTime = (time: string): boolean => {
+export const validateTime = (time: string | String): boolean => {
   const TIME_REGEX = /^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\.\d{1,})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
+  time = time.toString()
   return TIME_REGEX.test(time)
 }
 
@@ -72,8 +73,9 @@ export const validateTime = (time: string): boolean => {
 // 11            November             30
 // 12            December             31
 //
-export const validateDate = (datestring: string): boolean => {
+export const validateDate = (datestring: string | String): boolean => {
   const RFC_3339_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01]))$/
+  datestring = datestring.toString()
 
   if (!RFC_3339_REGEX.test(datestring)) {
     return false
@@ -117,8 +119,9 @@ export const validateDate = (datestring: string): boolean => {
 //
 // Where *s is a fraction of seconds with at least 1 digit.
 //
-export const validateDateTime = (dateTimeString: string): boolean => {
+export const validateDateTime = (dateTimeString: string | String): boolean => {
   const RFC_3339_REGEX = /^(\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60))(\.\d{1,})?(([Z])|([+|-]([01][0-9]|2[0-3]):[0-5][0-9]))$/
+  dateTimeString = dateTimeString.toString()
 
   // Validate the structure of the date-string
   if (!RFC_3339_REGEX.test(dateTimeString)) {
@@ -144,7 +147,8 @@ export const validateDateTime = (dateTimeString: string): boolean => {
 // Unix timestamps are signed 32-bit integers. They are interpreted
 // as the number of seconds since 00:00:00 UTC on 1 January 1970.
 //
-export const validateUnixTimestamp = (timestamp: number): boolean => {
+export const validateUnixTimestamp = (timestamp: number | Number): boolean => {
+  timestamp = timestamp.valueOf()
   const MAX_INT = 2147483647
   const MIN_INT = -2147483648
   return (timestamp === timestamp && timestamp <= MAX_INT && timestamp >= MIN_INT) // eslint-disable-line

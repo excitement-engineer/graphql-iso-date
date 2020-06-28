@@ -47,19 +47,21 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
         return serializeTimeString(value)
       }
       throw new TypeError(
-        `Time cannot represent an invalid time-string ${value}.`
+        `Time cannot represent an invalid time-string ${value.toString()}.`
       )
     } else {
+      let parsedValue: string = JSON.stringify(value) || 'undefined'
       throw new TypeError(
         'Time cannot be serialized from a non string, ' +
-        'or non Date type ' + JSON.stringify(value)
+        'or non Date type ' + parsedValue
       )
     }
   },
   parseValue (value: mixed): Date {
     if (!(typeof value === 'string' || value instanceof String)) {
+      let parsedValue: string = JSON.stringify(value) || 'undefined'
       throw new TypeError(
-        `Time cannot represent non string type ${JSON.stringify(value)}`
+        `Time cannot represent non string type ${parsedValue}`
       )
     }
 
@@ -67,7 +69,7 @@ const config: GraphQLScalarTypeConfig<Date, string> = {
       return parseTime(value)
     }
     throw new TypeError(
-      `Time cannot represent an invalid time-string ${value}.`
+      `Time cannot represent an invalid time-string ${value.toString()}.`
     )
   },
   parseLiteral (ast): ?Date {
