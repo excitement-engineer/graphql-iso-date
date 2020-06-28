@@ -1,5 +1,7 @@
 # GraphQL ISO Date
 
+NOTICE: The scalars defined in this repository have moved to the [GraphQL-scalars](https://github.com/Urigo/graphql-scalars) repository where they will be maintained.
+
 [![npm version](https://badge.fury.io/js/graphql-iso-date.svg)](http://badge.fury.io/js/graphql-iso-date)
 [![Build Status](https://travis-ci.org/excitement-engineer/graphql-iso-date.svg?branch=master)](https://travis-ci.org/excitement-engineer/graphql-iso-date)
 [![codecov](https://codecov.io/gh/excitement-engineer/graphql-iso-date/branch/master/graph/badge.svg)](https://codecov.io/gh/excitement-engineer/graphql-iso-date)
