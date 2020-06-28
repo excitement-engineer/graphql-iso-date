@@ -182,7 +182,7 @@ it('errors if the variable value is not a valid date-time', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Variable "$date" got invalid value "2017-10-001T00:00:00Z"; Expected type "DateTime". DateTime cannot represent an invalid date-time-string 2017-10-001T00:00:00Z.')
+      new GraphQLError('Variable "$date" got invalid value "2017-10-001T00:00:00Z"; Expected type DateTime; DateTime cannot represent an invalid date-time-string 2017-10-001T00:00:00Z.')
     ]
   })
 })
@@ -200,7 +200,7 @@ it('errors if the variable value is not of type string', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Variable "$date" got invalid value 4; Expected type "DateTime". DateTime cannot represent non string type 4')
+      new GraphQLError('Variable "$date" got invalid value 4; Expected type DateTime; DateTime cannot represent non string type 4')
     ]
   })
 })
@@ -216,7 +216,7 @@ it('errors if the literal input value is not a valid date-time', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Expected value of type "DateTime", found "2017-10-001T00:00:00"; DateTime cannot represent an invalid date-time-string 2017-10-001T00:00:00.')
+      new GraphQLError('Expected type DateTime, found "2017-10-001T00:00:00"; DateTime cannot represent an invalid date-time-string 2017-10-001T00:00:00.')
     ]
   })
 })
@@ -232,7 +232,7 @@ it('errors if the literal input value in a query is not a string', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Expected value of type "DateTime", found 4; DateTime cannot represent non string type 4')
+      new GraphQLError('Expected type DateTime, found 4; DateTime cannot represent non string type 4')
     ]
   })
 })

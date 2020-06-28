@@ -175,7 +175,7 @@ it('errors if the variable value is not a valid time', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Variable "$time" got invalid value "__2222"; Expected type "Time". Time cannot represent an invalid time-string __2222.')
+      new GraphQLError('Variable "$time" got invalid value "__2222"; Expected type Time; Time cannot represent an invalid time-string __2222.')
     ]
   })
 })
@@ -193,7 +193,7 @@ it('errors if the variable value is not of type string', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Variable "$time" got invalid value 4; Expected type "Time". Time cannot represent non string type 4')
+      new GraphQLError('Variable "$time" got invalid value 4; Expected type Time; Time cannot represent non string type 4')
     ]
   })
 })
@@ -209,7 +209,7 @@ it('errors if the literal input value is not a valid time', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Expected value of type "Time", found "__invalid__"; Time cannot represent an invalid time-string __invalid__.')
+      new GraphQLError('Expected type Time, found "__invalid__"; Time cannot represent an invalid time-string __invalid__.')
     ]
   })
 })
@@ -225,7 +225,7 @@ it('errors if the literal input value in a query is not a string', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Expected value of type "Time", found 4; Time cannot represent non string type 4')
+      new GraphQLError('Expected type Time, found 4; Time cannot represent non string type 4')
     ]
   })
 })

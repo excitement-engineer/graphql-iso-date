@@ -1,7 +1,7 @@
 language: node_js
-cache: npm
+cache: yarn
 node_js:
-- '10'
+- '8'
 script:
 - npm test && npm run coverage
 deploy:
