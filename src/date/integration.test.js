@@ -145,7 +145,7 @@ it('errors if the variable value is not a valid date', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Variable "$date" got invalid value "2017-10-001"; Expected type Date; Date cannot represent an invalid date-string 2017-10-001.')
+      new GraphQLError('Variable "$date" got invalid value "2017-10-001"; Expected type "Date". Date cannot represent an invalid date-string 2017-10-001.')
     ]
   })
 })
@@ -163,7 +163,7 @@ it('errors if the variable value is not of type string', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Variable "$date" got invalid value 4; Expected type Date; Date cannot represent non string type 4')
+      new GraphQLError('Variable "$date" got invalid value 4; Expected type "Date". Date cannot represent non string type 4')
     ]
   })
 })
@@ -179,7 +179,7 @@ it('errors if the literal input value is not a valid date', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Expected type Date, found "2017-10-001"; Date cannot represent an invalid date-string 2017-10-001.')
+      new GraphQLError('Expected value of type "Date", found "2017-10-001"; Date cannot represent an invalid date-string 2017-10-001.')
     ]
   })
 })
@@ -195,7 +195,7 @@ it('errors if the literal input value in a query is not a string', async () => {
 
   expect(response).toEqual({
     errors: [
-      new GraphQLError('Expected type Date, found 4; Date cannot represent non string type 4')
+      new GraphQLError('Expected value of type "Date", found 4; Date cannot represent non string type 4')
     ]
   })
 })
